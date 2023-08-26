@@ -1,9 +1,9 @@
 import Filters from "@/components/catalogPage/filters";
 import styles from "./Catalog.module.scss"
 import ProductCard from '@/components/catalogPage/productCard';
-import axios from 'axios'
 import { Metadata } from "next";
 import {headers, cookies} from 'next/headers';
+import { getProducts } from "../../services/getProducts";
 
 
 
@@ -14,19 +14,7 @@ export const metadata: Metadata = {
 
 
 
-const getProducts = async(filters: {sort:string, search: string}) =>  {
-  const sort = filters.sort ? filters.sort : 'price:asc'
-  const search = filters.search ? filters.search : ''
- 
-  try {
-     const {data } = await axios.get(`http://localhost:1337/api/devices?filters[name][$containsi]=${search}&pagination[page]=1&pagination[pageSize]=40&sort=${sort}&populate=*`);
-    
-      return data.data
-  } catch(e: any) {
-    console.error("ошибка", e.message)
-  }
 
-} 
 
 
 export default async function Catalog ({searchParams}: any){
