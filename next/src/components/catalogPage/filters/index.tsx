@@ -4,7 +4,6 @@ import Sort from './sort'
 import styles from './Filters.module.scss'
 import Search from './search'
 import { useRouter } from 'next/navigation';
-import qs from "qs"
 
 
 const Filters = ({searchParams}:any) => {
@@ -12,7 +11,7 @@ const Filters = ({searchParams}:any) => {
     const [search, setSearch] = React.useState<any>('')
     const router = useRouter();
     
-    console.log(searchParams)
+ 
 
  
 
@@ -75,11 +74,10 @@ const Filters = ({searchParams}:any) => {
 
         <div className={styles.root}>
 
-
             <div className={styles.search}>
                 <Search search={search} setSearch={setSearch} />
             </div>
-
+          
 
             <div className={styles.sort}>
 

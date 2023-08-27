@@ -1,8 +1,17 @@
+'use client'
 import Link from 'next/link'
 import styles from './Header.module.scss'
+import {useRouter} from 'next/navigation'
+
 
 const Header = () => {
+
+  const router = useRouter()
+
+
   return (
+
+
 <nav className={styles.root + " navbar navbar-expand-lg bg-body-tertiary"} >
 <div className="container-fluid">
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
@@ -15,7 +24,7 @@ const Header = () => {
           <Link className="nav-link active" aria-current="page" href="/">Главная</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/catalog">Каталог</Link>
+          <Link onClick={()=>router.refresh()}  className="nav-link" href="/catalog">Каталог</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Цена</a>

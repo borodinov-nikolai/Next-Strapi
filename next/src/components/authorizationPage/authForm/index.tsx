@@ -7,21 +7,50 @@ import axios from 'axios'
 const AuthForm: React.FC = () => {
     const[identifier, setIdentifier]= React.useState<string>()
     const[password, setPassword]= React.useState<string>()
+    const[isAuth, setIsAuth] = React.useState<boolean>(false)
+      
+
+
+    
+React.useEffect(()=>{
+  if(document.cookie === 'auth=true'){
+    setIsAuth(true)
+  }
+},[])
+
+
 
       
-    
   
       const auth = async (identifier:string | undefined, password:string | undefined)=> {
-         const res = await axios.post("http://localhost:3000/api/auth", {
-           identifier,
-           password
-         })
-        console.log(res)
-         return res
+        try {
+          const res = await axios.post("http://localhost:3000/api/auth", {
+            identifier,
+            password,
+             })
+         console.log(res)
+         if(res.status===200) {
+           setIsAuth(true)
+         }
+          return res
+       }
+         catch(e: any) {
+          console.error('ошибка', e.message)
+        }
       }
+     
+    
 
+      const leave = async ()=> {
+      const res = await  axios.get("http://localhost:3000/api/auth/leave")
+      console.log(res)
+      if(res.status===200) {
+        setIsAuth(false)
+      }
+        return res
+      }
   
-
+    
    
 
   return (
@@ -30,7 +59,12 @@ const AuthForm: React.FC = () => {
 
         <input onChange={(e=>setIdentifier(e.target.value))} type="text" placeholder='name' />
         <input onChange={(e=>setPassword(e.target.value))} type="text" placeholder='password' />
-        <button onClick={()=>auth(identifier, password)}> Авторизоваться</button>
+   
+         { isAuth?
+         <button onClick={()=>leave()}>Выйти</button>:
+         <button onClick={()=>auth(identifier, password)}> Авторизоваться</button>
+         }
+       
 
     </div>
   )

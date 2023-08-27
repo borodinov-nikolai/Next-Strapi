@@ -1,16 +1,26 @@
-import axios from 'axios'
+import { $axios } from '@/http'
 
 
-export const getProducts = async(filters: {sort:string, search: string}) =>  {
-    const sort = filters.sort ? filters.sort : 'price:asc'
-    const search = filters.search ? filters.search : ''
-   
+
+
+export const getProducts = async() =>  {
+
+  
+
+
     try {
-       const {data } = await axios.get(`http://localhost:1337/api/devices?filters[name][$containsi]=${search}&pagination[page]=1&pagination[pageSize]=40&sort=${sort}&populate=*`);
-      
+
+
+        // const sort = props.sort ? props.sort : 'price:asc'
+        // const search = props.search ? props.search : ''
+
+
+        
+       const {data } = await $axios.get(`/devices`);
+        console.log('запрос')
         return data.data
     } catch(e: any) {
-      console.error("ошибка", e.message)
+      console.error("ошибка зпроса", e.message)
     }
   
   } 
