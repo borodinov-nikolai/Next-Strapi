@@ -4,12 +4,14 @@ import Sort from './sort'
 import styles from './Filters.module.scss'
 import Search from './search'
 import { useRouter } from 'next/navigation';
+import { useAppSelector } from '@/redux/hooks'
 
 
 const Filters = ({searchParams}:any) => {
-    const [sort, setSort] = React.useState<any>('')
-    const [search, setSearch] = React.useState<any>('')
+    const [sort, setSort] = React.useState<string>('')
+    const [search, setSearch] = React.useState<string>('')
     const router = useRouter();
+    const {isAuth} = useAppSelector((state)=>state.user)
     
  
 
@@ -23,11 +25,11 @@ const Filters = ({searchParams}:any) => {
             setSearch(searchParams.search)
         }
 
+
     },[])
 
 
     React.useEffect(()=> {
-        console.log(searchParams.length)
         if(Object.keys(searchParams).length < 1) {
             setSort('')
             setSearch('')
@@ -65,7 +67,7 @@ const Filters = ({searchParams}:any) => {
 
 
 
-   
+    console.log('kzkzk', isAuth)
 
 
 

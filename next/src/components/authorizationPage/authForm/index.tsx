@@ -1,24 +1,28 @@
 'use client'
 import React from 'react'
 import axios from 'axios'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { setIsAuth } from '@/redux/slices/user'
 
 
 
 const AuthForm: React.FC = () => {
     const[identifier, setIdentifier]= React.useState<string>()
     const[password, setPassword]= React.useState<string>()
-    const[isAuth, setIsAuth] = React.useState<boolean>(false)
+    // const[isAuth, setIsAuth] = React.useState<boolean>(false)
+    const {isAuth} = useAppSelector((state)=> state.user);
+    const dispatch = useAppDispatch()
       
 
 
     
 React.useEffect(()=>{
   if(document.cookie === 'auth=true'){
-    setIsAuth(true)
+    dispatch(setIsAuth(true))
   }
 },[])
 
-
+console.log(isAuth)
 
       
   
@@ -30,7 +34,7 @@ React.useEffect(()=>{
              })
          console.log(res)
          if(res.status===200) {
-           setIsAuth(true)
+          dispatch(setIsAuth(true))
          }
           return res
        }
@@ -45,7 +49,7 @@ React.useEffect(()=>{
       const res = await  axios.get("http://localhost:3000/api/auth/leave")
       console.log(res)
       if(res.status===200) {
-        setIsAuth(false)
+        dispatch(setIsAuth(true))
       }
         return res
       }
