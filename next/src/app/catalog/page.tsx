@@ -29,7 +29,7 @@ export default async function Catalog ({searchParams}: any){
  
 
 
-const {sort, search} = searchParams
+const {sort, search} :{sort:string, search:string} = searchParams
  
 
 type Products = {
@@ -43,9 +43,9 @@ type Products = {
 }[]
 
 
-if(token) {
 
-  const products: Products = await getProducts();
+
+  const products: Products = await getProducts({sort, search});
 
 
 
@@ -74,12 +74,10 @@ if(token) {
     </div>
     </div>
   )
-} else {
-  return <div>Отказано в доступе</div>
 }
 
   
-}
+
 
 
 

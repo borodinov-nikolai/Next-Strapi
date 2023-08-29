@@ -20,7 +20,7 @@ const ProductCard: React.FC<Props> = ({name, img, price}) => {
   <div className="card-body">
     <h5 className="card-title">{name}</h5>
     <p className="card-text">{price}</p>
-    <a href="#" className="btn btn-primary">Перейти куда-нибудь</a>
+    <a href="#" className="btn btn-primary">В корзину2</a>
   </div>
 </div>
   )

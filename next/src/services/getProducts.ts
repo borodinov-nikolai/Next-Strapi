@@ -3,7 +3,7 @@ import { $axios } from '@/http'
 
 
 
-export const getProducts = async() =>  {
+export const getProducts = async(props : {sort:string, search:string}) =>  {
 
   
 
@@ -11,12 +11,31 @@ export const getProducts = async() =>  {
     try {
 
 
-        // const sort = props.sort ? props.sort : 'price:asc'
-        // const search = props.search ? props.search : ''
+        const sort = props.sort ? props.sort : 'price:asc'
+        const search = props.search ? props.search : ''
 
 
         
-       const {data } = await $axios.get(`/devices`);
+       const {data } = await $axios.get(`/devices`, {
+        params:{
+          pagination: {
+           page: 1,
+           pageSize: 12 
+          },
+          filters: {
+            name: {
+              $containsi: search
+             },
+            
+           },
+          sort: {
+           0: sort
+         },
+          populate: "*"
+       }
+        }
+       
+       );
         console.log('запрос')
         return data.data
     } catch(e: any) {

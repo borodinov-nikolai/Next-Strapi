@@ -3,7 +3,7 @@ import React from 'react'
 import Sort from './sort'
 import styles from './Filters.module.scss'
 import Search from './search'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
 
 
@@ -67,7 +67,6 @@ const Filters = ({searchParams}:any) => {
 
 
 
-    console.log('kzkzk', isAuth)
 
 
 

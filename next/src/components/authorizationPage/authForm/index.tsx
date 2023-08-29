@@ -9,10 +9,8 @@ import { setIsAuth } from '@/redux/slices/user'
 const AuthForm: React.FC = () => {
     const[identifier, setIdentifier]= React.useState<string>()
     const[password, setPassword]= React.useState<string>()
-    // const[isAuth, setIsAuth] = React.useState<boolean>(false)
     const {isAuth} = useAppSelector((state)=> state.user);
     const dispatch = useAppDispatch()
-      
 
 
     
@@ -49,7 +47,7 @@ console.log(isAuth)
       const res = await  axios.get("http://localhost:3000/api/auth/leave")
       console.log(res)
       if(res.status===200) {
-        dispatch(setIsAuth(true))
+        dispatch(setIsAuth(false))
       }
         return res
       }

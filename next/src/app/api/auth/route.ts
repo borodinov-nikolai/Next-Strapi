@@ -18,6 +18,8 @@ export async function POST(request: Request) {
           )
                 
             console.log(res.status)
+           
+
           return new Response('Hello, Next.js!', {
             status: 200,
             headers: { 'Set-Cookie': `token=${res.data.jwt};path=/;Secure;HttpOnly;SameSite=Strict;expires=session,auth=true;path=/;expires=session`},
