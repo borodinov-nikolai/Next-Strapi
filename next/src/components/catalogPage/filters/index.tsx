@@ -4,66 +4,61 @@ import Sort from './sort'
 import styles from './Filters.module.scss'
 import Search from './search'
 import { useRouter } from 'next/navigation'
-import { useAppSelector } from '@/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import qs from 'qs'
+import { setSearch, setSort } from '@/redux/slices/filters'
 
 
-const Filters = ({searchParams}:any) => {
-    const [sort, setSort] = React.useState<string>('')
-    const [search, setSearch] = React.useState<string>('')
+const Filters = () => {
+    const {sort, search} = useAppSelector((state)=> state.filters)
+    const dispatch = useAppDispatch();
     const router = useRouter();
-    const {isAuth} = useAppSelector((state)=>state.user)
-    
- 
-
- 
 
 
 
-    React.useEffect(()=> {
-        if(searchParams) {
-            setSort(searchParams.sort)
-            setSearch(searchParams.search)
+
+
+
+
+    React.useEffect(() => {
+        if (window.location.search) {
+            const searchParams = qs.parse(window.location.search.substring(1))
+
+
+            dispatch(setSort(searchParams.sort))
+            dispatch(setSearch(searchParams.search))
+        }
+
+    }, [])
+
+
+
+    React.useEffect(() => {
+
+
+        if (sort && search) {
+
+            router.replace(`?sort=${sort}&search=${search}`, { scroll: true })
+        }
+
+        if (sort && !search) {
+            router.replace(`?sort=${sort}`, { scroll: true })
+        }
+
+        if (!sort && search) {
+            router.replace(`?search=${search}`, { scroll: true })
         }
 
 
-    },[])
+        if (!sort && !search) {
 
-
-    React.useEffect(()=> {
-        if(Object.keys(searchParams).length < 1) {
-            setSort('')
-            setSearch('')
+            router.replace("catalog", { scroll: true })
         }
 
-    },[searchParams])
 
 
-    React.useEffect(()=> {
-    
-     
-        if(sort && search){
 
-            router.replace(`?sort=${sort}&search=${search}`, {scroll:true}) 
-        }
-
-        if(sort && !search) {
-            router.replace(`?sort=${sort}`, {scroll:true})
-        } 
-
-        if(!sort && search) {
-            router.replace(`?search=${search}`, {scroll:true})
-        } 
-
-      
-        if(!sort && !search){
-
-            router.replace("catalog", {scroll:true}) 
-        }
-    
-
-
-    
-    },[sort, search])
+    }, [sort, search])
 
 
 
@@ -76,13 +71,13 @@ const Filters = ({searchParams}:any) => {
         <div className={styles.root}>
 
             <div className={styles.search}>
-                <Search search={search} setSearch={setSearch} />
+                <Search search={search} dispatch={dispatch} />
             </div>
-          
+
 
             <div className={styles.sort}>
 
-                <Sort sort={sort} setSort={setSort} />
+                <Sort sort={sort} dispatch={dispatch} />
 
             </div>
 
