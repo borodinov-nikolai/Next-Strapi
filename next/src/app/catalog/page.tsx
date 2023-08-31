@@ -6,7 +6,6 @@ import { getProducts } from "../../services/getProducts";
 import {cookies} from "next/headers"
 
 
-
 export const dynamic = 'force-dynamic'
 
 
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 
 
 
-export default async function Catalog ({searchParams}: any){
+export default async function Catalog ({searchParams}:any ){
 
     
  
@@ -59,7 +58,7 @@ type Products = {
 </h1>
 
 <div className={styles.filters} >
- <Filters searchParams={searchParams}/>
+ <Filters />
   </div>
 
     <div className={styles.card_holder}  >

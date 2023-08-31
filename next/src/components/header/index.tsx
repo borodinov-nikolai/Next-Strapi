@@ -1,12 +1,11 @@
-'use client'
 import Link from 'next/link'
 import styles from './Header.module.scss'
-import {useRouter} from 'next/navigation'
+
 
 
 const Header = () => {
 
-  const router = useRouter()
+
 
 
   return (
@@ -24,7 +23,7 @@ const Header = () => {
           <Link className="nav-link active" aria-current="page" href="/">Главная</Link>
         </li>
         <li className="nav-item">
-          <Link onClick={()=>router.refresh()}  className="nav-link" href="/catalog">Каталог</Link>
+          <Link className="nav-link" href="/catalog">Каталог</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Цена</a>
