@@ -16,7 +16,7 @@ const Sort = ({dispatch, sort}:any) => {
 
   return (
  
-    <Form.Select value={sort} onChange={(e)=>dispatch(setSort(e.target.value))} aria-label="Default select example">
+    <Form.Select value={sort ? sort : 'price:asc'} onChange={(e)=>dispatch(setSort(e.target.value))} aria-label="Default select example">
         {
             sortItems.map(({name, value})=> {
              return   <option  key={name} value={value ? value : ''} >{name}</option>

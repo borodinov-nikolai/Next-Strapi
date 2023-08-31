@@ -58,7 +58,7 @@ type Products = {
 </h1>
 
 <div className={styles.filters} >
- <Filters />
+ <Filters searching = {search}  sorting = {sort} />
   </div>
 
     <div className={styles.card_holder}  >

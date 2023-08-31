@@ -11,21 +11,24 @@ import { useDebounce } from 'usehooks-ts'
 const Search = () => {
 
   const {searchValue} = useAppSelector((state)=> state.filters)
-  const debouncedValue = useDebounce(searchValue, 1000)
+  const debouncedValue = useDebounce(searchValue, 700)
   const dispatch = useDispatch();
+
 
  
   React.useEffect(()=>{
 dispatch(setSearch(debouncedValue))
-    
 
-  },[debouncedValue])
+},[debouncedValue])
+
+
+
 
 
 
   return (
     <div>
-        <input onChange={(e)=>dispatch(setSearchValue(e.target.value))} value = {searchValue? searchValue as string : ''} type="text" placeholder='поиск' />
+        <input onChange={(e)=>{dispatch(setSearchValue(e.target.value))}} value = {searchValue? searchValue as string : ''} type="text" placeholder='поиск' />
     </div>
   )
 }
