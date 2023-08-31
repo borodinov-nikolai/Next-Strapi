@@ -2,7 +2,7 @@ import Filters from "@/components/catalogPage/filters";
 import styles from "./Catalog.module.scss"
 import ProductCard from '@/components/catalogPage/productCard';
 import { Metadata } from "next";
-import { getProducts } from "../../services/getProducts";
+import { getProducts } from "../../utils/getProducts";
 import {cookies} from "next/headers"
 
 

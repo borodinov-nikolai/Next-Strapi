@@ -24,8 +24,7 @@ const Filters = () => {
 
     React.useEffect(() => {
         if (searchParams.toString().length > 0) {
-            const searchString = qs.parse(searchParams.toString().substring(1))
-
+            const searchString = qs.parse(searchParams.toString())
             dispatch(setSearchValue(searchString.search))
             dispatch(setSort(searchString.sort))
             dispatch(setSearch(searchString.search))

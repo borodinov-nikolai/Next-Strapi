@@ -4,11 +4,11 @@ import { cookies } from 'next/headers'
 
 
 
-const url = "http://localhost:1337/api"
+// const url = "http://localhost:1337/api"
 
 export const $axios = axios.create({
     withCredentials: true, 
-    baseURL: url
+    baseURL: process.env.REACT_APP_API_URL 
   });
 
 
