@@ -28,9 +28,9 @@ const Filters = ({sorting, searching}:any) => {
     }
     setLoading(true);
 
-    return () => {
-      dispatch(resetFilters());
-    };
+    // return () => {
+    //   dispatch(resetFilters());
+    // };
   }, []);
 
   React.useEffect(() => {
@@ -52,9 +52,9 @@ const Filters = ({sorting, searching}:any) => {
       router.replace(`?search=${search}`, { scroll: true });
     }
 
-    if (!sort && !search) {
-      router.replace("catalog", { scroll: true });
-    }
+    // if (!sort && !search) {
+    //   router.replace("/catalog/smartphones", { scroll: true });
+    // }
   }, [sort, search]);
 
 

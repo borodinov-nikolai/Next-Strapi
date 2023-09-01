@@ -20,10 +20,10 @@ const Header = () => {
     <div className="collapse navbar-collapse" id="navbarNavDropdown">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" href="/">Главная</Link>
+          <Link className="nav-link" aria-current="page" href="/">Главная</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/catalog">Каталог</Link>
+          <Link className="nav-link" href="/catalog/smartphones/all">Каталог</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Цена</a>
