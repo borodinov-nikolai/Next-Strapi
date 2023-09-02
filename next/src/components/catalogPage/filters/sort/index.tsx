@@ -1,19 +1,18 @@
 'use client'
 import React from 'react'
-import styles from '.Sort.module.scss'
 import Form from 'react-bootstrap/Form';
 import { setSort } from '@/redux/slices/filtersSlice';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 
 
 
 
 
-const Sort = ({dispatch, sortServer}:any) => {
+const Sort = ({sortServer}:any) => {
 
    const sortItems: {name:string, value:string}[] = [{name: "по возрастанию", value: "price:asc"}, {name: "по убыванию", value: "price:desc"}]
   const {sort} :any = useAppSelector((state)=> state.filters)
-   
+   const dispatch = useAppDispatch()
    
 
   return (

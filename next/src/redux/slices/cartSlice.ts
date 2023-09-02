@@ -33,7 +33,10 @@ const cartSlice = createSlice({
                 } else {
                     state.cartItems.push({...action.payload, count:1})
                 }
-            }
+            },
+         minusItem: (state, action) => {
+            
+         }
         }})
 
 export const {addCartItem} = cartSlice.actions

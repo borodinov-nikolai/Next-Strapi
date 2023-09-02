@@ -1,30 +1,60 @@
+'use client'
+import { $apiClient } from "@/axios/client"
+import React from "react"
+import { useDispatch } from "react-redux"
+import { setBrand } from "@/redux/slices/filtersSlice"
+import { useAppSelector } from "@/redux/hooks"
 
-import { getBrands } from "@/utils/getBrands"
-import Link from "next/link"
+
+
+const Brands =  () => {
+  
+  type Brands = {
+    id: number,
+    attributes: {
+      name: string
+    }
+  }[]
+
+  const {brand} = useAppSelector((state)=>state.filters)
+  const[brands, setBrands] = React.useState<Brands>([])
+  const dispatch = useDispatch();
+
+  React.useEffect(()=> {
+
+   const getBrands = async ()=> {
+    const res = await $apiClient.get('/brands', {
+      params: {
+          filters: {
+              types: {
+              id: 1
+          }
+          }
+          
+      }
+  })
+ console.log(res.data.data)
+  setBrands(res.data.data)
+
+   }
+
+   getBrands()
+
+  },[])
 
 
 
 
-const Brands = async ({brand}: any) => {
 
-type Brands = {
-  id: number,
-  attributes: {
-    name: string
-  }
-}[]
-
-  const brands : Brands = await getBrands()
 
 
 
   return (
     
     <>
-      <Link  href={`/catalog/smartphones/all`} ><button type="button" className={'all' === brand? "btn btn-outline-dark active":"btn btn-outline-dark"}>Все</button></Link>
-    {
-      brands?.map(({id, attributes})=> {
-      return  <Link key={id} href={`/catalog/smartphones/${attributes.name}`} ><button type="button" className={attributes.name === brand? "btn btn-outline-dark active":"btn btn-outline-dark"}>{attributes.name}</button></Link>
+    <button onClick ={()=> dispatch(setBrand('all'))} type="button" className={'all' === brand? "btn btn-outline-dark active":"btn btn-outline-dark"}>Все</button>
+    {brands?.map(({id, attributes})=> {
+      return  <button onClick ={()=>dispatch(setBrand(attributes.name)) } type="button" className={attributes.name === brand? "btn btn-outline-dark active":"btn btn-outline-dark"}>{attributes.name}</button>
       })
     }
     </>

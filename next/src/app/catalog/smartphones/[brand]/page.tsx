@@ -57,7 +57,7 @@ type Products = {
 </h1>
 
 <div className={styles.brands} >
-  <Brands brand = {params.brand} />
+  <Brands  />
 
 </div>
 

@@ -4,25 +4,25 @@ import { cookies } from 'next/headers'
 
 
 
-// const url = "http://localhost:1337/api"
+const url = "http://localhost:1337/api"
 
-export const $axios = axios.create({
+export const $apiServer = axios.create({
     withCredentials: true, 
-    baseURL: process.env.REACT_APP_API_URL 
+    baseURL: url 
   });
 
 
 
 
-$axios.interceptors.request.use(function (config) {
+$apiServer.interceptors.request.use(function (config) {
   const cookie = cookies()
   const token = cookie.get('token')?.value
  
  if(token){
-    $axios.defaults.headers.authorization =`bearer ${token}`
+    $apiServer.defaults.headers.authorization =`bearer ${token}`
  
  } else {
-  delete $axios.defaults.headers.authorization
+  delete $apiServer.defaults.headers.authorization
  }
      return config;
   }, function (error) {

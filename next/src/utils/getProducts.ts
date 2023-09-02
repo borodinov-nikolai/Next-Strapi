@@ -1,4 +1,4 @@
-import { $axios } from '@/axios'
+import { $apiServer } from '@/axios/server'
 
 
 
@@ -16,11 +16,11 @@ export const getProducts = async(props : {sort:string, search:string, brandName:
         const brand = props.brandName ? props.brandName : null
 
         
-       const {data } = await $axios.get(`/devices`, {
+       const {data } = await $apiServer.get(`/devices`, {
         params:{
           pagination: {
            page: 1,
-           pageSize: 12 
+           pageSize: 20 
           },
           filters: {
             name: {
@@ -28,6 +28,9 @@ export const getProducts = async(props : {sort:string, search:string, brandName:
              },
              brand: {
               name: brand === 'all'? null : brand
+             },
+             type: {
+              id : 1
              }
             
            },
