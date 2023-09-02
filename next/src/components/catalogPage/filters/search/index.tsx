@@ -1,6 +1,6 @@
 'use client'
 import { useAppSelector } from '@/redux/hooks'
-import { setSearch, setSearchValue } from '@/redux/slices/filters'
+import { setSearch, setSearchValue } from '@/redux/slices/filtersSlice'
 import { setServers } from 'dns'
 import React from 'react'
 import { useDispatch } from 'react-redux'

@@ -1,4 +1,6 @@
 'use client'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { addCartItem } from '@/redux/slices/cartSlice'
 import Image from 'next/image'
 
 
@@ -6,12 +8,19 @@ import Image from 'next/image'
 interface Props  {
     id: number,
     name: string,
-    img?: any,
+    img: string,
     price: number
 }
 
 
+
+
 const ProductCard: React.FC<Props> = ({name, img, price}) => {
+const dispatch = useAppDispatch()
+const {cartItems} = useAppSelector((state)=> state.cart)
+
+2
+
   return (
     <div className="card" style={{width: "18rem"}}>
 
@@ -20,7 +29,7 @@ const ProductCard: React.FC<Props> = ({name, img, price}) => {
   <div className="card-body">
     <h5 className="card-title">{name}</h5>
     <p className="card-text">{price}</p>
-    <a href="#" className="btn btn-primary">В корзину</a>
+    <button onClick={()=>{dispatch(addCartItem({name, price, img}));console.log(cartItems)}} className="btn btn-primary">В корзину</button>
   </div>
 </div>
   )

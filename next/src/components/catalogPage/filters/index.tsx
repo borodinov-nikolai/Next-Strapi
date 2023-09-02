@@ -11,7 +11,7 @@ import {
   setSearch,
   setSearchValue,
   setSort,
-} from "@/redux/slices/filters";
+} from "@/redux/slices/filtersSlice";
 
 const Filters = ({sorting, params}:any) => {
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -38,7 +38,7 @@ const Filters = ({sorting, params}:any) => {
   // }, [searchParams]);
 2
   React.useEffect(() => {
-    console.log(sort)
+  
     if (sort && search) {
       router.replace(`?sort=${sort}&search=${search}`, { scroll: true });
     }

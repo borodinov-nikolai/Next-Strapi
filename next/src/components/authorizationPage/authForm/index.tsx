@@ -2,7 +2,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { setIsAuth } from '@/redux/slices/user'
+import { setIsAuth } from '@/redux/slices/userSlice'
 
 
 

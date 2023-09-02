@@ -2,7 +2,7 @@
 import React from 'react'
 import styles from '.Sort.module.scss'
 import Form from 'react-bootstrap/Form';
-import { setSort } from '@/redux/slices/filters';
+import { setSort } from '@/redux/slices/filtersSlice';
 import { useAppSelector } from '@/redux/hooks';
 
 

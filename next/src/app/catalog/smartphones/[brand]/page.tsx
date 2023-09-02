@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function Brand ({searchParams, params}:any ){
 
-  console.log(params.brand)
+
  
   const cookie = cookies();
   const token = cookie?.get('token')
