@@ -3,7 +3,7 @@ import { $axios } from '@/axios'
 
 
 
-export const getProducts = async(props : {sort:string, search:string}) =>  {
+export const getProducts = async(props : {sort:string, search:string, brandName:string}) =>  {
 
   
 
@@ -12,8 +12,8 @@ export const getProducts = async(props : {sort:string, search:string}) =>  {
 
 
         const sort = props.sort ? props.sort : 'price:asc'
-        const search = props.search ? props.search : ''
-
+        const search = props.search ? props.search : null
+        const brand = props.brandName ? props.brandName : null
 
         
        const {data } = await $axios.get(`/devices`, {
@@ -26,6 +26,9 @@ export const getProducts = async(props : {sort:string, search:string}) =>  {
             name: {
               $containsi: search
              },
+             brand: {
+              name: brand === 'all'? null : brand
+             }
             
            },
           sort: {

@@ -27,6 +27,7 @@ export default async function Brand ({searchParams, params}:any ){
   const cookie = cookies();
   const token = cookie?.get('token')
 const {sort, search} :{sort:string, search:string} = searchParams
+const brandName: string = params?.brand
  
 
 type Products = {
@@ -42,7 +43,7 @@ type Products = {
 
 
 
-  const products: Products = await getProducts({sort, search});
+  const products: Products = await getProducts({sort, search, brandName});
 
 
 
@@ -61,7 +62,7 @@ type Products = {
 </div>
 
 <div className={styles.filters} >
- <Filters searching = {search}  sorting = {sort} />
+ <Filters searching = {search} params={params}  sorting = {sort} />
   </div>
 
     <div className={styles.card_holder}  >

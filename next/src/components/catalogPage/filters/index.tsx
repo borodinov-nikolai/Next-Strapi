@@ -13,8 +13,8 @@ import {
   setSort,
 } from "@/redux/slices/filters";
 
-const Filters = ({sorting, searching}:any) => {
-  const [loading, setLoading] = React.useState<boolean>(false);
+const Filters = ({sorting, params}:any) => {
+  const [loading, setLoading] = React.useState<boolean>(true);
   const { sort, search } = useAppSelector((state) => state.filters);
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
@@ -22,24 +22,23 @@ const Filters = ({sorting, searching}:any) => {
 
   React.useEffect(() => {
     if (searchParams.toString().length > 0) {
-        setLoading(false)
       const searchString = qs.parse(searchParams.toString());
       dispatch(setSort(searchString.sort));
     }
-    setLoading(true);
 
     // return () => {
     //   dispatch(resetFilters());
     // };
   }, []);
 
+  // React.useEffect(() => {
+  //   if (searchParams.toString().length < 1){
+  //        dispatch(resetFilters());
+  //       };
+  // }, [searchParams]);
+2
   React.useEffect(() => {
-    if (searchParams.toString().length < 1){
-         dispatch(resetFilters());
-        };
-  }, [searchParams]);
-
-  React.useEffect(() => {
+    console.log(sort)
     if (sort && search) {
       router.replace(`?sort=${sort}&search=${search}`, { scroll: true });
     }
@@ -52,9 +51,10 @@ const Filters = ({sorting, searching}:any) => {
       router.replace(`?search=${search}`, { scroll: true });
     }
 
-    // if (!sort && !search) {
-    //   router.replace("/catalog/smartphones", { scroll: true });
-    // }
+    if (!sort && !search) {
+      router.replace(`/catalog/smartphones/${params.brand}`, { scroll: true });
+    }
+    setLoading(false)
   }, [sort, search]);
 
 
@@ -68,8 +68,11 @@ const Filters = ({sorting, searching}:any) => {
       </div>
 
       <div className={styles.sort}>
-        
-          <Sort sort={sorting} dispatch={dispatch} />
+      
+          <Sort sortServer={sorting} dispatch={dispatch} />
+  
+
+           
         
       </div>
     </div>
