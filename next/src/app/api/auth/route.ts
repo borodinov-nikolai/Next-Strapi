@@ -17,7 +17,7 @@ export async function POST(request: Request) {
           
           )
                 
-            console.log(res.status)
+           
            
 
           return new Response('Hello, Next.js!', {

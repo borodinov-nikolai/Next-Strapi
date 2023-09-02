@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './Header.module.scss'
-
+import Cart from './cart'
 
 
 const Header = () => {
@@ -28,7 +28,10 @@ const Header = () => {
         <li className="nav-item">
           <a className="nav-link" href="#">Цена</a>
         </li>
-        <li className="nav-item dropdown" style={{marginLeft: "500px"}}>
+        <li className={styles.cart} style={{marginLeft: "500px"}}>
+          <Link href='/cart' ><Cart/></Link>
+        </li>
+        <li className="nav-item dropdown" style={{marginLeft: "50px"}}>
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              Личный кабинет
           </a>

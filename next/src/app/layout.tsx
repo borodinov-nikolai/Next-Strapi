@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/global.scss'
 import Header from '@/components/header'
-import CheckAuth from '@/components/checkAuth'
 import Providers from "@/redux/providers"
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,7 +27,7 @@ export default function RootLayout({
         <body className={inter.className}>
            <div className='container' >
            <Header/>
-           <CheckAuth/>
+       
            <Providers>
                      {children}
            </Providers>

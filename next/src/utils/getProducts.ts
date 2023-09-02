@@ -39,7 +39,7 @@ export const getProducts = async(props : {sort:string, search:string, brandName:
         }
        
        );
-        console.log('запрос')
+       
         return data.data
     } catch(e: any) {
       console.error("ошибка зпроса", e.message)

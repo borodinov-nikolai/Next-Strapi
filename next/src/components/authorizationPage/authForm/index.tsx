@@ -20,7 +20,7 @@ React.useEffect(()=>{
   }
 },[])
 
-console.log(isAuth)
+
 
       
   

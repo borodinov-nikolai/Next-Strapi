@@ -17,10 +17,10 @@ export const $axios = axios.create({
 $axios.interceptors.request.use(function (config) {
   const cookie = cookies()
   const token = cookie.get('token')?.value
-  console.log(token)
+ 
  if(token){
     $axios.defaults.headers.authorization =`bearer ${token}`
-    console.log($axios.defaults.headers.authorization)
+ 
  } else {
   delete $axios.defaults.headers.authorization
  }
