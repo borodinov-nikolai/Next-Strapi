@@ -1,15 +1,15 @@
 import React from 'react';
-import { AppstoreOutlined,} from '@ant-design/icons';
+import {HomeOutlined} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Menu } from 'antd';
+import { Menu, Space } from 'antd';
 import Link from 'next/link';
 
 const items: MenuProps['items'] = [
   
   {
-    label: 'Petproekt',
+    label: <HomeOutlined  style={{fontSize: '24px'}}/>,
     key: 'logo',
-    icon: <AppstoreOutlined />
+    
   },
   {
     label: (
@@ -30,7 +30,7 @@ const items: MenuProps['items'] = [
         children: [
           {
             label: (
-              <Link href="/smartphones" style={{color: 'black'}}  >
+              <Link href="/catalog/smartphones" style={{color: 'black'}}  >
                 Смартфоны
               </Link>
             ),
@@ -72,16 +72,27 @@ const items: MenuProps['items'] = [
       </a>
     ),
     key: 'contacts',
-  },
+  }
+ 
 
 ];
 
-const Navbar: React.FC = () => {
+const LeftNavbar: React.FC = () => {
 
 
   
 
-  return <Menu  mode="horizontal" items={items} />;
+  return (
+  
+ 
+
+    <Menu mode="horizontal" items={items}></Menu>
+ 
+  
+  
+ 
+  )
+  
 };
 
-export default Navbar;
+export default LeftNavbar;

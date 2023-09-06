@@ -5,7 +5,7 @@ import StyledComponentsRegistry from '@/antDesign/AntRegistry';
 import ReduxProvider from '@/redux/Provider';
 import Header from '@/components/header';
 import { ConfigProvider } from 'antd';
-import theme from '@/antDesign/themeConfig';
+import theme from '@/antDesign/ThemeConfig'
 
 
 const inter = Inter({ subsets: ['latin'] })

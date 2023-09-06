@@ -4,7 +4,7 @@ import { Carousel } from 'antd';
 import Image from 'next/image';
 
 const contentStyle: React.CSSProperties = {
-  margin: 0,
+ width: '100%',
   height: '80vh',
   color: '#fff',
   lineHeight: '160px',
@@ -23,19 +23,19 @@ const next= <button>вперед</button>
     <Carousel autoplay effect="fade">
       <div>
         <h3 style={contentStyle}>
-          <Image src='/Трей_Ратклифф_Новая.jpg' width={2560} height={1440} alt='img' ></Image>
+          <Image src='/Трей_Ратклифф_Новая.jpg'  fill={true} alt='img' ></Image>
          
         </h3>
       </div>
       <div>
         <h3 style={contentStyle}>
-        <Image src='/marek-piwnicki-sIaIHalCnsM-unsplash.jpg' width={2560} height={1440} alt='img' ></Image>
+        <Image src='/marek-piwnicki-sIaIHalCnsM-unsplash.jpg' fill={true} alt='img' ></Image>
 
         </h3>
       </div>
       <div>
         <h3 style={contentStyle}>
-        <Image src='/fabrizio-coco-gVBIohdCRUQ-unsplash.jpg' width={2560} height={1440} alt='img' ></Image>
+        <Image src='/fabrizio-coco-gVBIohdCRUQ-unsplash.jpg' fill={true} alt='img' ></Image>
 
         </h3>
       </div>
