@@ -1,10 +1,14 @@
 import type { ThemeConfig } from 'antd';
 
 const theme: ThemeConfig = {
-  token: {
-    fontSize: 18,
-    colorPrimary: 'black',
+    
+components: {
+    Menu: {
+        dropdownWidth: 200
+    
+    },
   },
+  
 };
 
 export default theme;

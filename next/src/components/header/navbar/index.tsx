@@ -1,67 +1,79 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined,} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import Link from 'next/link';
 
 const items: MenuProps['items'] = [
+  
   {
-    label: 'Navigation One',
-    key: 'mail',
-    icon: <MailOutlined />,
+    label: 'Petproekt',
+    key: 'logo',
+    icon: <AppstoreOutlined />
   },
   {
-    label: 'Navigation Two',
-    key: 'app',
-    icon: <AppstoreOutlined />,
-    disabled: true,
+    label: (
+      <Link href="/" rel="noopener noreferrer" style={{color: 'black'}} >
+        Главная
+      </Link>
+    ),
+    key: 'home',
+ 
   },
   {
-    label: 'Navigation Three - Submenu',
-    key: 'SubMenu',
-    icon: <SettingOutlined />,
+    label: 'Каталог',
+    key: 'catalog',
+    
     children: [
       {
         type: 'group',
-        label: 'Item 1',
         children: [
           {
-            label: 'Option 1',
-            key: 'setting:1',
-            children: [
-              {label: 'Option 1',
-              key: 'settings:1'}
-            ]
+            label: (
+              <Link href="/smartphones" style={{color: 'black'}}  >
+                Смартфоны
+              </Link>
+            ),
+            key: 'smrtphones',
           },
           {
-            label: 'Option 2',
+            label: 'Планшеты',
+            key: 'setting:2',
+          },
+          {
+            label: 'Ноутбуки',
+            key: 'setting:2',
+          },
+          {
+            label: 'Телевизоры',
+            key: 'setting:2',
+          },
+          {
+            label: 'Игровые консоли',
             key: 'setting:2',
           },
         ],
       },
-      {
-        type: 'group',
-        label: 'Item 2',
-        children: [
-          {
-            label: 'Option 3',
-            key: 'setting:3',
-          },
-          {
-            label: 'Option 4',
-            key: 'setting:4',
-          },
-        ],
-      },
+     
     ],
   },
   {
     label: (
       <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-        Navigation Four - Link
+       О нас
       </a>
     ),
-    key: 'alipay',
+    key: 'about us',
   },
+  {
+    label: (
+      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+       Контакты
+      </a>
+    ),
+    key: 'contacts',
+  },
+
 ];
 
 const Navbar: React.FC = () => {
@@ -69,7 +81,7 @@ const Navbar: React.FC = () => {
 
   
 
-  return <Menu   mode="horizontal" items={items} />;
+  return <Menu  mode="horizontal" items={items} />;
 };
 
 export default Navbar;
