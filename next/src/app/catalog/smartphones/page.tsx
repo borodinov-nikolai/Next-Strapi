@@ -1,4 +1,4 @@
-import ProductCard from '@/components/catalogPage'
+import ProductCard from '@/components/catalogPage/productCard'
 import React from 'react'
 import styles from './Smartpones.module.scss'
 
