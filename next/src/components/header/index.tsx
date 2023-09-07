@@ -2,6 +2,7 @@ import {  Badge} from "antd"
 import LeftNavbar from "./leftNavbar"
 import {UserOutlined, ShoppingCartOutlined} from '@ant-design/icons'
 import styles from './Header.module.scss'
+import Auth from "./auth"
 
 
 
@@ -21,7 +22,8 @@ const Header = () => {
 
             <ShoppingCartOutlined style={{fontSize: '24px'}} />
             </Badge>
-            <UserOutlined style={{fontSize: '24px'}}/>
+            {/* <UserOutlined style={{fontSize: '24px'}}/> */}
+            <Auth/>
           </div>
         </div >
     
