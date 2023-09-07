@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-
+import deviceSlice from './slices/deviceSlice'
 
 
 export const store = configureStore({
     reducer: {
-   
+        devices: deviceSlice
     }
 })
 

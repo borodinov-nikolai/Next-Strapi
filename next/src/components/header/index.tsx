@@ -1,4 +1,4 @@
-import { Avatar, Badge, Space } from "antd"
+import {  Badge} from "antd"
 import LeftNavbar from "./leftNavbar"
 import {UserOutlined, ShoppingCartOutlined} from '@ant-design/icons'
 import styles from './Header.module.scss'
@@ -10,8 +10,9 @@ import styles from './Header.module.scss'
 
 const Header = () => {
   return (
+
    
-        <div className="container">
+    <div className="container">
         <div className={styles.root}>
           
           <LeftNavbar />
@@ -23,7 +24,10 @@ const Header = () => {
             <UserOutlined style={{fontSize: '24px'}}/>
           </div>
         </div >
+    
         </div>
+   
+       
            
        
 

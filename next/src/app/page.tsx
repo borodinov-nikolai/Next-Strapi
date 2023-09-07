@@ -10,10 +10,10 @@ export default function Home() {
   return (
   
     <main className={styles.root}>
-      <div className='container'>
+      
         <Client/>
           <CarouselAnt/>
-      </div>
+   
     </main>
   
   )

@@ -5,11 +5,14 @@
 .root {
 
     .cardHolder {
-        display: flex;
-        gap: 20px;
-        padding-top: 100px;
+      
+        padding-top: 40px;
     }
-    .card {
-
+    .filters {
+        padding: 50px 0 0 0 ;
+    }
+    .pagination {
+        display: flex;
+        padding: 50px 0 0 0 ;
     }
 }

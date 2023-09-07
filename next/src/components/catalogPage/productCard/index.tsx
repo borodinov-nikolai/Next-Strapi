@@ -1,20 +1,43 @@
-'use client'
+
 import React from 'react';
-import { Card, Image } from 'antd';
+import { Button, Card, Rate} from 'antd';
+import Image from 'next/image';
 
 
-const { Meta } = Card;
 
-const ProductCard: React.FC = () => (
+interface Props {
+
+      name: string,
+      price: number,
+      image: string
+  
+    
+}
+
+
+const ProductCard = ({name, price, image}: Props) => (
+
+
+
   <Card
     hoverable
-    style={{ width: 240, height: 350 }}
-    cover={<Image
-        width={240}
-        src='http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmarek-piwnicki-sIaIHalCnsM-unsplash.a8fcb5dd.jpg&w=2048&q=75'
-      />}
+    style={{ width: '240px', height: '480px', padding: '10px' }}
+    cover={ <Image
+      height={280}
+      width={400}
+      src={`http://localhost:1337${image}`}
+      alt ='card'
+    ></Image>  }
   >
-    <Meta title="Europe Street beat" description="www.google.com" />
+       <div style={{marginLeft: '-20px'}}>
+         <div style={{fontSize:'22px'}}>{name}</div>
+         <Rate disabled defaultValue={5} />
+         <div>Цена: {price}р</div>
+       </div>
+
+       <div style={{paddingTop: '35px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
+        <Button>В корзину</Button>
+       </div>
   </Card>
 );
 

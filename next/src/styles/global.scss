@@ -3,11 +3,16 @@
 
 
 body {
-  
+   height: 2000px;
 }
 
 
 .container {
     margin: 0 auto;
-    width: 1600px;
+    max-width: 1600px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
 }
