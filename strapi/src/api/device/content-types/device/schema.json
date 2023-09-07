@@ -28,6 +28,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "devices"
     }
   }
 }

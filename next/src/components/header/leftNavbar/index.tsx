@@ -30,7 +30,7 @@ const items: MenuProps['items'] = [
         children: [
           {
             label: (
-              <Link href="/catalog/smartphones" style={{color: 'black'}}  >
+              <Link href="/catalog/smartphones?sort%5B0%5D=price%3Aasc" style={{color: 'black'}}  >
                 Смартфоны
               </Link>
             ),
@@ -38,19 +38,19 @@ const items: MenuProps['items'] = [
           },
           {
             label: 'Планшеты',
-            key: 'setting:2',
+            key: 'tabs',
           },
           {
             label: 'Ноутбуки',
-            key: 'setting:2',
+            key: 'noutbook',
           },
           {
             label: 'Телевизоры',
-            key: 'setting:2',
+            key: 'tv',
           },
           {
             label: 'Игровые консоли',
-            key: 'setting:2',
+            key: 'consoles',
           },
         ],
       },

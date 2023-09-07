@@ -1,22 +1,28 @@
 'use client'
-import { Button } from 'antd'
+import { Button, Radio } from 'antd'
 import React from 'react'
 
 
 
-const brands : {id:number, name: string}[] = [{id: 0, name:'Все'},{id: 1, name:'Samsung'},{id: 1, name:'Apple'},{id: 1, name:'OnePlus'},{id: 1, name:'Honor'}, ]
+const brands : {value: string, name: string}[] = [{value: 'all', name:'Все'},{value: 'Samsung', name:'Samsung'},{value: 'Apple', name:'Apple'},{value:'OnePlus', name:'OnePlus'},{value: 'Honor', name:'Honor'}, ]
 
 
-const Brands = () => {
-   const [active, setActive] = React.useState<number>(0)
+interface Props {
+    setBrand: React.Dispatch<React.SetStateAction<string>>,
+    value: string
+
+}
+
+const Brands = ({setBrand, value}:Props) => {
+
 
 
     return (
-        <div style={{display: 'flex', gap: '10px'}}>
-           {brands.map((brand)=> {
-                 return <Button key={brand.id} >{brand.name}</Button>
-           })}
-        </div>
+        <Radio.Group defaultValue={value ? value : 'all'} onChange={(e)=>setBrand(e.target.value)} buttonStyle="solid">
+            {brands.map((brand)=> {
+                return  <Radio.Button key={brand.name} value={brand.value} >{brand.name}</Radio.Button>
+            })}
+      </Radio.Group>
     )
 }
 

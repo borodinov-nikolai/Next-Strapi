@@ -21,7 +21,7 @@ const ProductCard = ({name, price, image}: Props) => (
 
   <Card
     hoverable
-    style={{ width: '240px', height: '480px', padding: '10px' }}
+    style={{ width: '250px', height: '480px', padding: '10px' }}
     cover={ <Image
       height={280}
       width={400}
