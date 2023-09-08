@@ -1,5 +1,5 @@
 import CarouselAnt from '@/components/MainPage/carousel';
-
+import styles from './Home.module.scss'
 
 
 
@@ -8,10 +8,12 @@ import CarouselAnt from '@/components/MainPage/carousel';
 export default function Home() {
   return (
   
-    <main >
+    <main className={styles.root}>
       
        
           <CarouselAnt/>
+
+          
    
     </main>
   
