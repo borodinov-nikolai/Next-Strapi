@@ -3,8 +3,15 @@
 
 
 body {
+ 
    height: 2000px;
+ 
+   overflow-y: scroll !important;
+   
+   
 }
+
+.modal-open{overflow-y: scroll;}
 
 
 .container {

@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Button, Card, Rate} from 'antd';
+import { Card, Rate} from 'antd';
 import Image from 'next/image';
+import ToCartBtn from './toCartBtn';
 
 
 
@@ -38,7 +39,7 @@ const ProductCard = ({name, price, image}: Props) => (
        </div>
 
        <div style={{paddingTop: '15px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
-        <Button>В корзину</Button>
+          <ToCartBtn/>
        </div>
   </Card>
 );

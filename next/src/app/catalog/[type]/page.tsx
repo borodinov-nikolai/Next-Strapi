@@ -6,9 +6,13 @@ import { Col, Row } from 'antd'
 import Filters from '@/components/СatalogPage/filters'
 import { getDevices } from '@/utils/serverApi'
 import ClientCardWrapper from '@/components/СatalogPage/ProductCard/clientCardWrapper'
+import { Metadata } from 'next'
 
 
 
+export const metadata : Metadata = {
+  title: 'Каталог'
+}
 
 const Smartphones = async ({searchParams}:any) => {
     let brand = searchParams['filters[brand][name]']
