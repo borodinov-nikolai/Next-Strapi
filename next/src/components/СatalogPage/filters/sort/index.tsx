@@ -21,7 +21,7 @@ const Sort = ({setSort, value, sort}: Props) => {
   return (
     <Select
       defaultValue={"price:asc"}
-      value={sort || value}
+      value={sort || value || 'price:asc'}
       style={{ width: 190 }}
       onChange={(value:string)=>setSort(value)}
       options={[

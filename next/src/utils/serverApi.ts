@@ -5,15 +5,15 @@ import axios from 'axios'
 
 
 export const getDevices = async (props:any) => {
-    try {
-      const query = qs.stringify(props)
-      const res = await axios.get(`${process.env.API_URL}/devices?${query}&populate=*`)
-      return res.data
-    } catch(e) {
-      console.error(e)
-    }
-   
+  try {
+    const query = qs.stringify(props);
+    const res = await axios.get(`${process.env.API_URL}/devices?${query ? query : 'sort=price:asc'}&populate=*`);
+    return res.data
+  } catch(e) {
+    console.error(e)
   }
+  
+}
 
 
  export const getDevice = async (id:number) => {

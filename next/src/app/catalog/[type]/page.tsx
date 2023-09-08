@@ -20,7 +20,7 @@ const Smartphones = async ({searchParams}:any) => {
 
 
   const devices = await getDevices(searchParams);
-
+  console.log(devices)
 
   interface Device {
     id: number,
@@ -35,16 +35,18 @@ const Smartphones = async ({searchParams}:any) => {
         }
       }
     },
+}
 
 
 
-  }
+
+
 
   return (
       <div className='container '>
     <div className={styles.root}>
           <div className={styles.filters} >
-          <Filters sortValue={sort} brandValue={brand}/>
+          <Filters pagination={devices.meta.pagination} sortValue={sort} brandValue={brand}/>
           </div>
 
 
@@ -65,7 +67,7 @@ const Smartphones = async ({searchParams}:any) => {
       {/* </div> */}
 
         <div className={styles.pagination}>
-          <PaginationDevices />
+          <PaginationDevices pagination = {devices.meta.pagination} />
         </div>
       </div>
     </div>

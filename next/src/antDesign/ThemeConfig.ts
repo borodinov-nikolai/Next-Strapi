@@ -1,10 +1,10 @@
 import type { ThemeConfig } from 'antd';
 
 const theme: ThemeConfig = {
-  token: {
-     colorPrimary: '#595959',
+//   token: {
+//      colorPrimary: '#595959',
      
-  },
+//   },
 components: {
 
     Menu: {

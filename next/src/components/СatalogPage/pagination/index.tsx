@@ -2,15 +2,26 @@
 import React, { useState } from 'react';
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setPage } from '@/redux/slices/filtersSlice';
 
-const PaginationDevices: React.FC = () => {
-  const [current, setCurrent] = useState(1);
 
-  const onChange: PaginationProps['onChange'] = (page) => {
-    setCurrent(page);
+interface Props {
+  page: number,
+  pageSize: number,
+  pageCount: number,
+  total: number
+}
+
+const PaginationDevices = ({pagination}: {pagination:Props}) => {
+  
+  const dispatch = useAppDispatch();
+
+  const onChange: PaginationProps['onChange'] = (e) => {
+     dispatch(setPage(e));
   };
-
-  return <Pagination current={current} showSizeChanger={false} onChange={onChange} total={500} />;
+   
+  return <Pagination hideOnSinglePage={true} current={pagination.page} defaultCurrent={1} pageSize={pagination.pageSize} showSizeChanger={false} onChange={onChange} total={pagination.total} />;
 };
 
 export default PaginationDevices;

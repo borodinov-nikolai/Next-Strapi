@@ -1,4 +1,4 @@
-import CarouselAnt from '@/components/MainPage/carousel';
+import CarouselAnt from '@/components/HomePage/Carousel'
 import styles from './Home.module.scss'
 
 
