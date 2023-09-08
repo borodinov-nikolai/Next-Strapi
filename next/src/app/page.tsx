@@ -1,5 +1,5 @@
-import CarouselAnt from '@/components/mainPage/carousel';
-import Client from '@/components/client';
+import CarouselAnt from '@/components/MainPage/carousel';
+
 
 
 
@@ -10,7 +10,7 @@ export default function Home() {
   
     <main >
       
-        <Client/>
+       
           <CarouselAnt/>
    
     </main>

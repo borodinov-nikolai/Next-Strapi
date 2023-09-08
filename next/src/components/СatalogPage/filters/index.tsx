@@ -5,7 +5,8 @@ import Sort from './sort'
 import styles from './Filters.module.scss'
 import Search from './search'
 import qs from 'qs'
-import { useRouter } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useDebounce } from 'usehooks-ts'
 
 
 interface Props {
@@ -16,23 +17,46 @@ interface Props {
 const Filters = ({brandValue, sortValue}: Props) => {
    const [brand, setBrand] = React.useState<string>('');
    const [sort, setSort] = React.useState<string>('');
-   const router = useRouter()
- 
+   const [search, setSearch] = React.useState<string>('');
+   const debouncedSearch = useDebounce(search, 700)
+   const router = useRouter();
+   const searchParams = useSearchParams();
 
 
+
+
+
+  React.useEffect(()=> {
    
+     if(searchParams.size===0) {
+   setSort('price:asc');
+   setBrand('all');
+
+     } 
+  
+
+  },[searchParams])
+
 
 
 
    React.useEffect(()=> {
     
+    if(search) {
+      setBrand('all')
+    }
    
         
           const query = qs.stringify({
-            sort: {
-                 [0]: sort || sortValue || 'price:asc'
-               },
+            pagination: {
+          page: 1,
+          pageSize: 20
+            },
+            sort: [sort || sortValue || 'price:asc'],
                filters: {
+                name: {
+                  $containsi: debouncedSearch
+                },
                 brand: {
                   name: !brand ? brandValue : brand === 'all'? undefined : brand 
                 }
@@ -41,50 +65,23 @@ const Filters = ({brandValue, sortValue}: Props) => {
     
       router.replace(`?${query}`)
         
-         
-   
-
-   
-       
+  
+     },[brand, sort, debouncedSearch])
 
 
-
-
-     },[brand, sort])
-
-
-  //  params:{
-  //   pagination: {
-  //    page: page,
-  //    pageSize: 12 
-  //   },
-  //   filters: {
-  //     name: {
-  //       $containsi: search
-  //      },
-  //      brand: {
-  //        id: brandId
-  //       },
-  //        type: {
-  //           id: typeId
-  //       }
-  //    },
-  //   sort: {
-  //    0: sort
-  //  },
-  //   populate: "*
+  
 
   return (
     
       <div className={styles.root}>
         <div>
-          <Brands value={brandValue} setBrand={setBrand} />
+          <Brands brand={brand} value={brandValue} setBrand={setBrand} />
             </div>
             <div>
-              <Search/>
+              <Search setSearch={setSearch} />
             </div>
             <div>
-        <Sort value={sortValue} setSort={setSort} />
+        <Sort value={sortValue} sort={sort} setSort={setSort} />
             </div>
       </div>
   

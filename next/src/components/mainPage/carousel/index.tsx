@@ -28,26 +28,25 @@ const next= <button>вперед</button>
     <Carousel className={styles.root} autoplay effect="fade">
       <div className={styles.item} >
         <h3 style={contentStyle}>
-          <Image className={styles.image} src={img1} fill={true} quality={100} alt='img' ></Image>
+          <Image className={styles.image} priority src={img1} width={1920} height={1080} quality={100} alt='img' ></Image>
            <div className={styles.title} >OnePlus Ace <br/>
 Быстрый, бескомпромиссный</div>
         </h3>
       </div>
       <div className={styles.item}>
         <h3 style={contentStyle}>
-        <Image src={img2} fill={true} quality={100} alt='img' ></Image>
-            <div className={styles.title}>Не упускай детали <br />
-            OnePlus Buds Pro</div>
-        <p className={styles.text1} >Интеллектуальное шумоподавление до 40дБ, кодек LHDC™, 38 часов автономности.</p>
+        <Image className={styles.image} src={img2} width={1920} height={1080} priority quality={100} alt='img' ></Image>
+            <div className={styles.title}>OnePlus Buds Pro 2 <br/>
+В кооперации с DYNAUDIO</div>
         </h3>
       </div>
       <div className={styles.item}> 
         <h3 style={contentStyle}>
-        <Image src={img3} fill={true} quality={100} alt='img' ></Image>
+        <Image className={styles.image} src={img3} width={1920} height={1080} priority quality={100} alt='img' ></Image>
         <div className={styles.title}>OnePlus 11 <br />
 Олицетворение <br />
 силы и элегантности</div>
-<p className={styles.text2} >Лидер производительности</p>
+
         </h3>
       </div>
       

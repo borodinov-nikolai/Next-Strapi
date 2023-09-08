@@ -1,44 +1,22 @@
-
-
-
-
 .root {
+  .item {
+    position: relative;
+  }
 
-     
+  .image {
+    width: 100%;
+    height: auto;
+  }
 
-    .item {
-        position: relative;
-    }
-
-    .title {
-        text-align: left;
-        opacity: 80%;
-        font-size: 40px;
-        line-height: 50px ;
-        color: white;
-        position: absolute;
-        top: 280px;
-        left: 150px;
-        height: 20px;
-        
-    }
-
-    .text1 {
-        top: 320px;
-        left: 150px;
-        position: absolute;
-        color: white;
-        font-size: 18px;
-        opacity: 80%;
-    }
-    .text2 {
-        top: 370px;
-        left: 150px;
-        position: absolute;
-        color: white;
-        opacity: 80%;
-        font-size: 20px;
-    }
-
-
+  .title {
+    text-align: left;
+    opacity: 80%;
+    font-size: 28px;
+    line-height: 50px;
+    color: white;
+    position: absolute;
+    top: 200px; 
+    left: 80px;
+    height: 20px;
+  }
 }

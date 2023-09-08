@@ -1,5 +1,5 @@
 import {  Badge} from "antd"
-import LeftNavbar from "./leftNavbar"
+import LeftNavbar from "./LeftNavbar"
 import {UserOutlined, ShoppingCartOutlined} from '@ant-design/icons'
 import styles from './Header.module.scss'
 import Auth from "./auth"

@@ -30,7 +30,7 @@ const items: MenuProps['items'] = [
         children: [
           {
             label: (
-              <Link href="/catalog/smartphones?sort%5B0%5D=price%3Aasc" style={{color: 'black'}}  >
+              <Link href="/catalog/smartphones" style={{color: 'black'}}  >
                 Смартфоны
               </Link>
             ),

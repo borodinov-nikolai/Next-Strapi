@@ -1,23 +1,17 @@
-import ProductCard from '@/components/catalogPage/productCard'
+import ProductCard from '@/components/СatalogPage/ProductCard'
 import React from 'react'
 import styles from './Smartpones.module.scss'
-import axios from 'axios'
-import PaginationDevices from '@/components/catalogPage/pagination'
+import PaginationDevices from '@/components/СatalogPage/pagination'
 import { Col, Row } from 'antd'
-import Filters from '@/components/catalogPage/filters'
-import qs from 'qs'
+import Filters from '@/components/СatalogPage/filters'
+import { getDevices } from '@/utils/serverApi'
+import ClientCardWrapper from '@/components/СatalogPage/ProductCard/clientCardWrapper'
 
 
-
-const getDevices = async (props:any) => {
-  const query = qs.stringify(props)
-  const res = await axios.get(`http://localhost:1337/api/devices?${query}&populate=*`)
-  return res.data
-}
 
 
 const Smartphones = async ({searchParams}:any) => {
-    const brand = searchParams['filters[brand][name]']
+    let brand = searchParams['filters[brand][name]']
     const sort = searchParams['sort[0]']
 
 
@@ -52,10 +46,12 @@ const Smartphones = async ({searchParams}:any) => {
 
         <Row className={styles.cardHolder} gutter={[0, 50]}>
         {
-            devices.data.map((device: Device) => {
-              return (<Col xs={24} sm={12} md={6} lg={6} xl={6} >
+          !devices? 'ошибка загрузки' : devices.data.map((device: Device) => {
+            return (<Col xs={24} sm={12} md={6} lg={6} xl={6} >
                 <div className={styles.card}>
+                <ClientCardWrapper id={device.id} >
                   <ProductCard key={device.id} name={device.attributes.name} price={device.attributes.price} image={device.attributes.image.data.attributes.url} />
+                </ClientCardWrapper>
                 </div>
               </Col>)
             })

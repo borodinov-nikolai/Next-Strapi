@@ -21,10 +21,12 @@ const ProductCard = ({name, price, image}: Props) => (
 
   <Card
     hoverable
-    style={{ width: '250px', height: '480px', padding: '10px' }}
+    style={{ width: '280px', height: '465px', padding: '10px' }}
     cover={ <Image
-      height={280}
-      width={400}
+      style={{ width: 'auto', height: '250px', padding: '10px' }}
+    priority
+      height={820}
+      width={640}
       src={`http://localhost:1337${image}`}
       alt ='card'
     ></Image>  }
@@ -35,7 +37,7 @@ const ProductCard = ({name, price, image}: Props) => (
          <div>Цена: {price}р</div>
        </div>
 
-       <div style={{paddingTop: '35px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
+       <div style={{paddingTop: '15px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
         <Button>В корзину</Button>
        </div>
   </Card>
