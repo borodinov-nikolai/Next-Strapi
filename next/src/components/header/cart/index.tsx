@@ -1,15 +1,17 @@
 'use client'
+import styles from './Cart.module.scss'
 import React, { useState } from 'react';
-import {Divider, Drawer } from 'antd';
+import {Badge, Button, Divider, Drawer, InputNumber } from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
+import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
 
 const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const {items, totalPrice} = useAppSelector((state)=> state.cart)
+  const {items, totalCount, totalPrice} = useAppSelector((state)=> state.cart)
 
   const showDrawer = () => {
     setOpen(true);
@@ -22,17 +24,38 @@ const Cart: React.FC = () => {
 
 
   return (
-    <>
-           <ShoppingCartOutlined onClick={showDrawer} style={{fontSize: '24px'}} />
-      <Drawer title="Корзина" placement="right" onClose={onClose} open={open}>
-             {items.map((item)=>{
-              return(<div> <Image width={80} height={80}  alt='' src={`http://localhost:1337${item.image}`}></Image>  название: {item.name} кол-во:{item.count} <button onClick={()=> dispatch(minusItem(item))} >-</button>
-              <button onClick={()=> dispatch(addItem(item))} >+</button>
-              <button onClick={()=> dispatch(removeItem(item))}>X</button>
-              </div>)
-             })}
+    <div >
+        <Badge size='small' count={totalCount}>
+           <ShoppingCartOutlined style={{fontSize: '24px'}}  onClick={showDrawer}  />
+           </Badge>
+
+
+
+
+           <Drawer className={styles.drawer} footer={ <div className={styles.footer} > <p>Итого: {totalPrice}</p> <Button>заказать</Button></div> } title={ <div className={styles.header}>Корзина</div> } placement="right" onClose={onClose} open={open}>
+               {items.map((item)=>{
+                 return(
+                  <>
+                   <div className={styles.root}>
+                    
+                  <Image width={100} height={100}  alt='' src={`http://localhost:1337${item.image}`}/>
+                  <h3 className={styles.title}>{item.name}</h3>
+                  <p className={styles.price}>цена: {item.price}p</p>
+                  <p className={styles.count}>кол-во:</p>
+               
+                  <div className={styles.buttons}>
+                  <InputNumber onChange={(e)=> dispatch(minusItem({id: item.id, count: e}))} value={item.count} />
+                                    <Button  shape={'circle'} onClick={()=> dispatch(removeItem(item))}><CloseOutlined /></Button>
+                  </div>
+             </div>
+              <Divider />
+              </>
+                )
+              })}
+            
       </Drawer>
-    </>
+      </div>
+
   );
 };
 
