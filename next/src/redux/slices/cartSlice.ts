@@ -38,14 +38,11 @@ export const cartSlice = createSlice({
                      state.items.push(action.payload)
                }
                state.totalPrice = state.items.reduce((sum, item)=>sum + item.price * item.count , 0)
-               state.totalCount += 1
+               state.totalCount = state.items.reduce((sum, item)=> sum + item.count,0)
                }
             ,
             minusItem: (state, action: PayloadAction<any>)=> {
                const foundedItem = state.items.find(item => item.id === action.payload.id);
-               // if(foundedItem && foundedItem.count <= 1){
-               //        state.items = state.items.filter(item=> item.id !== action.payload.id)
-               // }
                if(foundedItem){
                       foundedItem.count = action.payload.count
                }
@@ -58,7 +55,7 @@ export const cartSlice = createSlice({
                       state.items = state.items.filter(item=> item.id !== action.payload.id)
                }
                state.totalPrice = state.items.reduce((sum, item)=>sum + item.price * item.count , 0)
-               state.totalCount = 0
+               state.totalCount = state.items.reduce((sum, item)=> sum + item.count,0)
             },
            
        }

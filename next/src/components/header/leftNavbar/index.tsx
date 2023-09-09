@@ -7,7 +7,11 @@ import Link from 'next/link';
 const items: MenuProps['items'] = [
   
   {
-    label: <HomeOutlined  style={{fontSize: '24px'}}/>,
+    label: 
+    <Link href="/" rel="noopener noreferrer" style={{color: 'black'}} >
+    <HomeOutlined  style={{fontSize: '24px'}}/>
+    </Link>,
+
     key: 'logo',
     
   },
@@ -59,7 +63,7 @@ const items: MenuProps['items'] = [
   },
   {
     label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+      <a href="/about"  rel="noopener noreferrer">
        О нас
       </a>
     ),
@@ -67,7 +71,7 @@ const items: MenuProps['items'] = [
   },
   {
     label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+      <a href="/contacts"  rel="noopener noreferrer">
        Контакты
       </a>
     ),
