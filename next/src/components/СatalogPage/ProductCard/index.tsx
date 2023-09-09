@@ -10,13 +10,14 @@ interface Props {
 
       name: string,
       price: number,
-      image: string
+      image: string,
+      id: number
   
     
 }
 
 
-const ProductCard = ({name, price, image}: Props) => (
+const ProductCard = ({name, price, image, id}: Props) => (
 
 
 
@@ -39,7 +40,7 @@ const ProductCard = ({name, price, image}: Props) => (
        </div>
 
        <div style={{paddingTop: '15px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
-          <ToCartBtn/>
+          <ToCartBtn item = {{name, price, image, id}} />
        </div>
   </Card>
 );

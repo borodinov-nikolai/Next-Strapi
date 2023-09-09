@@ -20,7 +20,7 @@ const Smartphones = async ({searchParams}:any) => {
 
 
   const devices = await getDevices(searchParams);
-  console.log(devices)
+  
 
   interface Device {
     id: number,
@@ -56,7 +56,7 @@ const Smartphones = async ({searchParams}:any) => {
             return (<Col xs={24} sm={12} md={6} lg={6} xl={6} >
                 <div className={styles.card}>
                 <ClientCardWrapper id={device.id} >
-                  <ProductCard key={device.id} name={device.attributes.name} price={device.attributes.price} image={device.attributes.image.data.attributes.url} />
+                  <ProductCard key={device.id}  id={device.id} name={device.attributes.name} price={device.attributes.price} image={device.attributes.image.data.attributes.url} />
                 </ClientCardWrapper>
                 </div>
               </Col>)

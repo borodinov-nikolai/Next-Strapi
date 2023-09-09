@@ -7,8 +7,8 @@ import img3 from '@/public/987ff7a670eaaa8ed00531cd6ed973eb.png'
 import styles from './Carousel.module.scss'
 
 const contentStyle: React.CSSProperties = {
- width: '100%',
- height: '70vh',
+ maxWidth: '1920px',
+ height: '60vh',
   
   color: '#fff',
   lineHeight: '160px',
