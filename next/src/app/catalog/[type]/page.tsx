@@ -46,7 +46,7 @@ const Smartphones = async ({searchParams}:any) => {
       <div className='container '>
     <div className={styles.root}>
           <div className={styles.filters} >
-          <Filters pagination={devices.meta.pagination} sortValue={sort} brandValue={brand}/>
+          <Filters pagination={devices?.meta.pagination} sortValue={sort} brandValue={brand}/>
           </div>
 
 
@@ -67,7 +67,7 @@ const Smartphones = async ({searchParams}:any) => {
       {/* </div> */}
 
         <div className={styles.pagination}>
-          <PaginationDevices pagination = {devices.meta.pagination} />
+          <PaginationDevices pagination = {devices?.meta.pagination} />
         </div>
       </div>
     </div>
