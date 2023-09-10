@@ -21,7 +21,7 @@ const PaginationDevices = ({pagination}: {pagination:Props}) => {
      dispatch(setPage(e));
   };
    
-  return <Pagination hideOnSinglePage={true} current={pagination.page} defaultCurrent={1} pageSize={pagination.pageSize} showSizeChanger={false} onChange={onChange} total={pagination.total} />;
+  return <Pagination hideOnSinglePage={true} current={pagination?.page || 1} defaultCurrent={1} pageSize={pagination?.pageSize || 1} showSizeChanger={false} onChange={onChange} total={pagination?.total} />;
 };
 
 export default PaginationDevices;

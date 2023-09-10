@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+import axios from 'axios';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -16,8 +17,22 @@ type FieldType = {
   remember?: string;
 };
 
-const AuthForm: React.FC = () => (
-  <Form
+const AuthForm: React.FC = () =>{
+
+  const [login, setLogin]= React.useState<string>('');
+  const [password, setPassword]= React.useState<string>('');
+
+   const auth = async ()=> {
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth`, {
+      identifier: login,
+      password
+    })
+    console.log(res)
+    return res
+   }
+  
+ return(
+<Form
     name="basic"
     labelCol={{ span: 8 }}
     wrapperCol={{ span: 16 }}
@@ -32,7 +47,7 @@ const AuthForm: React.FC = () => (
       name="username"
       rules={[{ required: true, message: 'Please input your username!' }]}
     >
-      <Input />
+      <Input onChange={(e)=> setLogin(e.target.value)} />
     </Form.Item>
 
     <Form.Item<FieldType>
@@ -40,7 +55,7 @@ const AuthForm: React.FC = () => (
       name="password"
       rules={[{ required: true, message: 'Please input your password!' }]}
     >
-      <Input.Password />
+      <Input.Password onChange={(e)=> setPassword(e.target.value)} />
     </Form.Item>
 
     <Form.Item<FieldType>
@@ -50,9 +65,9 @@ const AuthForm: React.FC = () => (
     >
       <Checkbox>Remember me</Checkbox>
     </Form.Item>
-
-    
+        <Button onClick={auth} >Авторизоваться</Button>
   </Form>
-);
+ ) 
+};
 
 export default AuthForm;

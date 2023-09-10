@@ -17,7 +17,7 @@ interface Props {
 const ToCartBtn = ({item}:{item:Props}) => {
   const dispatch = useAppDispatch()
 
-  console.log(item.name)
+
   const addToCart = (e:any)=> {
     e.stopPropagation(); console.log('click')
    dispatch(addItem({...item, count:1}))

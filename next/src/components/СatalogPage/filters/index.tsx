@@ -26,6 +26,7 @@ const Filters = ({brandValue, sortValue, pagination}: Props) => {
    let debouncedSearch = useDebounce(search, 700)
    const router = useRouter();
    const searchParams = useSearchParams();
+   
 
 
   
@@ -51,7 +52,7 @@ const Filters = ({brandValue, sortValue, pagination}: Props) => {
       setBrand('all')
     }
        
-   if(pagination.pageCount < page){
+   if(pagination?.pageCount < page){
     dispatch(setPage(1))
    }
 
@@ -61,7 +62,7 @@ const Filters = ({brandValue, sortValue, pagination}: Props) => {
 
       const query = qs.stringify({
         pagination: {
-      page : page || pagination.page 
+      page : page || pagination?.page 
         },
         sort: [sort || sortValue || 'price:asc'],
            filters: {
@@ -82,7 +83,7 @@ const Filters = ({brandValue, sortValue, pagination}: Props) => {
      
         
   
-     },[brand, sort, debouncedSearch, page, pagination.pageCount])
+     },[brand, sort, debouncedSearch, page, pagination?.pageCount])
 
 
   
