@@ -1,6 +1,5 @@
-import { $axios } from "@/axios/api";
-import { NextResponse } from "next/server";
-import { cookies } from 'next/headers'
+import { $axios } from "@/axios/config";
+
 
 
 export async function POST(request: Request) {
@@ -11,7 +10,7 @@ export async function POST(request: Request) {
     password,
    })
   
-   console.log(data.jwt)
+  
 
 
 

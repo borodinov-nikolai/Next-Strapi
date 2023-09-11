@@ -1,19 +1,26 @@
 import axios from 'axios'
+import { cookies } from 'next/headers';
 
 
 
 export const $axios = axios.create({
-    baseURL: 'http://localhost:1337/api',
+    baseURL: process.env.API_URL,
     withCredentials: true
   });
 
 
   // Добавляем перехват запросов
 $axios.interceptors.request.use(function (config) {
-    // Здесь можете сделать что-нибудь с перед отправкой запроса
+    const cookie = cookies();
+    const token = cookie.get('token');
+
+    if(token) {
+      config.headers.Authorization = `Bearer ${token.value}`
+    }
+    
     return config;
   }, function (error) {
-    // Сделайте что-нибудь с ошибкой запроса
+    console.error(error.status)
     return Promise.reject(error);
   });
 

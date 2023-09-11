@@ -1,5 +1,5 @@
 import qs from 'qs'
-import axios from 'axios'
+import { $axios } from '@/axios/config';
 
 
 
@@ -7,7 +7,7 @@ import axios from 'axios'
 export const getDevices = async (props:any) => {
   try {
     const query = qs.stringify(props);
-    const res = await axios.get(`${process.env.API_URL}/devices?${query ? query : 'sort=price:asc'}&populate=*`);
+    const res = await $axios.get(`/devices?${query ? query : 'sort=price:asc'}&populate=*`);
     return res.data
   } catch(e) {
     console.error(e)
@@ -18,7 +18,7 @@ export const getDevices = async (props:any) => {
 
  export const getDevice = async (id:number) => {
     try {
-      const res = await axios.get(`${process.env.API_URL}/devices/${id}?populate=*`)
+      const res = await $axios.get(`/devices/${id}?populate=*`)
       return res.data
     } catch(e) {
       console.error(e)
