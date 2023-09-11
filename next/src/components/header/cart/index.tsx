@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
+import axios from 'axios';
 
 const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,22 @@ const Cart: React.FC = () => {
     setOpen(false);
   };
 
+
+  React.useEffect(()=> {
+    if(document.cookie === 'isAuth=true'){
+      const putCart = async ()=> {
+        axios.put('http://localhost:1337/api/carts/1', {
+          data: {
+              items: {items, totalPrice } 
+          }
+     })
+      }
+  
+      putCart()
+    }
+   
+   
+  },[items])
 
 
   return (
@@ -44,7 +61,7 @@ const Cart: React.FC = () => {
                   <p className={styles.count}>кол-во:</p>
                
                   <div className={styles.buttons}>
-                  <InputNumber onChange={(e)=> dispatch(minusItem({id: item.id, count: e}))} value={item.count} />
+                  <InputNumber onChange={(e)=>e as number > 0 ? dispatch(minusItem({id: item.id, count: e})):dispatch(removeItem(item)) } value={item.count} />
                                     <Button  shape={'circle'} onClick={()=> dispatch(removeItem(item))}><CloseOutlined /></Button>
                   </div>
              </div>
