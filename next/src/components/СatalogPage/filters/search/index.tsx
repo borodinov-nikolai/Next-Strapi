@@ -12,7 +12,7 @@ interface Props {
 const Search = ({setSearch , search}: Props) => {
 
   
-console.log(search)
+
   return (
     <Input value={search} onChange={(e)=> setSearch(e.target.value)} placeholder="Поиск" />
   )

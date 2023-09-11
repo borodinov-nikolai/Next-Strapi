@@ -2,6 +2,8 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
+import { useAppDispatch } from '@/redux/hooks';
+import { setIsAuth, setUser } from '@/redux/slices/userSlice';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -18,17 +20,19 @@ type FieldType = {
 };
 
 const AuthForm: React.FC = () =>{
+  const dispatch = useAppDispatch();
 
   const [login, setLogin]= React.useState<string>('');
   const [password, setPassword]= React.useState<string>('');
 
    const auth = async ()=> {
-    const res = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth`, {
+    const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth`, {
       identifier: login,
       password
     })
-    console.log(res)
-    return res
+    dispatch(setIsAuth(true));
+    dispatch(setUser(data.user))
+    return data
    }
   
  return(
@@ -43,17 +47,17 @@ const AuthForm: React.FC = () =>{
     autoComplete="off"
   >
     <Form.Item<FieldType>
-      label="Username"
+      label="Логин"
       name="username"
-      rules={[{ required: true, message: 'Please input your username!' }]}
+      rules={[{ required: true, message: 'Пожалуйста введите ваш логин!' }]}
     >
       <Input onChange={(e)=> setLogin(e.target.value)} />
     </Form.Item>
 
     <Form.Item<FieldType>
-      label="Password"
+      label="Пароль"
       name="password"
-      rules={[{ required: true, message: 'Please input your password!' }]}
+      rules={[{ required: true, message: 'Пожалуйста введите ваш пароль!' }]}
     >
       <Input.Password onChange={(e)=> setPassword(e.target.value)} />
     </Form.Item>
@@ -63,9 +67,11 @@ const AuthForm: React.FC = () =>{
       valuePropName="checked"
       wrapperCol={{ offset: 8, span: 16 }}
     >
-      <Checkbox>Remember me</Checkbox>
+      <Checkbox>Запомнить меня</Checkbox>
     </Form.Item>
-        <Button onClick={auth} >Авторизоваться</Button>
+        <div style={{display:'flex', justifyContent: 'end'}}>
+          <Button type='primary' style={{marginRight: '-70px'}} onClick={auth} >Авторизоваться</Button>
+          </div>
   </Form>
  ) 
 };
