@@ -10,7 +10,7 @@ export async function PUT(request: Request) {
 
          $axios.put('/carts/1', {
             data: {
-                  items: {...items, totalPrice}
+                  items: {items, totalPrice}
             }
           
             

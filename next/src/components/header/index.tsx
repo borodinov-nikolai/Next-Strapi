@@ -21,12 +21,12 @@ const Header = ({user}:{user:any}) => {
           <LeftNavbar />
           <div className={styles.rightMenu} >
           
-            <Cart/>
+            <Cart user={user} />
            
            
-            {
-              !user && <Auth/>
-            }
+            
+          <Auth/>{user?.username}
+          
             
           </div>
         </div >

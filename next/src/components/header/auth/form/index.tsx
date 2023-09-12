@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
-import { useAppDispatch } from '@/redux/hooks';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -18,19 +17,29 @@ type FieldType = {
   remember?: string;
 };
 
+
 const AuthForm: React.FC = () =>{
-  const dispatch = useAppDispatch();
 
   const [login, setLogin]= React.useState<string>('');
   const [password, setPassword]= React.useState<string>('');
 
+
+
    const auth = async ()=> {
-    const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth`, {
-      identifier: login,
-      password
-    })
-    return data
+    try {
+      const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API}/auth`, {
+        identifier: login,
+        password
+      })
+      location.reload()
+      return data
+
+    } catch(error: any) {
+      console.error(error.message)
+    }
+   
    }
+
   
  return(
 <Form

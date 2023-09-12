@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   
    return new Response( JSON.stringify(data), {
     status: 200,
-    headers: { 'Set-Cookie': `token=${data.jwt};path=/;httpOnly=true;samesite=strict,isAuth=true;path=/`},
+    headers: { 'Set-Cookie': `token=${data.jwt};path=/;httpOnly=true;samesite=strict`},
   })
 
 

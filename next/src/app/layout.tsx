@@ -22,11 +22,12 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
+
   const getUser = async()=> {
     try {
       const {data} = await $axios.get('http://localhost:1337/api/users/me?populate=*')
 
-       console.log(data)
+       console.log(data.username)
        return data 
     } catch(error) {
       console.error(error);

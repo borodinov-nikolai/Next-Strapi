@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import {Badge, Button, Divider, Drawer, InputNumber } from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { minusItem, removeItem } from '@/redux/slices/cartSlice';
+import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
 import axios from 'axios';
 
 
 
-const Cart: React.FC = () => {
+const Cart: React.FC<{user:any}> = ({user}) => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
   const {items, totalCount, totalPrice} = useAppSelector((state)=> state.cart)
@@ -26,7 +26,25 @@ const Cart: React.FC = () => {
 
 
   React.useEffect(()=> {
+    const serverItems = user?.cart.items.items
+     if(serverItems.length > 0) {
+      serverItems.map((item:any)=> {
+        dispatch(addItem(item))
+      })
+     }
+
+
+  },[])
+
+
+
+  React.useEffect(()=> {
+
+
+     
+
    const addToCart = async ()=> {
+       
 
     const res = await axios.put('http://localhost:3000/api/cart',
     { 
@@ -44,8 +62,9 @@ const Cart: React.FC = () => {
 
 
 
-
   
+
+
 
   return (
     <div >
@@ -57,10 +76,10 @@ const Cart: React.FC = () => {
 
 
            <Drawer className={styles.drawer} footer={ <div className={styles.footer} > <p>Итого: {totalPrice}</p> <Button>заказать</Button></div> } title={ <div className={styles.header}>Корзина</div> } placement="right" onClose={onClose} open={open}>
-               {items.map((item)=>{
+               {items.map((item:any)=>{
                  return(
-                  <>
-                   <div className={styles.root}>
+                  <div key={item.id}>
+                   <div  className={styles.root}>
                     
                   <Image width={100} height={100}  alt='' src={`http://localhost:1337${item.image}`}/>
                   <h3 className={styles.title}>{item.name}</h3>
@@ -73,7 +92,7 @@ const Cart: React.FC = () => {
                   </div>
              </div>
               <Divider />
-              </>
+              </div>
                 )
               })}
             
