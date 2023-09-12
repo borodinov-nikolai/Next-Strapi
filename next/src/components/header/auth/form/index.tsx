@@ -3,7 +3,6 @@ import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 import { useAppDispatch } from '@/redux/hooks';
-import { setIsAuth, setUser } from '@/redux/slices/userSlice';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -30,8 +29,6 @@ const AuthForm: React.FC = () =>{
       identifier: login,
       password
     })
-    dispatch(setIsAuth(true));
-    dispatch(setUser(data.user))
     return data
    }
   

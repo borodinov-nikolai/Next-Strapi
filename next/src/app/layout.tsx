@@ -6,7 +6,6 @@ import ReduxProvider from '@/redux/Provider';
 import Header from '@/components/Header';
 import { ConfigProvider } from 'antd';
 import theme from '@/antDesign/ThemeConfig'
-import CheckAuth from '@/components/checkAuth'
 import { $axios } from '@/axios/config';
 
 
@@ -25,9 +24,9 @@ export default async function RootLayout({
 
   const getUser = async()=> {
     try {
-      const {data} = await $axios.get('http://localhost:1337/api/users/me')
+      const {data} = await $axios.get('http://localhost:1337/api/users/me?populate=*')
 
-      //  console.log(data)
+       console.log(data)
        return data 
     } catch(error) {
       console.error(error);
@@ -36,13 +35,11 @@ export default async function RootLayout({
 
   }
 
- 
    const user = await getUser()
-let isAuth: boolean = false
 
-   if(user) {
-    isAuth = true
-   }
+
+
+  
 
   return (
     <html lang="en">
@@ -50,7 +47,7 @@ let isAuth: boolean = false
        <ReduxProvider>
       <StyledComponentsRegistry>
         <ConfigProvider theme={theme}>
-        <Header isAuth={isAuth} />
+        <Header user={user} />
         {children}
         </ConfigProvider>
       </StyledComponentsRegistry>

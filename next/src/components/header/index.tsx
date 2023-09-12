@@ -8,10 +8,13 @@ import Cart from "./cart"
 
 
 
-const Header = ({isAuth}:{isAuth:boolean}) => {
+const Header = ({user}:{user:any}) => {
+
+
+
   return (
 
-   
+
     <div className="container">
         <div className={styles.root}>
           
@@ -20,9 +23,9 @@ const Header = ({isAuth}:{isAuth:boolean}) => {
           
             <Cart/>
            
-            {/* <UserOutlined style={{fontSize: '24px'}}/> */}
+           
             {
-              !isAuth && <Auth/>
+              !user && <Auth/>
             }
             
           </div>

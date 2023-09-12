@@ -2,7 +2,7 @@
 import { useAppDispatch } from '@/redux/hooks'
 import { addItem } from '@/redux/slices/cartSlice'
 import { Button } from 'antd'
-import axios from 'axios'
+
 
 import React from 'react'
 

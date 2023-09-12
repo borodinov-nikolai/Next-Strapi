@@ -4,10 +4,12 @@ import React, { useState } from 'react';
 import {Badge, Button, Divider, Drawer, InputNumber } from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
+import { minusItem, removeItem } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
 import axios from 'axios';
+
+
 
 const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -24,21 +26,26 @@ const Cart: React.FC = () => {
 
 
   React.useEffect(()=> {
-    if(document.cookie === 'isAuth=true'){
-      const putCart = async ()=> {
-        axios.put('http://localhost:1337/api/carts/1', {
-          data: {
-              items: {items, totalPrice } 
-          }
-     })
-      }
-  
-      putCart()
+   const addToCart = async ()=> {
+
+    const res = await axios.put('http://localhost:3000/api/cart',
+    { 
+      items,
+      totalPrice     
     }
-   
-   
+    )
+
+    console.log(res)
+   }
+
+   addToCart()
+
   },[items])
 
+
+
+
+  
 
   return (
     <div >
