@@ -24,13 +24,22 @@ const Cart: React.FC<{user:any}> = ({user}) => {
     setOpen(false);
   };
 
+console.log(user)
 
   React.useEffect(()=> {
     const serverItems = user?.cart.items.items
-     if(serverItems.length > 0) {
+    const clientItems = localStorage.getItem('cart')
+
+     if(serverItems?.length > 0) {
       serverItems.map((item:any)=> {
         dispatch(addItem(item))
       })
+     } else if(clientItems){
+      const  parsedClienItems = JSON.parse(clientItems)
+      parsedClienItems.map((item: any)=>{
+        dispatch(addItem(item))
+      } )
+        
      }
 
 
@@ -40,23 +49,23 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
   React.useEffect(()=> {
 
-
+    
+    localStorage.setItem('cart', JSON.stringify(items))
      
+  
+  if(user) {
+    const addToCart = async ()=> {
 
-   const addToCart = async ()=> {
-       
-
-    const res = await axios.put('http://localhost:3000/api/cart',
-    { 
-      items,
-      totalPrice     
+      await axios.put('http://localhost:3000/api/cart',
+     { 
+       items
+     }
+     )
     }
-    )
-
-    console.log(res)
-   }
-
-   addToCart()
+ 
+    addToCart()
+  }
+   
 
   },[items])
 
