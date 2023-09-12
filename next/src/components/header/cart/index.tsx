@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
-import axios from 'axios';
+import { $apiNEXT } from '@/axios/clientConfig';
 
 
 
@@ -24,12 +24,12 @@ const Cart: React.FC<{user:any}> = ({user}) => {
     setOpen(false);
   };
 
-console.log(user)
+
 
 
 
   React.useEffect(()=> {
-    const serverItems = user?.cart.items.items
+    const serverItems = user?.cart?.items?.items
     const clientItems = localStorage.getItem('cartItems')
 
      if(serverItems?.length > 0) {
@@ -56,10 +56,11 @@ console.log(user)
      
   
   if(user) {
+   
     const addToCart = async ()=> {
-
-      await axios.put('http://localhost:3000/api/cart',
+      await $apiNEXT.put(`/cart`,
      { 
+       id: user.cart.id,
        items
      }
      )

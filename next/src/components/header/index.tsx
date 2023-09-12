@@ -25,7 +25,7 @@ const Header = ({user}:{user:any}) => {
            
            
             
-          <Auth/>{user?.username}
+          <Auth user={user} />
           
             
           </div>

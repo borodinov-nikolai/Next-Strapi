@@ -21,7 +21,7 @@ const ToCartBtn = ({item}:{item:Props}) => {
 
 
   const addToCart = async (e:any)=> {
-    e.stopPropagation(); console.log('click')
+    e.stopPropagation();
    dispatch(addItem({...item, count:1}))
 
    }

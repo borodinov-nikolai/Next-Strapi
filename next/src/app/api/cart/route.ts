@@ -1,4 +1,4 @@
-import { $axios } from "@/axios/config"
+import { $apiCMS } from "@/axios/serverConfig"
 
 
 
@@ -6,11 +6,11 @@ import { $axios } from "@/axios/config"
 export async function PUT(request: Request) {
 
     try {
-        const {items, totalPrice} = await request.json()
-
-         $axios.put('/carts/1', {
+        const {items, id} = await request.json()
+       console.log(id)
+         $apiCMS.put(`/carts/${id}`, {
             data: {
-                  items: {items, totalPrice}
+                  items: {items}
             }
           
             

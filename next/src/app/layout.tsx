@@ -6,7 +6,7 @@ import ReduxProvider from '@/redux/Provider';
 import Header from '@/components/Header';
 import { ConfigProvider } from 'antd';
 import theme from '@/antDesign/ThemeConfig'
-import { $axios } from '@/axios/config';
+import { $apiCMS} from '@/axios/serverConfig';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,9 +25,7 @@ export default async function RootLayout({
 
   const getUser = async()=> {
     try {
-      const {data} = await $axios.get('http://localhost:1337/api/users/me?populate=*')
-
-       console.log(data.username)
+      const {data} = await $apiCMS.get('/users/me?populate=*')
        return data 
     } catch(error) {
       console.error(error);
