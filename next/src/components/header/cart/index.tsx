@@ -26,9 +26,11 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 console.log(user)
 
+
+
   React.useEffect(()=> {
     const serverItems = user?.cart.items.items
-    const clientItems = localStorage.getItem('cart')
+    const clientItems = localStorage.getItem('cartItems')
 
      if(serverItems?.length > 0) {
       serverItems.map((item:any)=> {
@@ -50,7 +52,7 @@ console.log(user)
   React.useEffect(()=> {
 
     
-    localStorage.setItem('cart', JSON.stringify(items))
+    localStorage.setItem('cartItems', JSON.stringify(items))
      
   
   if(user) {
