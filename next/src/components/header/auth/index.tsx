@@ -23,7 +23,7 @@ const Auth: React.FC<any> = ({user}) => {
 
 
   const logout = async ()=> {
-    const res = await $apiNEXT.post('/auth/logout');
+    await $apiNEXT.post('/auth/logout');
     window.location.reload();
   }
 

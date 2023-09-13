@@ -1,4 +1,4 @@
-import { getDevice } from '@/utils/serverApi'
+import { getDevice } from '@/services/serverApi'
 import { Metadata } from 'next'
 import { Image } from 'antd'
 import styles from './Device.module.scss'
@@ -14,11 +14,15 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
     const device = data.data.attributes
     console.log(device.description)
   return (
-    <div className={styles.root} >
-      <Image className={styles.image} width={400}  src={`http://localhost:1337${device.image.data.attributes.url}`} />
-      <div>{device.name}</div>
-      <div>{device.price}р</div>
-      <div className={styles.description} >{device.description}</div>
+    <div className="container">
+        <div  className={styles.root} >
+        <div className={styles.image}>
+          <Image height={400} src={`http://localhost:1337${device.image.data.attributes.url}`} />
+        </div>
+        <h2 className={styles.name} >{device.name}</h2>
+        <div className={styles.description} >{device.description}</div>
+        <div className={styles.price} > Цена: {device.price}р</div>
+      </div>
       </div>
   )
 }

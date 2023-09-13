@@ -3,9 +3,9 @@
 
 .root {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    padding-top: 100px;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: 80px auto auto;
+    padding-top: 20px;
     text-align: center;
 
     .description {
@@ -14,8 +14,34 @@
     }
 
     .image {
+        justify-self: start;
+        padding-left: 5vw;
         height: 400px !important;
         width: auto !important;
-        grid-row: 1/2;
+        grid-column: 1;
+        grid-row: 2/3;
+
+    }
+    .name {
+       font-size: 30px;
+       grid-column: 1/span 2;
+        
+    }
+
+    .description {
+        font-size: 24px;
+        min-width: 200px;
+        padding-top: 50px;
+        grid-area: 2/2/3/3;
+        justify-self: start;
+    }
+    .price {
+        margin-top: 28px;
+        font-weight: bold;
+        margin-right: 5vw;
+        justify-self: end;
+        font-size: 24px;
+        grid-column: 2;
+        grid-row: 3;
     }
 }

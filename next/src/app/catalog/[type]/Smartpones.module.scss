@@ -1,18 +1,20 @@
-
-
-
-
 .root {
 
-    .cardHolder {
-      
-        padding-top: 40px;
-    }
-    .filters {
-        padding: 50px 0 0 0 ;
-    }
-    .pagination {
-        display: flex;
-        padding: 50px 0 0 0 ;
-    }
+  .filters {
+    padding: 50px 0 0 0;
+  }
+
+  .grid {
+    justify-content: center;
+    padding-top: 50px;
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, 280px);
+    gap: 20px;
+  }
+
+  .pagination {
+    display: flex;
+    padding: 50px 0 0 0;
+  }
 }
