@@ -3,6 +3,7 @@ import {HomeOutlined} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu, Space } from 'antd';
 import Link from 'next/link';
+import styles from './LeftNavbar.module.scss'
 
 const items: MenuProps['items'] = [
   
@@ -63,17 +64,17 @@ const items: MenuProps['items'] = [
   },
   {
     label: (
-      <a href="/about"  rel="noopener noreferrer">
+      <Link href="/about"  rel="noopener noreferrer">
        О нас
-      </a>
+      </Link>
     ),
-    key: 'about us',
+    key: 'aboutus',
   },
   {
     label: (
-      <a href="/contacts"  rel="noopener noreferrer">
+      <Link href="/contacts"  rel="noopener noreferrer">
        Контакты
-      </a>
+      </Link>
     ),
     key: 'contacts',
   }
@@ -90,7 +91,7 @@ const LeftNavbar: React.FC = () => {
   
  
 
-    <Menu mode="horizontal" items={items}></Menu>
+    <Menu className={styles.root} mode="horizontal" items={items}></Menu>
  
   
   

@@ -2,6 +2,20 @@
 
 
 .root {
-    padding-top: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    padding-top: 100px;
     text-align: center;
+
+    .description {
+        white-space: pre-line;
+        text-align: left;
+    }
+
+    .image {
+        height: 400px !important;
+        width: auto !important;
+        grid-row: 1/2;
+    }
 }

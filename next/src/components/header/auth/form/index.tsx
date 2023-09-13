@@ -50,12 +50,19 @@ const AuthForm: React.FC<Props> = ({registration, setRegistration}) =>{
 
    const register = async ()=> {
 
-     await $apiNEXT.post('/auth/register', {
-      username: login,
-      email,
-      password
-    })
-     location.reload()
+    try {
+      await $apiNEXT.post('/auth/register', {
+        username: login,
+        email,
+        password
+      })
+     
+       location.reload()
+    } catch(e) {
+      console.error(e)
+    }
+   
+     
    }
 
 

@@ -33,7 +33,7 @@ const Auth: React.FC<any> = ({user}) => {
   
       {!user ? 
       <UserOutlined onClick={showModal} style={{fontSize: '24px'}}/> :
-      <div>{user.username} <Button onClick={logout} type='primary'>Выйти</Button></div>
+      <div>{user.username} <Button size='small' onClick={logout} type='primary'>Выйти</Button></div>
 
       }
     

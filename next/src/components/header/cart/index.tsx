@@ -60,7 +60,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
     const addToCart = async ()=> {
       await $apiNEXT.put(`/cart`,
      { 
-       id: user.cart.id,
+       id: user?.cart?.id,
        items
      }
      )
