@@ -2,8 +2,7 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input, Result} from 'antd';
 import styles from './AuthForm.module.scss'
-import { $apiNEXT } from '@/axios/clientConfig';
-import { register } from '@/services/clientApi';
+import { auth, register } from '@/services/clientApi';
 
 
 
@@ -28,25 +27,6 @@ const AuthForm: React.FC<Props> = ({registration, setRegistration}) =>{
 
 
 
-   const auth = async ()=> {
-    try {
-      const {data} = await $apiNEXT.post('/auth/login', {
-        identifier: login,
-        password
-      })
-      location.reload()
-      return data
-
-    } catch(error: any) {
-      console.error(error.message)
-    }
-   
-   }
-
-   
-   
-
-   
 
    if (!registration){
     return(
@@ -84,7 +64,7 @@ const AuthForm: React.FC<Props> = ({registration, setRegistration}) =>{
        </Form.Item>
         <div className={styles.text} >Нет аккаунта? <span onClick={()=> setRegistration(true)}>Зарегистрируйся!</span></div>
           <div style={{display:'flex', justifyContent: 'end'}}>
-            <Button type='primary' style={{marginRight: '-70px'}} onClick={auth} >Авторизоваться</Button>
+            <Button type='primary' style={{marginRight: '-70px'}} onClick={()=>auth(login, password)} >Авторизоваться</Button>
             </div>
     </Form>
  ) 

@@ -17,9 +17,37 @@ export const register = async (login:string, email:string, password:string, setS
     setSuccess(true)
     setTimeout(()=>window.location.reload(), 3000)
     
-    } catch(e) {
+    } catch(error) {
+      console.error(error)
+    }
+   }
+
+
+
+   export const auth = async (login:string, password:string)=> {
+    try {
+      const {data} = await $apiNEXT.post('/auth/login', {
+        identifier: login,
+        password
+      })
+      location.reload()
+      return data
+
+    } catch(error: any) {
+      console.error(error.message)
+    }
+   
+   }
+
+
+
+
+   export const logout = async ()=> {
+    try {
+      await $apiNEXT.post('/auth/logout');
+      window.location.reload();
+    } catch(e: any) {
       console.error(e)
     }
    
-     
-   }
+  }

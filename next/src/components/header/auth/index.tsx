@@ -4,6 +4,7 @@ import { Button, Modal } from 'antd';
 import {UserOutlined} from '@ant-design/icons'
 import AuthForm from './form';
 import { $apiNEXT } from '@/axios/clientConfig';
+import { logout } from '@/services/clientApi';
 
 
 const Auth: React.FC<any> = ({user}) => {
@@ -22,10 +23,7 @@ const Auth: React.FC<any> = ({user}) => {
 
 
 
-  const logout = async ()=> {
-    await $apiNEXT.post('/auth/logout');
-    window.location.reload();
-  }
+
 
 
   return (
