@@ -22,6 +22,7 @@ const Smartphones = async ({searchParams}:any) => {
   const devices = await getDevices(searchParams);
   
 
+
   interface Device {
     id: number,
     attributes: {
@@ -32,7 +33,7 @@ const Smartphones = async ({searchParams}:any) => {
           attributes: {
             url: string
           }
-        }
+        }[]
       }
     },
 }
@@ -56,11 +57,11 @@ const Smartphones = async ({searchParams}:any) => {
      
        
         {
-          !devices? 'ошибка загрузки' : devices.data.map((device: Device) => {
+          !devices? 'ошибка загрузки' : devices?.data.map((device: Device) => {
             return (
                 <div className={styles.card}>
                 <ClientCardWrapper id={device.id} >
-                  <ProductCard key={device.id}  id={device.id} name={device.attributes.name} price={device.attributes.price} image={device.attributes.image.data.attributes.url} />
+                  <ProductCard key={device.id}  id={device.id} name={device.attributes.name} price={device.attributes.price} image={device.attributes.image.data[0].attributes.url} />
                 </ClientCardWrapper>
                 </div>
              )

@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -70,6 +69,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cart.cart",
+      "mappedBy": "users_permissions_user"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
       "mappedBy": "users_permissions_user"
     }
   }

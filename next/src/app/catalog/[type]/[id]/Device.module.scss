@@ -13,18 +13,17 @@
         text-align: left;
     }
 
-    .image {
-        justify-self: start;
-        padding-left: 5vw;
-        height: 400px !important;
-        width: auto !important;
-        grid-column: 1;
-        grid-row: 2/3;
+   
+.imageViewer {
 
-    }
+    grid-column: 1;
+    grid-row: 2/4;
+}
+
     .name {
        font-size: 30px;
        grid-column: 1/span 2;
+       grid-row: 1;
         
     }
 
@@ -32,7 +31,8 @@
         font-size: 24px;
         min-width: 200px;
         padding-top: 50px;
-        grid-area: 2/2/3/3;
+        grid-column: 2;
+        grid-row: 2/3;
         justify-self: start;
     }
     .price {

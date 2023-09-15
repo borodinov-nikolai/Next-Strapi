@@ -1,0 +1,33 @@
+
+
+
+
+.root {
+     
+    margin-left: 20px;
+    display: flex;
+   
+
+    .imagePreview {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+         
+     .previewImage {
+        cursor: pointer;
+        
+     }
+    }
+
+    .selectedPreviewImage {
+        border: 1px solid black;
+    }
+
+    .image {
+
+
+        height: 400px !important;
+        width: 400px !important;
+
+    }
+}
