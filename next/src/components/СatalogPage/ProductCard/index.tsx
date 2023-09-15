@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { Card, Rate} from 'antd';
+import { Card} from 'antd';
 import Image from 'next/image';
 import ToCartBtn from './toCartBtn';
+import DeviceRating from './deviceRating';
 
 
 
@@ -35,10 +36,11 @@ const ProductCard = ({name, price, image, id}: Props) => (
   >
        <div style={{marginLeft: '-20px'}}>
          <div style={{fontSize:'22px'}}>{name}</div>
-         <Rate disabled defaultValue={5} />
+        
          <div>Цена: {price}р</div>
+         
+           <DeviceRating/>
        </div>
-
        <div style={{paddingTop: '15px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
           <ToCartBtn item = {{name, price, image, id}} />
        </div>
