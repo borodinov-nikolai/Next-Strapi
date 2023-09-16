@@ -75,8 +75,8 @@ export const register = async (login:string, email:string, password:string, setS
    })
     } else if(ratingID) {
       $apiClient_NEXT.put('/rating', {
-        id: ratingID,
-        value: e
+        value: e,
+        id: ratingID
       })
     }
    
@@ -85,7 +85,7 @@ export const register = async (login:string, email:string, password:string, setS
 
 
 
-export const getUserRating = async (deviceID : number, userID: number| null) => {
+export const getUserRatings = async (deviceID : number, userID: number| null) => {
   if(userID) {
 
     try {

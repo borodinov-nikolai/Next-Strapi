@@ -4,10 +4,25 @@ import React from 'react'
 
 
 
-const DeviceRating = () => {
+interface Rating  {
+  rating: {
+    attributes: {
+      value : number
+    } 
+  } []
+
+}
+
+
+
+const DeviceRating = ({rating}: Rating) => {
+  
+  
+   const value = rating.reduce((sum, item)=> sum + item.attributes.value, 0 )/rating.length
+ 
   return (
-    <div onClick={(e)=>{ e.stopPropagation()}}>
-         <Rate onChange={(e)=>{console.log(e)}}  defaultValue={0} />
+    <div >
+         <Rate  disabled allowHalf value={value}  defaultValue={0} />
     </div>
   )
 }

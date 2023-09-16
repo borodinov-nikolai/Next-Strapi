@@ -34,7 +34,6 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
 
   const {value, id} = await request.json();
-    
    try{
     const res = await $apiServer_CMS.put(`/ratings/${id}`, {
       data: {

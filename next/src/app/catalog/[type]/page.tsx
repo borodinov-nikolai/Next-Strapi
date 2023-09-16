@@ -2,7 +2,6 @@ import ProductCard from '@/components/СatalogPage/ProductCard'
 import React from 'react'
 import styles from './Smartpones.module.scss'
 import PaginationDevices from '@/components/СatalogPage/pagination'
-import { Col, Row } from 'antd'
 import Filters from '@/components/СatalogPage/filters'
 import { getDevices } from '@/services/serverApi'
 import ClientCardWrapper from '@/components/СatalogPage/ProductCard/clientCardWrapper'
@@ -34,7 +33,15 @@ const Smartphones = async ({searchParams}:any) => {
             url: string
           }
         }[]
-      }
+      },
+      ratings: {
+        data:{
+          attributes: {
+            value : number
+          } 
+        } []
+        }
+    
     },
 }
 
@@ -61,7 +68,7 @@ const Smartphones = async ({searchParams}:any) => {
             return (
                 <div className={styles.card}>
                 <ClientCardWrapper id={device.id} >
-                  <ProductCard key={device.id}  id={device.id} name={device.attributes.name} price={device.attributes.price} image={device.attributes.image.data[0].attributes.url} />
+                  <ProductCard key={device.id}   id={device.id} name={device.attributes.name} price={device.attributes.price}  image={device.attributes.image.data[0].attributes.url} rating={device.attributes.ratings.data } />
                 </ClientCardWrapper>
                 </div>
              )

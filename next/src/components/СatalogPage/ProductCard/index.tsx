@@ -12,15 +12,21 @@ interface Props {
       name: string,
       price: number,
       image: string,
-      id: number
+      id: number,
+      rating: {
+        attributes: {
+          value : number
+        } 
+      } []
   
     
 }
 
 
-const ProductCard = ({name, price, image, id}: Props) => (
+const ProductCard = ({name, price, image, id, rating}: Props) => (
 
 
+  
 
   <Card
     hoverable
@@ -39,7 +45,7 @@ const ProductCard = ({name, price, image, id}: Props) => (
         
          <div>Цена: {price}р</div>
          
-           <DeviceRating/>
+           <DeviceRating rating={rating} />
        </div>
        <div style={{paddingTop: '15px', display: 'flex', justifyContent: 'end', marginRight: '-20px'}}>
           <ToCartBtn item = {{name, price, image, id}} />

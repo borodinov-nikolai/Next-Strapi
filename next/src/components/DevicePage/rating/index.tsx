@@ -1,6 +1,6 @@
 'use client'
 import { useAppSelector } from '@/redux/hooks';
-import { addRaiting, getUserRating } from '@/services/clientApi';
+import { addRaiting, getUserRatings } from '@/services/clientApi';
 import { Rate } from 'antd'
 import React from 'react'
 
@@ -16,11 +16,11 @@ const Rating = ({deviceID}: {deviceID: number}) => {
     
      React.useEffect(()=> {
       const getRating = async ()=> {
-        const res = await getUserRating(deviceID, id)
+        const res = await getUserRatings(deviceID, id)
         setRating(res?.data?.data[0]?.attributes.value)
         setRatingID(res?.data?.data[0]?.id)
+        console.log(res?.data?.data[0]?.id)
       }
-
       getRating()
      },[id])
 
@@ -28,7 +28,7 @@ const Rating = ({deviceID}: {deviceID: number}) => {
 
 
   return (
-    <Rate style={{fontSize: '50px'}} onChange={(e:number)=>{addRaiting(e, deviceID, id, ratingID); setRating(e)}}  value={rating} defaultValue={0} />
+    <Rate style={{fontSize: '50px'}} onChange={(e:number)=>{addRaiting(e, deviceID, id, ratingID);setRating(e)}}  value={rating} defaultValue={0} />
   )
 }
 
