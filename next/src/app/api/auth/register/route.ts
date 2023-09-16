@@ -16,7 +16,7 @@ export async function POST(request : Request) {
 
         const {username, email, password} : Req = await request.json();  
      
-    console.log(username, email, password)
+    
         const res = await $apiCMS.post('/auth/local/register', {
             username,
             email,
@@ -24,21 +24,18 @@ export async function POST(request : Request) {
         })
 
 
-
-    if (res?.status === 200) {
-        console.log(res.data.user)
-        await $apiCMS.post('/carts/', {
+         
+    
+    
+     const res2 = await $apiCMS.post('/carts', {
         data: {
             items: {},
             users_permissions_user: String(res.data.user.id)
 
         }
+         })
 
     
-
-        })
-
-    }
           
    return new Response( JSON.stringify(res.data), {
     status: 200,

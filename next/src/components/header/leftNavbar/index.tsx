@@ -26,41 +26,14 @@ const items: MenuProps['items'] = [
  
   },
   {
-    label: 'Каталог',
+    label:  (
+      <Link href="/catalog/smartphones" style={{color: 'black'}}  >
+        Каталог
+      </Link>
+    ),
     key: 'catalog',
     
-    children: [
-      {
-        type: 'group',
-        children: [
-          {
-            label: (
-              <Link href="/catalog/smartphones" style={{color: 'black'}}  >
-                Смартфоны
-              </Link>
-            ),
-            key: 'smrtphones',
-          },
-          {
-            label: 'Планшеты',
-            key: 'tabs',
-          },
-          {
-            label: 'Ноутбуки',
-            key: 'noutbook',
-          },
-          {
-            label: 'Телевизоры',
-            key: 'tv',
-          },
-          {
-            label: 'Игровые консоли',
-            key: 'consoles',
-          },
-        ],
-      },
-     
-    ],
+    
   },
   {
     label: (

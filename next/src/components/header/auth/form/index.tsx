@@ -62,7 +62,7 @@ const AuthForm: React.FC<Props> = ({registration, setRegistration}) =>{
   
          <Checkbox>Запомнить меня</Checkbox>
        </Form.Item>
-        <div className={styles.text} >Нет аккаунта? <span onClick={()=> setRegistration(true)}>Зарегистрируйся!</span></div>
+        <div className={styles.text}> Нет аккаунта? <span onClick={()=> setRegistration(true)}>Зарегистрируйся!</span></div>
           <div style={{display:'flex', justifyContent: 'end'}}>
             <Button type='primary' style={{marginRight: '-70px'}} onClick={()=>auth(login, password)} >Авторизоваться</Button>
             </div>
