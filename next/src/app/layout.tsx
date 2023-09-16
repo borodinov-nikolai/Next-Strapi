@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import { ConfigProvider } from 'antd';
 import theme from '@/antDesign/ThemeConfig'
 import { $apiCMS} from '@/axios/serverConfig';
+import SaveUser from '@/components/SaveUser';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -46,6 +47,7 @@ export default async function RootLayout({
        <ReduxProvider>
       <StyledComponentsRegistry>
         <ConfigProvider theme={theme}>
+          <SaveUser user={user} />
         <Header user={user} />
         {children}
         </ConfigProvider>

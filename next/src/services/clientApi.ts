@@ -51,3 +51,21 @@ export const register = async (login:string, email:string, password:string, setS
     }
    
   }
+
+
+
+  
+
+
+
+  export const addRaiting = async (e:number, deviceID:number, id:number|null)=> {
+    if (id) {
+      $apiNEXT.post('/raiting', {
+        value: e,
+        device: deviceID,
+        users_permissions_user: id
+   })
+    }
+   
+}
+

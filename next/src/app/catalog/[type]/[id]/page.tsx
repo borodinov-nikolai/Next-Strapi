@@ -14,9 +14,12 @@ export const metadata: Metadata = {
 const Device = async ({params}:{params:{type: string, id: number}}) => {
 
     const data = await getDevice(params.id) 
+    
    
     const device = data?.data?.attributes
-    console.log(device?.description)
+    const deviceID = data?.data?.id
+
+
    
   return (
     <div className="container">
@@ -27,7 +30,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
         <div className={styles.description} >{device.description}</div>
 <div className={styles.rating}>
   <div>Рейтинг товара: 4,7 <StarFilled /> на основе 500 оценок</div>
-Оцените товар: <Rating  />
+Оцените товар: <Rating deviceID={deviceID} />
 </div>
         <div className={styles.price} > Цена: {device.price}р</div>
       </div>
