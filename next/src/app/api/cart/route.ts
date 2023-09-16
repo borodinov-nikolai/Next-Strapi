@@ -7,7 +7,6 @@ export async function PUT(request: Request) {
 
     try {
         const {items, id} = await request.json()
-       console.log(id)
          $apiServer_CMS.put(`/carts/${id}`, {
             data: {
                   items: {items}

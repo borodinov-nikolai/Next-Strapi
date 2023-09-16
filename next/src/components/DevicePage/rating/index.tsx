@@ -26,7 +26,7 @@ const Rating = ({deviceID}: {deviceID: number}) => {
 
      
 
-console.log(rating)
+
   return (
     <Rate style={{fontSize: '50px'}} onChange={(e:number)=>{addRaiting(e, deviceID, id, ratingID); setRating(e)}}  value={rating} defaultValue={0} />
   )

@@ -8,7 +8,7 @@ const ImageViewer: React.FC<any> = ({device}) => {
    const [viewedImage, setViewedImage] = React.useState<number>(0);
 
    
-console.log(device)
+
 
   return (
    <div className={styles.root} >
