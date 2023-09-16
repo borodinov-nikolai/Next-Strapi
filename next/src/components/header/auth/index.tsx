@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import {UserOutlined} from '@ant-design/icons'
 import AuthForm from './form';
-import { $apiNEXT } from '@/axios/clientConfig';
 import { logout } from '@/services/clientApi';
 
 

@@ -1,4 +1,4 @@
-import LeftNavbar from "./leftNavbar"
+import LeftNavbar from "./LeftNavbar"
 import styles from './Header.module.scss'
 import Auth from "./auth"
 import Cart from "./cart"

@@ -27,7 +27,7 @@ export async function POST(request : Request) {
          
     
     
-     const res2 = await $apiCMS.post('/carts', {
+     const res2 = await $apiServer_CMS.post('/carts', {
         data: {
             items: {},
             users_permissions_user: String(res.data.user.id)
