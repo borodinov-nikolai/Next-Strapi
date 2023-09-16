@@ -8,7 +8,8 @@ const ImageViewer: React.FC<any> = ({device}) => {
    const [viewedImage, setViewedImage] = React.useState<number>(0);
 
    
-console.log()
+console.log(device)
+
   return (
    <div className={styles.root} >
      <div className={styles.imagePreview} >{device.image.data.map((image:{id: number,attributes: {url:string},}, i:number)=> {

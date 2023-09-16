@@ -1,4 +1,4 @@
-import { getDevice } from '@/services/serverApi'
+import { getDevice} from '@/services/serverApi'
 import { Metadata } from 'next'
 import styles from './Device.module.scss'
 import ImageViewer from '@/components/DevicePage/imageViewer'
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const Device = async ({params}:{params:{type: string, id: number}}) => {
 
     const data = await getDevice(params.id) 
-    
+  
    
     const device = data?.data?.attributes
     const deviceID = data?.data?.id

@@ -1,4 +1,4 @@
-import { $apiCMS} from "@/axios/serverConfig";
+import { $apiServer_CMS } from "@/axios/serverConfig";
 import { cookies } from "next/headers";
 
 
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
 
     const {identifier, password} = await request.json()
   
-   const {data} = await $apiCMS.post('/auth/local', {
+   const {data} = await $apiServer_CMS.post('/auth/local', {
     identifier,
     password,
    })

@@ -1,4 +1,4 @@
-import { $apiCMS } from "@/axios/serverConfig";
+import { $apiServer_CMS } from "@/axios/serverConfig";
 
 
 
@@ -17,7 +17,7 @@ export async function POST(request : Request) {
         const {username, email, password} : Req = await request.json();  
      
     
-        const res = await $apiCMS.post('/auth/local/register', {
+        const res = await $apiServer_CMS.post('/auth/local/register', {
             username,
             email,
             password

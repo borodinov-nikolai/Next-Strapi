@@ -2,14 +2,14 @@ import axios from 'axios'
 import { cookies } from 'next/headers';
 
 
-export const $apiCMS = axios.create({
-    baseURL: process.env.CMS_API_URL,
+export const $apiServer_CMS = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_API_CMS_URL,
     withCredentials: true
   });
 
 
   // Добавляем перехват запросов
-$apiCMS.interceptors.request.use(function (config) {
+$apiServer_CMS.interceptors.request.use(function (config) {
     const cookie = cookies();
     const token = cookie.get('token');
 
@@ -24,7 +24,7 @@ $apiCMS.interceptors.request.use(function (config) {
   });
 
 // Добавляем перехват ответов
-$apiCMS.interceptors.response.use(function (response) {
+$apiServer_CMS.interceptors.response.use(function (response) {
     // Любой код состояния, находящийся в диапазоне 2xx, вызывает срабатывание этой функции
     // Здесь можете сделать что-нибудь с ответом
     return response;

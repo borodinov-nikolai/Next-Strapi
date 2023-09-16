@@ -1,4 +1,4 @@
-import { $apiCMS } from "@/axios/serverConfig";
+import { $apiServer_CMS } from "@/axios/serverConfig";
 
 
 
@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const {value, device, users_permissions_user} = await request.json()
  
     try {
-          $apiCMS.post('/ratings', {
+          $apiServer_CMS.post('/ratings', {
             data : {
               value,
               device : String(device),
@@ -28,3 +28,27 @@ export async function POST(request: Request) {
     }
    
 }
+
+
+
+export async function PUT(request: Request) {
+
+  const {value, id} = await request.json();
+    
+   try{
+    const res = await $apiServer_CMS.put(`/ratings/${id}`, {
+      data: {
+        value
+      }
+     })
+  
+     return new Response('ok', {
+      status: 200
+     })
+   } catch(e) {
+    console.error(e)
+   }
+ 
+
+}
+
