@@ -66,8 +66,8 @@ export const register = async (login:string, email:string, password:string, setS
 
 
 
-  export const addRaiting = async (e:number, deviceID:number, userID:number|null, ratingID:number|undefined)=> {
-    if (userID && !ratingID) {
+  export const addRaiting = async (e:number, deviceID:number, userID:number|null, ratingID:number|undefined, rating: number, loaded: boolean)=> {
+    if (userID && !ratingID && !rating && loaded) {
       $apiClient_NEXT.post('/rating', {
         value: e,
         device: deviceID,

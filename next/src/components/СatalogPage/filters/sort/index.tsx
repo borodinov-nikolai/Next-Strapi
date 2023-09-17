@@ -26,7 +26,9 @@ const Sort = ({setSort, value, sort}: Props) => {
       onChange={(value:string)=>setSort(value)}
       options={[
         { value: 'price:asc', label: 'Цена по возрастанию' },
-        { value: 'price:desc', label: 'Цена по убыванию' }
+        { value: 'price:desc', label: 'Цена по убыванию' },
+        { value: 'deviceRating:asc', label: 'Рейтинг по возрастанию' },
+        { value: 'deviceRating:desc', label: 'Рейтинг по убыванию' }
       ]}
     />
   )

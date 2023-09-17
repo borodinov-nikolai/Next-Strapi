@@ -31,7 +31,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
         <div className={styles.description} >{device.description}</div>
 <div className={styles.rating}>
   <div>Рейтинг товара: {+rating.toFixed(1) || 0} <StarFilled /> на основе {deviceRating.length} оценок</div>
-Оцените товар: <Rating deviceID={deviceID} />
+<Rating deviceID={deviceID} />
 </div>
         <div className={styles.price} > Цена: {device.price}р</div>
       </div>

@@ -1,5 +1,4 @@
 import { $apiServer_CMS } from "@/axios/serverConfig";
-import DeviceRating from "@/components/СatalogPage/ProductCard/deviceRating";
 
 
 
