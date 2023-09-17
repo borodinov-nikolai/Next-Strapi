@@ -13,6 +13,7 @@ import { addToCart } from '@/services/clientApi';
 
 const Cart: React.FC<{user:any}> = ({user}) => {
   const [open, setOpen] = useState(false);
+  const [openChildDrawer, setOpenChildDrawer] = useState(false);
   const dispatch = useAppDispatch();
   const {items, totalCount, totalPrice} = useAppSelector((state)=> state.cart)
 
@@ -22,6 +23,13 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
   const onClose = () => {
     setOpen(false);
+  };
+  const showChildDrawer = () => {
+    setOpenChildDrawer(true);
+  };
+
+  const onCloseChildDrawer = () => {
+    setOpenChildDrawer(false);
   };
 
 
@@ -66,6 +74,16 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 
 
+
+
+  const drawerFooter = <div className={styles.footer} > <p>Итого: {totalPrice}</p>
+  <Button onClick={showChildDrawer} >заказать </Button>
+ <Drawer  title="Оформить заказ" placement="right" open={openChildDrawer} onClose={onCloseChildDrawer} >
+  <div>Имя: <input type="text" /></div>
+  
+ </Drawer>
+ </div> 
+
   
  
 
@@ -78,10 +96,10 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 
 
-           <Drawer className={styles.drawer} footer={ <div className={styles.footer} > <p>Итого: {totalPrice}</p> <Button>заказать</Button></div> } title={ <div className={styles.header}>Корзина</div> } placement="right" onClose={onClose} open={open}>
+           <Drawer className={styles.drawer} footer={drawerFooter} title={ <div className={styles.header}>Корзина</div> } placement="right" onClose={onClose} open={open}>
                {items.map((item:any)=>{
                  return(
-                  <div key={item.id}>
+                   <div key={item.id}>
                    <div  className={styles.root}>
                     
                   <Image width={100} height={100}  alt='' src={`http://localhost:1337${item.image}`}/>

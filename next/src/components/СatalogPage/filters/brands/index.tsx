@@ -21,7 +21,7 @@ const Brands = ({setBrand, value, brand}:Props) => {
     return (
         <Radio.Group value={brand || value} defaultValue={'all'} onChange={(e)=>setBrand(e.target.value)} buttonStyle="solid">
             {brands.map((brand)=> {
-                return  <Radio.Button  key={brand.name} value={brand.value} >{brand.name}</Radio.Button>
+                return  <Radio.Button key={brand.name} value={brand.value} >{brand.name}</Radio.Button>
             })}
 
       </Radio.Group>
