@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
-import { $apiClient_NEXT } from '@/axios/clientConfig';
 import { addToCart } from '@/services/clientApi';
 
 
@@ -68,8 +67,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 
   
-
-
+ 
 
   return (
     <div >

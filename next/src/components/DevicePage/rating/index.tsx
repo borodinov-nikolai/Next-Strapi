@@ -28,14 +28,23 @@ const Rating = ({deviceID}: {deviceID: number}) => {
      },[id, rating])
 
      
-     if (!loaded) {
-      return <div></div>
-     }
+
+
+     
+     
+
+      if (!loaded) {
+       return <div></div>
+      }
+
+      if (!id && loaded) {
+        return <div style={{marginTop: '40px', fontSize: '18px '}} >Авторизуйтесь чтобы ставить оценку</div>
+       }
 
   return (
-    <div>
+    <div style={{fontSize: '18px', marginTop: '20px'}}>
       Оцените товар: 
-    <Rate allowClear={false} style={{fontSize: '50px'}} onChange={(e:number)=>{ setRating(e), addRaiting(e, deviceID, id, ratingID, rating, loaded)}}  value={rating? rating: serverRating} defaultValue={0} />
+    <Rate allowClear={false}  style={{fontSize: '50px'}} onChange={(e:number)=>{ setRating(e), addRaiting(e, deviceID, id, ratingID, rating, loaded)}}  value={rating? rating: serverRating} defaultValue={0} />
     </div>
   )
 }
