@@ -76,7 +76,8 @@ export const register = async (login:string, email:string, password:string, setS
     } else if(ratingID) {
       $apiClient_NEXT.put('/rating', {
         value: e,
-        id: ratingID
+        id: ratingID,
+        device: deviceID
       })
     }
    
