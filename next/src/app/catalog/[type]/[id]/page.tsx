@@ -4,6 +4,8 @@ import styles from './Device.module.scss'
 import ImageViewer from '@/components/DevicePage/imageViewer'
 import Rating from '@/components/DevicePage/rating'
 import {StarFilled} from '@ant-design/icons'
+import ToCartBtn from '@/components/СatalogPage/ProductCard/toCartBtn'
+import { loadDefaultErrorComponents } from 'next/dist/server/load-components'
 
 
 
@@ -19,6 +21,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
     const device = data?.data?.attributes
     const deviceID = data?.data?.id
     const deviceRating : {attributes:{value:number}}[] = device?.ratings?.data
+    const image = device?.image?.data[0]?.attributes.url
     
     const rating = deviceRating.reduce((sum, item)=> sum + item.attributes.value, 0)/deviceRating.length
   
@@ -31,10 +34,11 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
         <h2 className={styles.name} >{device.name}</h2>
         <div className={styles.description} >{device.description}</div>
 <div className={styles.rating}>
-  <div>Рейтинг товара: {+rating.toFixed(1) || 0} <StarFilled /> на основе {deviceRating.length} оценок</div>
+  <div>Рейтинг товара: {+rating.toFixed(1) || 0} <StarFilled className={styles.icon} /> на основе {deviceRating.length} оценок</div>
 <Rating  deviceID={deviceID} />
 </div>
         <div className={styles.price} > Цена: {device.price}р</div>
+        <ToCartBtn  item={{name:device.name, price:device.price, id:deviceID, image}} />
       </div>
       </div>
   )

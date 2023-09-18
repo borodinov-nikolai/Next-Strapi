@@ -27,6 +27,9 @@
     "address": {
       "type": "text",
       "required": true
+    },
+    "completed": {
+      "type": "boolean"
     }
   }
 }
