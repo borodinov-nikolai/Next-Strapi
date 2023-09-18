@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_ies",
+  "info": {
+    "singularName": "t-y",
+    "pluralName": "t-ies",
+    "displayName": "Type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "devices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::device.device",
+      "mappedBy": "type"
+    }
+  }
+}

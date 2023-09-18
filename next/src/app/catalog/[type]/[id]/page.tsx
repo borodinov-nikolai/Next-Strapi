@@ -6,12 +6,13 @@ import Rating from '@/components/DevicePage/rating'
 import {StarFilled} from '@ant-design/icons'
 
 
+
 export const metadata: Metadata = {
   title: 'Страница девайса'
 }
 
 const Device = async ({params}:{params:{type: string, id: number}}) => {
-
+   
     const data = await getDevice(params.id) 
   
    
@@ -31,7 +32,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
         <div className={styles.description} >{device.description}</div>
 <div className={styles.rating}>
   <div>Рейтинг товара: {+rating.toFixed(1) || 0} <StarFilled /> на основе {deviceRating.length} оценок</div>
-<Rating deviceID={deviceID} />
+<Rating  deviceID={deviceID} />
 </div>
         <div className={styles.price} > Цена: {device.price}р</div>
       </div>

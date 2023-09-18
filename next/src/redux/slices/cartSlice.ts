@@ -58,11 +58,22 @@ export const cartSlice = createSlice({
                state.totalPrice = state.items.reduce((sum, item)=>sum + item.price * item.count , 0)
                state.totalCount = state.items.reduce((sum, item)=> sum + item.count,0)
             },
-           
+            replaceItems: (state, action: PayloadAction<any>)=> {
+                state.items = action.payload
+                state.totalPrice = state.items.reduce((sum, item)=>sum + item.price * item.count , 0)
+                state.totalCount = state.items.reduce((sum, item)=> sum + item.count,0)
+            },
+
+
+           clearItems: (state)=> {
+            state.items = [];
+            state.totalPrice = 0;
+            state.totalCount = 0;
+           }
        }
        
 
 })
 
-export const {addItem, minusItem, removeItem} = cartSlice.actions
+export const {addItem, minusItem, removeItem, replaceItems, clearItems} = cartSlice.actions
 export default cartSlice.reducer

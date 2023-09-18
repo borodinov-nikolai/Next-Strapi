@@ -46,6 +46,12 @@
     },
     "deviceRating": {
       "type": "decimal"
+    },
+    "type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::t-y.t-y",
+      "inversedBy": "devices"
     }
   }
 }

@@ -15,7 +15,6 @@ const Rating = ({deviceID}: {deviceID: number}) => {
      const [loaded, setLoaded] = React.useState<boolean>(false)
      const {id} = useAppSelector((state)=> state.user)
     
-    
      React.useEffect(()=> {
       const getRating = async ()=> {
         const res = await getUserRatings(deviceID, id)

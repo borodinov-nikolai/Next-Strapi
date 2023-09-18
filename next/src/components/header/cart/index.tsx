@@ -1,10 +1,10 @@
 'use client'
 import styles from './Cart.module.scss'
 import React, { useState } from 'react';
-import {Badge, Button, Divider, Drawer, InputNumber } from 'antd';
+import {Badge, Button, Divider, Drawer, InputNumber,  notification } from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
+import { addItem, minusItem, removeItem, replaceItems } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
 import { addToCart } from '@/services/clientApi';
@@ -17,6 +17,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
   const [openChildDrawer, setOpenChildDrawer] = useState(false);
   const dispatch = useAppDispatch();
   const {items, totalCount, totalPrice} = useAppSelector((state)=> state.cart)
+  const [api, contextHolder] = notification.useNotification();
 
   const showDrawer = () => {
     setOpen(true);
@@ -35,6 +36,14 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 
 
+  const openNotification = () => {
+    api.success({
+      message: `Заявка отправлена!`,
+      description: <div>Менеджер свяжется с вами в ближайшее время</div>,
+      placement:'topRight',
+    });
+  };
+
 
 
   React.useEffect(()=> {
@@ -42,14 +51,13 @@ const Cart: React.FC<{user:any}> = ({user}) => {
     const clientItems = localStorage.getItem('cartItems')
 
      if(serverItems?.length > 0) {
-      serverItems.map((item:any)=> {
-        dispatch(addItem(item))
-      })
+     
+        dispatch(replaceItems(serverItems))
      } else if(clientItems){
       const  parsedClienItems = JSON.parse(clientItems)
-      parsedClienItems.map((item: any)=>{
-        dispatch(addItem(item))
-      } )
+     
+        dispatch(replaceItems(parsedClienItems))
+       
         
      }
 
@@ -81,7 +89,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
   <Button onClick={showChildDrawer} >заказать </Button>
  <Drawer  title="Оформить заказ" placement="right" open={openChildDrawer} onClose={onCloseChildDrawer} >
   
-   <OrderForm  close={onClose} close1={onCloseChildDrawer} />
+   <OrderForm  close={onClose} closeChild={onCloseChildDrawer} openNotification = {openNotification} />
  </Drawer>
  </div> 
 
@@ -90,6 +98,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
   return (
     <div >
+      {contextHolder}
         <Badge size='small' count={totalCount}>
            <ShoppingCartOutlined style={{fontSize: '24px'}}  onClick={showDrawer}  />
            </Badge>
@@ -97,7 +106,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 
 
-           <Drawer className={styles.drawer} footer={drawerFooter} title={ <div className={styles.header}>Корзина</div> } placement="right" onClose={onClose} open={open}>
+           <Drawer className={styles.drawer} footer={items.length>0?drawerFooter:null} title={ <div className={styles.header}>Корзина</div> } placement="right" onClose={onClose} open={open}>
                {items.map((item:any)=>{
                  return(
                    <div key={item.id}>
