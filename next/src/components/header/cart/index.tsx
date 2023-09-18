@@ -8,6 +8,7 @@ import { addItem, minusItem, removeItem } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
 import { addToCart } from '@/services/clientApi';
+import OrderForm from './orderForm';
 
 
 
@@ -79,8 +80,8 @@ const Cart: React.FC<{user:any}> = ({user}) => {
   const drawerFooter = <div className={styles.footer} > <p>Итого: {totalPrice}</p>
   <Button onClick={showChildDrawer} >заказать </Button>
  <Drawer  title="Оформить заказ" placement="right" open={openChildDrawer} onClose={onCloseChildDrawer} >
-  <div>Имя: <input type="text" /></div>
   
+   <OrderForm  close={onClose} close1={onCloseChildDrawer} />
  </Drawer>
  </div> 
 
