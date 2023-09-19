@@ -64,7 +64,7 @@ const AuthForm: React.FC<Props> = ({registration, setRegistration}) =>{
        </Form.Item>
         <div className={styles.text}> Нет аккаунта? <span onClick={()=> setRegistration(true)}>Зарегистрируйся!</span></div>
           <div style={{display:'flex', justifyContent: 'end'}}>
-            <Button type='primary' style={{marginRight: '-70px'}} onClick={()=>auth(login, password)} >Авторизоваться</Button>
+            <Button type='primary' style={{marginRight: '-70px', marginTop: '20px'}} onClick={()=>auth(login, password)} >Авторизоваться</Button>
             </div>
     </Form>
  ) 

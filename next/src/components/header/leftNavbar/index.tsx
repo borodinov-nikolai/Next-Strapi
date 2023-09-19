@@ -1,7 +1,7 @@
 import React from 'react';
 import {HomeOutlined} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Menu, Space } from 'antd';
+import { Menu} from 'antd';
 import Link from 'next/link';
 import styles from './LeftNavbar.module.scss'
 

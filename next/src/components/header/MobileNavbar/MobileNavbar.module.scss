@@ -1,0 +1,38 @@
+
+
+
+.root {
+    display: block;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    height: 50px;
+    margin: 0 auto;
+    width: 100vw;
+    box-shadow: 0 -2px 8px #00000026;
+    box-sizing: border-box;
+    background-color: white;
+    min-width: 300px;
+
+    .menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+       
+         
+        .item {
+            font-size: 12px;
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+            svg {
+                font-size: 20px !important;
+            }
+        }
+
+    }
+}
+
+

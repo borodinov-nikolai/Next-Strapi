@@ -2,6 +2,7 @@ import LeftNavbar from "./LeftNavbar"
 import styles from './Header.module.scss'
 import Auth from "./auth"
 import Cart from "./cart"
+import MobileNavbar from "./MobileNavbar"
 
 
 
@@ -18,7 +19,10 @@ const Header = ({user}:{user:any}) => {
     <div className="container">
         <div className={styles.root}>
           
-          <LeftNavbar />
+          <div className={styles.leftMenu}>
+            <LeftNavbar />
+          </div>
+
           <div className={styles.rightMenu} >
           
             <Cart user={user} />
@@ -26,8 +30,13 @@ const Header = ({user}:{user:any}) => {
            
             
           <Auth user={user} />
+
+
+            </div>
           
             
+          <div className={styles.mobileNavbar}>
+            <MobileNavbar auth={<Auth user={user}/>} cart={ <Cart user={user} />} />
           </div>
         </div >
     
