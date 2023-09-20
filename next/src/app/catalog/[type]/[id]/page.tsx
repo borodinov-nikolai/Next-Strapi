@@ -5,7 +5,6 @@ import ImageViewer from '@/components/DevicePage/imageViewer'
 import Rating from '@/components/DevicePage/rating'
 import {StarFilled} from '@ant-design/icons'
 import ToCartBtn from '@/components/СatalogPage/ProductCard/toCartBtn'
-import { loadDefaultErrorComponents } from 'next/dist/server/load-components'
 
 
 
