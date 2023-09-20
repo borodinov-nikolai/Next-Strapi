@@ -30,7 +30,8 @@ export const userSlice = createSlice({
         setUser: (state, action: PayloadAction<User>) => {
             state.id = action.payload.id,
             state.username = action.payload.username,
-            state.email = action.payload.email
+            state.email = action.payload.email,
+            state.isAuth = true
 
         }
     }

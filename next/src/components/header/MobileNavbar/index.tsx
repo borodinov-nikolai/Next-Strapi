@@ -1,10 +1,11 @@
 import {HomeOutlined,PhoneOutlined,AppstoreOutlined} from '@ant-design/icons';
 import Link from 'next/link';
 import styles from './MobileNavbar.module.scss'
+import Auth from "./auth"
 
 
 
-const MobileNavbar: React.FC<any> = ({cart, auth}) => {
+const MobileNavbar: React.FC<any> = ({cart, user}) => {
 
 
   return (
@@ -46,8 +47,8 @@ const MobileNavbar: React.FC<any> = ({cart, auth}) => {
       </li>
 <li className={styles.item}>
         <div>
-         {auth}
-          <div>Профиль</div>
+         <Auth user={user}/>
+       
           </div>
       </li>
      

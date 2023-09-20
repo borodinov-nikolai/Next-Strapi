@@ -1,52 +1,70 @@
-import LeftNavbar from "./LeftNavbar"
-import styles from './Header.module.scss'
-import Auth from "./auth"
-import Cart from "./cart"
-import MobileNavbar from "./MobileNavbar"
+import styles from "./Header.module.scss";
+import Auth from "./auth";
+import Cart from "./cart";
+import MobileNavbar from "./MobileNavbar";
+import Link from "next/link";
+import {Html5Outlined} from '@ant-design/icons'
 
-
-
-
-
-
-const Header = ({user}:{user:any}) => {
-
-
-
+const Header = ({ user }: { user: any }) => {
   return (
-
-
     <div className="container">
-        <div className={styles.root}>
-          
-          <div className={styles.leftMenu}>
-            <LeftNavbar />
-          </div>
-
-          <div className={styles.rightMenu} >
-          
-            <Cart user={user} />
-           
-           
-            
-          <Auth user={user} />
+      <div className={styles.root}>
+        
+       
+        <nav className={styles.navbar}>
 
 
-            </div>
+          <ul className={styles.leftBlock}>
+          <li  className={styles.logo}>
+              <Link href="/">
+              <Html5Outlined style={{fontSize: '28px'}} /> 
+              <div style={{fontSize: '20px', fontFamily:'cursive'}} >Техно-Маркет</div>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <div>Главная</div>
+              </Link>
+            </li>
+            <li>
+              <Link href="/catalog/smartphones">
+                <div>Каталог</div>
+              </Link>
+            </li>
+            <li>
+              <Link href="/contacts">
+                <div>Конаткты</div>
+              </Link>
+            </li>
+            <li>
+              <Link href="/about">
+                <div>О нас</div>
+              </Link>
+            </li>
+          </ul>
+       
+
+        <ul className={styles.rightBlock}>
+          <li><Cart user={user} /></li>
+          <li> <Auth user={user} /></li>
           
-            
-          <div className={styles.mobileNavbar}>
-            <MobileNavbar auth={<Auth user={user}/>} cart={ <Cart user={user} />} />
-          </div>
-        </div >
-    
+         
+        </ul>
+
+      
+
+        </nav>
+
+        <div className={styles.mobileNavbar}>
+          <MobileNavbar
+            user={user}
+            cart={<Cart user={user} />}
+          />
         </div>
-   
-       
-           
-       
 
-  )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Header
+export default Header;

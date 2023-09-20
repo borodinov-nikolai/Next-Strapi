@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
-import { Button, Modal, Popconfirm } from 'antd';
-import {LoginOutlined, LogoutOutlined,UserOutlined} from '@ant-design/icons'
+import { Modal, Popconfirm} from 'antd';
+import {LoginOutlined,LogoutOutlined} from '@ant-design/icons'
 import AuthForm from './form';
 import { logout } from '@/services/clientApi';
 
@@ -25,42 +25,54 @@ const Auth: React.FC<any> = ({user}) => {
   
 
   const confirm = (e: React.MouseEvent<HTMLElement>) => {
-      logout()
+       logout()
   };
   
   const cancel = (e: React.MouseEvent<HTMLElement>) => {
-  
+   
   };
 
-<LogoutOutlined />
 
+console.log(user)
 
   return (
     <>
   
-      {!user?
-      <LoginOutlined onClick={showModal} style={{fontSize: '24px', cursor: 'pointer'}}/>
-       :
-       <div style={{display: 'flex', gap: '5px'}} >
-        <div style={{alignSelf:'center'}} >{user.username}</div>
-         <Popconfirm
-         title="Выйти"
-         description="Вы уверены что хотите выйти?"
-         onConfirm={confirm}
-         onCancel={cancel}
-         okText="Да"
-         cancelText="Нет"
-              >
-              <LogoutOutlined style={{fontSize: '24px', cursor: 'pointer'}}/>
-         
-              </Popconfirm>
+
+  {!user?
+  
+
+  <div  onClick={showModal}  >
+       
+       <div>
+         <LoginOutlined style={{fontSize: '24px', cursor: 'pointer'}}/>
        </div>
+       <div>Войти</div>
+     </div> 
 
-      }
+    :
+
+    
+    <Popconfirm
+    title="Выйти"
+    description="Вы уверены что хотите выйти?"
+    onConfirm={confirm}
+    onCancel={cancel}
+    okText="Да"
+    cancelText="Нет"
+  >
+     <div>
+         <LogoutOutlined style={{fontSize: '24px', cursor: 'pointer'}}/>
+       </div>
+       <div>{user.username}</div>
+  </Popconfirm>
+
+}
+      
+    
+
       
 
-      
-   
       <Modal footer={null} title={!registration? "Авторизация" : 'Регистрация'} open={isModalOpen} onCancel={handleCancel}>
        <div style={{margin: '50px 90px 0 0'}}><AuthForm registration={registration} setRegistration={setRegistration}  /></div>
       </Modal>
