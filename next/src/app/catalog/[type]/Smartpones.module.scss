@@ -7,11 +7,13 @@
 
   .grid {
     margin: 0 auto;
+    width: max-content;
     justify-content: start;
     padding-top: 50px;
     display: grid;
     max-width: 1200px;
-    grid-template-columns: repeat(auto-fit, 280px);
+    grid-template-columns: repeat(4, 280px);
+    grid-template-rows: auto;
     gap: 20px;
   }
 
@@ -19,4 +21,42 @@
     display: flex;
     padding: 50px 0 0 0;
   }
+
+
+  @media(max-width: 1200px) {
+
+    .grid {
+      grid-template-columns: repeat(3, 280px);
+      gap: 70px;
+  }
+}
+  @media(max-width: 992px) {
+
+    .grid {
+      grid-template-columns: repeat(2, 280px);
+      gap: 120px;
+  }
+}
+  @media(max-width: 992px) {
+
+    .grid {
+      grid-template-columns: repeat(2, 280px);
+      gap: 10%;
+  }
+}
+
+  @media(max-width: 768px) {
+
+    .grid {
+      grid-template-columns: repeat(2, 280px);
+      gap: 20px;
+  }
+  @media(max-width: 576px) {
+
+    .grid {
+      grid-template-columns: repeat(1, 280px);
+  }
+}
+}
+
 }

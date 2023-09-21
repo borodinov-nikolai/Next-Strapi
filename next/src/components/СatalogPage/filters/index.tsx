@@ -91,13 +91,13 @@ const Filters = ({brandValue, sortValue, pagination}: Props) => {
   return (
     
       <div className={styles.root}>
-        <div>
+        <div className={styles.brands} >
           <Brands brand={brand} value={brandValue} setBrand={setBrand} />
             </div>
-            <div>
+            <div className={styles.search} >
               <Search search={search} setSearch={setSearch} />
             </div>
-            <div>
+            <div className={styles.sort} >
         <Sort value={sortValue} sort={sort} setSort={setSort} />
             </div>
       </div>
