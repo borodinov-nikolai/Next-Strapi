@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import {Badge, Button, Divider, Drawer, InputNumber,  notification } from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { addItem, minusItem, removeItem, replaceItems } from '@/redux/slices/cartSlice';
+import { minusItem, removeItem, replaceItems } from '@/redux/slices/cartSlice';
 import {CloseOutlined} from '@ant-design/icons'
 import Image from 'next/image';
 import { addToCart } from '@/services/clientApi';
@@ -38,7 +38,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
   const openNotification = () => {
     api.success({
-      message: `Заявка отправлена!`,
+      message: `Спасибо за заказ!`,
       description: <div>Менеджер свяжется с вами в ближайшее время</div>,
       placement:'topRight',
     });

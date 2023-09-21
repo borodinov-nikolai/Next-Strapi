@@ -28,14 +28,17 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
   return (
     <div className="container">
         <div  className={styles.root} >
-          <ImageViewer className={styles.imageViewer} device = {device}/>
-         
+          <div className={styles.imageHolder}> 
+            <ImageViewer className={styles.imageViewer} device = {device}/>
+            <div className={styles.rating}>
+              <div>Рейтинг товара: {+rating.toFixed(1) || 0} <StarFilled className={styles.icon} /> на основе {deviceRating.length} оценок</div>
+            <Rating  deviceID={deviceID} />
+            </div>
+          </div>
+
         <h2 className={styles.name} >{device.name}</h2>
         <div className={styles.description} >{device.description}</div>
-<div className={styles.rating}>
-  <div>Рейтинг товара: {+rating.toFixed(1) || 0} <StarFilled className={styles.icon} /> на основе {deviceRating.length} оценок</div>
-<Rating  deviceID={deviceID} />
-</div>
+
         <div className={styles.price} > Цена: {device.price}р</div>
         <ToCartBtn  item={{name:device.name, price:device.price, id:deviceID, image}} />
       </div>

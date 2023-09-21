@@ -27,21 +27,21 @@
 
     .grid {
       grid-template-columns: repeat(3, 280px);
-      gap: 70px;
+      gap: 20px 70px;
   }
 }
   @media(max-width: 992px) {
 
     .grid {
       grid-template-columns: repeat(2, 280px);
-      gap: 120px;
+      gap: 20px 120px;
   }
 }
   @media(max-width: 992px) {
 
     .grid {
       grid-template-columns: repeat(2, 280px);
-      gap: 10%;
+      gap: 20px 50px;
   }
 }
 
