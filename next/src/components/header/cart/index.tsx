@@ -47,36 +47,40 @@ const Cart: React.FC<{user:any}> = ({user}) => {
 
 
   React.useEffect(()=> {
-    const serverItems = user?.cart?.items?.items
-    const clientItems = localStorage.getItem('cartItems')
 
-     if(serverItems?.length > 0) {
-     
-        dispatch(replaceItems(serverItems))
-     } else if(clientItems){
-      const  parsedClienItems = JSON.parse(clientItems)
-     
-        dispatch(replaceItems(parsedClienItems))
+    const loadItems = async ()=> {
+      const serverItems = user?.cart?.items?.items
+      const clientItems = localStorage.getItem('cartItems')
+  
+       if(serverItems?.length > 0) {
        
+          dispatch(replaceItems(serverItems))
+       } else if(clientItems){
+        const parsedClienItems = await JSON.parse(clientItems)
+        dispatch(replaceItems(parsedClienItems))
         
-     }
+          
+        }
+        
+    }
+   
+  loadItems()
 
+    },[])
+    
+    
+    
 
-  },[])
 
 
 
   React.useEffect(()=> {
 
-    
-    localStorage.setItem('cartItems', JSON.stringify(items))
+     if (items.length > 0) {
+
+       localStorage.setItem('cartItems', JSON.stringify(items))
+     }
      
-  
-  if(user) {
-  
- 
-    addToCart(user, items)
-  }
    
 
   },[items])

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const Contacts = () => {
   return (
-    <div>Contacts</div>
+    <div className='container'>Contacts</div>
   )
 }
 

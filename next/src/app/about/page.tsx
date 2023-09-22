@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const About = () => {
   return (
-    <div>About</div>
+    <div className='container' >About</div>
   )
 }
 

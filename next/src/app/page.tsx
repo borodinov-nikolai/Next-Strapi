@@ -11,7 +11,9 @@ export default function Home() {
     <main className={styles.root}>
       
        
-          <div className={styles.carousel}><CarouselAnt/></div>
+         
+            <div className={styles.carousel}><CarouselAnt/></div>
+   
 
           
    
