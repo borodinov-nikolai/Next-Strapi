@@ -22,7 +22,7 @@ const Smartphones = async ({searchParams}:any) => {
   
 
 
-  interface Device {
+  type Device = {
     id: number,
     attributes: {
       name: string,
