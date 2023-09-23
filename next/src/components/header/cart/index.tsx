@@ -57,6 +57,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
           dispatch(replaceItems(serverItems))
        } else if(clientItems){
         const parsedClienItems = await JSON.parse(clientItems)
+
         dispatch(replaceItems(parsedClienItems))
         
           
@@ -81,7 +82,10 @@ const Cart: React.FC<{user:any}> = ({user}) => {
        localStorage.setItem('cartItems', JSON.stringify(items))
      }
      
-   
+   if (user) {
+    addToCart(user, items)
+   }
+
 
   },[items])
 

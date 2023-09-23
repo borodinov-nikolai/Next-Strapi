@@ -1,13 +1,13 @@
 'use client'
 import React, { useState } from 'react';
-import { Button, Modal, Popconfirm } from 'antd';
+import { Modal, Popconfirm } from 'antd';
 import {LoginOutlined, LogoutOutlined,UserOutlined} from '@ant-design/icons'
 import AuthForm from './form';
 import { logout } from '@/services/clientApi';
 
 
 
-const Auth: React.FC<any> = ({user}) => {
+const Auth = ({user}:any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [registration, setRegistration] = React.useState<boolean>(false)
 
@@ -17,20 +17,22 @@ const Auth: React.FC<any> = ({user}) => {
   };
 
 
-  const handleCancel = () => {
+  const handleCancel : ((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined = (e) => {
     setIsModalOpen(false);
   };
 
 
   
 
-  const confirm = (e: React.MouseEvent<HTMLElement>) => {
+  const confirm :(e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (e)=> {
       logout()
   };
+
+  const cancel: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (e)=> {
+    
+};
+
   
-  const cancel = (e: React.MouseEvent<HTMLElement>) => {
-  
-  };
 
 <LogoutOutlined />
 
@@ -46,8 +48,8 @@ const Auth: React.FC<any> = ({user}) => {
          <Popconfirm
          title="Выйти"
          description="Вы уверены что хотите выйти?"
-         onConfirm={confirm}
-         onCancel={cancel}
+         onConfirm={(e)=> confirm(e)}
+         onCancel={(e)=> cancel(e)}
          okText="Да"
          cancelText="Нет"
               >
@@ -61,7 +63,7 @@ const Auth: React.FC<any> = ({user}) => {
 
       
    
-      <Modal footer={null} title={!registration? "Авторизация" : 'Регистрация'} open={isModalOpen} onCancel={handleCancel}>
+      <Modal footer={null} title={!registration? "Авторизация" : 'Регистрация'} open={isModalOpen} onCancel={(e)=>handleCancel(e)}>
        <div style={{margin: '50px 90px 0 0'}}><AuthForm registration={registration} setRegistration={setRegistration}  /></div>
       </Modal>
     </>
