@@ -5,6 +5,7 @@ import ImageViewer from '@/components/DevicePage/imageViewer'
 import Rating from '@/components/DevicePage/rating'
 import {StarFilled} from '@ant-design/icons'
 import ToCartBtn from '@/components/СatalogPage/ProductCard/toCartBtn'
+import Comments from '@/components/DevicePage/Сomments'
 
 
 
@@ -35,7 +36,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
             <Rating  deviceID={deviceID} />
             </div>
           </div>
-
+          <div className={styles.comments}><Comments/></div>
         <h2 className={styles.name} >{device.name}</h2>
         <div className={styles.description} >{device.description}</div>
 
