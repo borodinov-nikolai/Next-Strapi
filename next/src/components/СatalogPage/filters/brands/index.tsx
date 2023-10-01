@@ -4,6 +4,8 @@ import React from 'react'
 
 
 
+//Временно захардкодил
+
 const brands : {value: string, name: string}[] = [{value: 'all', name:'Все'},{value: 'Samsung', name:'Samsung'},{value: 'Apple', name:'Apple'},{value:'OnePlus', name:'OnePlus'},{value: 'Honor', name:'Honor'}, {value: 'Google', name: 'Google'} ]
 
 
