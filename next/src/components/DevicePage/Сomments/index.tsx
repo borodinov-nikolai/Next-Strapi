@@ -1,14 +1,26 @@
+'use client'
 import React from 'react'
 import styles from './Comments.module.scss'
 import AddComment from './addComment'
 
 
 
+
 interface Props {
-  deviceID: number
+  deviceID: number,
+  comments: {
+    data: {
+      attributes: {
+        text: string
+      }
+    }
+  }
 }
 
-const Comments:React.FC<Props> = ({deviceID}) => {
+const Comments:React.FC<Props> = async ({deviceID, comments}) => {
+
+
+  
   return (
     <div className={styles.root} >
       <div className={styles.input} > 

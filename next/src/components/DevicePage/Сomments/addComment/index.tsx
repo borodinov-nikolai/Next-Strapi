@@ -21,7 +21,7 @@ const AddComment: React.FC<Props> = ({deviceID}) => {
     setCommentText(e.target.value);
   };
   
-console.log(deviceID, user.id, commentText)
+  
    return (
   <div className={styles.root}>
     <TextArea

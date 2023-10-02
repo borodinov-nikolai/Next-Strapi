@@ -38,4 +38,3 @@ export const getDevices = async (props:any) => {
       console.error(e)
     }
   }
-

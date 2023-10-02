@@ -25,7 +25,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
     
     const rating = deviceRating.reduce((sum, item)=> sum + item.attributes.value, 0)/deviceRating.length
   
-   
+  
   return (
     <div className="container">
         <div  className={styles.root} >
@@ -36,7 +36,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
             <Rating  deviceID={deviceID} />
             </div>
           </div>
-          <div className={styles.comments}><Comments deviceID={deviceID}/></div>
+          <div className={styles.comments}><Comments comments={device.comments} deviceID={deviceID}/></div>
         <h2 className={styles.name} >{device.name}</h2>
         <div className={styles.description} >{device.description}</div>
 
