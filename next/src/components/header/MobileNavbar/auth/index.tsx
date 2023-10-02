@@ -33,7 +33,7 @@ const Auth: React.FC<any> = ({user}) => {
   };
 
 
-console.log(user)
+
 
   return (
     <>

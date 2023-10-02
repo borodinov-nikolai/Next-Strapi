@@ -109,9 +109,27 @@ export const getUserRatings = async (deviceID : number, userID: number| null) =>
 
       return res
     } catch(e) {
-      console.log(e)
+      console.error(e)
     }
     
   }
  
+}
+
+
+export const addComment = async (commentText:string, deviceID:number, userID:number|null)=> {
+  try {
+    if(userID) {
+      console.log(userID)
+      $apiClient_NEXT.post('/comment', {
+        text: commentText,
+        device: deviceID,
+        user: userID
+       })
+     }
+  } catch(e) {
+    console.error(e)
+  }
+     
+     
 }

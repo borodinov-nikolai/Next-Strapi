@@ -52,6 +52,12 @@
       "relation": "manyToOne",
       "target": "api::t-y.t-y",
       "inversedBy": "devices"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "device"
     }
   }
 }

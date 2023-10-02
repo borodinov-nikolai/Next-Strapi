@@ -33,7 +33,7 @@ export async function POST(request: Request) {
               }
              })
       
-                console.log(deviceRating)
+        
    }
         
 
@@ -81,7 +81,7 @@ export async function PUT(request: Request) {
         }
        })
 
-          console.log(deviceRating)
+      
 }
   
      return new Response('ok', {

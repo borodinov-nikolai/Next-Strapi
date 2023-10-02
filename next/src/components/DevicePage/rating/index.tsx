@@ -21,7 +21,7 @@ const Rating = ({deviceID}: {deviceID: number}) => {
         setServerRating(res?.data?.data[0]?.attributes.value)
         setRatingID(res?.data?.data[0]?.id)
         setLoaded(true)
-        console.log(res?.data?.data[0]?.id)
+   
       }
       getRating()
      },[id, rating])
