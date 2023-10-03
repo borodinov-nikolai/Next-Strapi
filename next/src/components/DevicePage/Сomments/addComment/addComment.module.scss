@@ -6,6 +6,9 @@
     display: flex;
     flex-direction: column;
 
+    .inputTitle {
+        margin-bottom: 20px;
+    }
 
    .textArea {
     height: 100px;
@@ -15,4 +18,38 @@
         font-size: 18px;
         margin: 25px 0 0 auto;
     }
+
+ 
+.comment {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgb(246, 244, 244);
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: left;
+    align-items: center;
+
+    .deleteBtn {
+        padding: 0px;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        margin: 0 0 0 -10px;
+        font-size: 18px;
+    }
+    .editBtn {
+        padding: 0px;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        margin: 0 0 0 auto;
+        font-size: 18px;
+    }
+}
+
+
+.userName {
+    font-size: 18px;
+}
 }

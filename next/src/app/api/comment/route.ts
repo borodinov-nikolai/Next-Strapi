@@ -7,15 +7,35 @@ export async function POST(request: Request) {
    
     try {
         const {text, device, user} = await request.json();
-        console.log(text, device, user)
+      
 
-        $apiServer_CMS.post('/comments', {
-            data: {
-                text: String(text),
-                device: String(device),
-                users_permissions_user: String(user)
+         const comment = await $apiServer_CMS.get('/comments', {
+            params: {
+                filters: {
+                    device: String(device),
+                    users_permissions_user: String(user)
+                }
             }
-        })
+         })
+     
+          
+         if(comment.data.data.length < 1) {
+            $apiServer_CMS.post('/comments', {
+                data: {
+                    text: String(text),
+                    device: String(device),
+                    users_permissions_user: String(user)
+                }
+            })
+         } else {
+            $apiServer_CMS.put(`/comments/${comment.data.data[0].id}`, {
+                data: {
+                    text: String(text)
+                }
+            })
+         }
+
+       
          
          return new Response('ok', {
             status: 200
@@ -25,4 +45,12 @@ export async function POST(request: Request) {
         console.error(e)
     }
    
+}
+
+
+export async function DELETE(request: Request) {
+    const {device, user} = await request.json();
+
+    
+
 }

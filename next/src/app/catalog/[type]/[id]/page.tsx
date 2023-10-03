@@ -38,7 +38,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
             <Rating  deviceID={deviceID} />
             </div>
           </div>
-          <div className={styles.comments}><Comments comments={comments.data} deviceID={deviceID}/></div>
+          <div className={styles.comments}><Comments comments={comments?.data} deviceID={deviceID}/></div>
         <h2 className={styles.name} >{device.name}</h2>
         <div className={styles.description} >{device.description}</div>
 

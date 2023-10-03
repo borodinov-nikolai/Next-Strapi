@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Comments.module.scss'
 import AddComment from './addComment'
+import { getUser } from '@/services/serverApi'
 
 
 
@@ -25,20 +26,19 @@ interface Props {
 
 const Comments:React.FC<Props> = async ({deviceID, comments}) => {
 
+  const user = await getUser()
 
-  
   return (
     <div className={styles.root} >
       <div className={styles.input} > 
-      <div className={styles.inputTitle} >Оставить отзыв:</div>
-       <AddComment deviceID={deviceID} />
+    
+       <AddComment deviceID={deviceID} comments={comments} user = {user} />
         <div className={styles.title} >
             Отзывы:
         </div>
       </div>
-          {comments.map((item)=> {
+          {comments?.map((item)=> {
             const username = item?.attributes?.users_permissions_user?.data.attributes.username;
-            console.log(username)
             return <div key={item.id} className={styles.comment}>
                <div className={styles.userName}>{username}:</div>
                <div>{item?.attributes?.text}</div>

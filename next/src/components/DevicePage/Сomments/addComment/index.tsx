@@ -3,17 +3,22 @@ import React from "react";
 import { Button, Input } from "antd";
 import styles from "./addComment.module.scss";
 import { addComment } from "@/services/clientApi";
-import { useAppSelector } from "@/redux/hooks";
+import {EditOutlined, DeleteOutlined} from '@ant-design/icons'
+
 
 const { TextArea } = Input;
 
 interface Props {
-  deviceID: number
+  deviceID: number,
+  comments:any,
+  user: any
 }
 
-const AddComment: React.FC<Props> = ({deviceID}) => {
+const AddComment: React.FC<Props> = ({deviceID, comments, user}) => {
    const[commentText, setCommentText] = React.useState<string>('');
-   const user = useAppSelector((state)=> state.user)
+   const[edit, setEdit] = React.useState<boolean>(false);
+  console.log(user)
+   const userComment = comments?.find((item:any)=> item.attributes.users_permissions_user.data.id === user?.id)
 
    const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,19 +26,37 @@ const AddComment: React.FC<Props> = ({deviceID}) => {
     setCommentText(e.target.value);
   };
   
+  if(!user?.id) {
+    return <div>Авторизуйтесь чтобы оставлять отзывы</div>
+  } 
+
+  if(userComment && !edit) {
+    return (<div className={styles.root}>
+      <div>Ваш отзыв:</div>
+      <div className={styles.comment} >
+        <div className={styles.userName} >{user.username}:</div>
+         <div>{userComment.attributes.text}</div>
+         <Button onClick={()=>setEdit(true)} className={styles.editBtn} ><EditOutlined /></Button>
+         <Button onClick={()=>setEdit(true)} className={styles.deleteBtn} ><DeleteOutlined /></Button>
+         </div>
+    </div>)
+  }
+    return (
+      <div className={styles.root}>
+          <div className={styles.inputTitle} >Оставить отзыв:</div>
+        <TextArea
+          className={styles.textArea}
+          size="large"
+          showCount
+          maxLength={200}
+          onChange={onChange}
+          defaultValue={userComment.attributes.text}
+         
+        />
+        <Button onClick={()=> {addComment(commentText, deviceID, user.id ); window.location.reload()}} className={styles.button}>Отправить</Button>
+      </div>)
   
-   return (
-  <div className={styles.root}>
-    <TextArea
-      className={styles.textArea}
-      size="large"
-      showCount
-      maxLength={200}
-      onChange={onChange}
-      value={commentText}
-    />
-    <Button onClick={()=> {addComment(commentText, deviceID, user.id ); window.location.reload()}} className={styles.button}>Отправить</Button>
-  </div>)
+
 };
 
 export default AddComment;
