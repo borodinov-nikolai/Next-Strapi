@@ -38,3 +38,13 @@ export const getDevices = async (props:any) => {
       console.error(e)
     }
   }
+
+  export const getComments = async (id:number)=> {
+   
+    try {
+      const res = await $apiServer_CMS.get(`/comments?filters[device][id][$eq]=${id}&populate=*`)
+      return res.data
+    } catch(e) {
+      console.error(e)
+    }
+  }

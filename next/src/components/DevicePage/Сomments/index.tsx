@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import styles from './Comments.module.scss'
 import AddComment from './addComment'
@@ -9,13 +8,20 @@ import AddComment from './addComment'
 interface Props {
   deviceID: number,
   comments: {
-    data: {
+    id: number,
       attributes: {
-        text: string
+        text: string,
+        users_permissions_user: {
+          data: {
+            attributes: {
+              username: string
+            }
+          }
+        }
       }
-    }
+    }[]
   }
-}
+
 
 const Comments:React.FC<Props> = async ({deviceID, comments}) => {
 
@@ -30,15 +36,14 @@ const Comments:React.FC<Props> = async ({deviceID, comments}) => {
             Отзывы:
         </div>
       </div>
-        <div className={styles.comment} >
-          <div className={styles.userName}>User:</div> <div className={styles.text} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas alias ipsam odit similique in voluptatibus impedit hic asperiores fugiat natus voluptate nam possimus ex quae officia, nulla sunt. Nemo, laudantium.</div>
-        </div>
-        <div className={styles.comment} >
-          <div className={styles.userName}>User:</div> <div className={styles.text} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas alias ipsam odit similique in voluptatibus impedit hic asperiores fugiat natus voluptate nam possimus ex quae officia, nulla sunt. Nemo, laudantium.</div>
-        </div>
-        <div className={styles.comment} >
-          <div className={styles.userName}>User:</div> <div className={styles.text} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas alias ipsam odit similique in voluptatibus impedit hic asperiores fugiat natus voluptate nam possimus ex quae officia, nulla sunt. Nemo, laudantium.</div>
-        </div>
+          {comments.map((item)=> {
+            const username = item?.attributes?.users_permissions_user?.data.attributes.username;
+            console.log(username)
+            return <div key={item.id} className={styles.comment}>
+               <div className={styles.userName}>{username}:</div>
+               <div>{item?.attributes?.text}</div>
+               </div>
+          })}
     
     </div>
   )

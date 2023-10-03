@@ -1,4 +1,4 @@
-import { getDevice} from '@/services/serverApi'
+import { getComments, getDevice} from '@/services/serverApi'
 import { Metadata } from 'next'
 import styles from './Device.module.scss'
 import ImageViewer from '@/components/DevicePage/imageViewer'
@@ -9,6 +9,7 @@ import Comments from '@/components/DevicePage/Сomments'
 
 
 
+
 export const metadata: Metadata = {
   title: 'Страница девайса'
 }
@@ -16,8 +17,9 @@ export const metadata: Metadata = {
 const Device = async ({params}:{params:{type: string, id: number}}) => {
    
     const data = await getDevice(params.id) 
-  
-   
+    const comments = await getComments(params.id)
+
+    
     const device = data?.data?.attributes
     const deviceID = data?.data?.id
     const deviceRating : {attributes:{value:number}}[] = device?.ratings?.data
@@ -36,7 +38,7 @@ const Device = async ({params}:{params:{type: string, id: number}}) => {
             <Rating  deviceID={deviceID} />
             </div>
           </div>
-          <div className={styles.comments}><Comments comments={device.comments} deviceID={deviceID}/></div>
+          <div className={styles.comments}><Comments comments={comments.data} deviceID={deviceID}/></div>
         <h2 className={styles.name} >{device.name}</h2>
         <div className={styles.description} >{device.description}</div>
 

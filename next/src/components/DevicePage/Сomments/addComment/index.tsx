@@ -32,7 +32,7 @@ const AddComment: React.FC<Props> = ({deviceID}) => {
       onChange={onChange}
       value={commentText}
     />
-    <Button onClick={()=> addComment(commentText, deviceID, user.id )} className={styles.button}>Отправить</Button>
+    <Button onClick={()=> {addComment(commentText, deviceID, user.id ); window.location.reload()}} className={styles.button}>Отправить</Button>
   </div>)
 };
 
