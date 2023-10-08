@@ -33,12 +33,12 @@ const Comments:React.FC<Props> = async ({deviceID, comments}) => {
       <div className={styles.input} > 
     
        <AddComment deviceID={deviceID} comments={comments} user = {user} />
-        <div className={styles.title} >
+       {comments.length > 0 && <div className={styles.title} >
             Отзывы:
-        </div>
+        </div>}
       </div>
           {comments?.map((item)=> {
-            const username = item?.attributes?.users_permissions_user?.data.attributes.username;
+            const username = item?.attributes?.users_permissions_user?.data?.attributes?.username;
             return <div key={item.id} className={styles.comment}>
                <div className={styles.userName}>{username}:</div>
                <div>{item?.attributes?.text}</div>

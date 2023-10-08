@@ -2,9 +2,9 @@
 import React from "react";
 import { Button, Input } from "antd";
 import styles from "./addComment.module.scss";
-import { addComment } from "@/services/clientApi";
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons'
-
+import { addComment, removeComment } from "@/services/clientApi";
+import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import { useRouter } from 'next/navigation';
 
 const { TextArea } = Input;
 
@@ -17,8 +17,8 @@ interface Props {
 const AddComment: React.FC<Props> = ({deviceID, comments, user}) => {
    const[commentText, setCommentText] = React.useState<string>('');
    const[edit, setEdit] = React.useState<boolean>(false);
-  console.log(user)
-   const userComment = comments?.find((item:any)=> item.attributes.users_permissions_user.data.id === user?.id)
+   const router = useRouter();
+   const userComment = comments?.find((item:any)=> item?.attributes?.users_permissions_user?.data?.id === user?.id)
 
    const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,7 +37,7 @@ const AddComment: React.FC<Props> = ({deviceID, comments, user}) => {
         <div className={styles.userName} >{user.username}:</div>
          <div>{userComment.attributes.text}</div>
          <Button onClick={()=>setEdit(true)} className={styles.editBtn} ><EditOutlined /></Button>
-         <Button onClick={()=>setEdit(true)} className={styles.deleteBtn} ><DeleteOutlined /></Button>
+         <Button onClick={()=>{removeComment(deviceID, user.id, router)}} className={styles.deleteBtn} ><DeleteOutlined /></Button>
          </div>
     </div>)
   }
@@ -50,10 +50,10 @@ const AddComment: React.FC<Props> = ({deviceID, comments, user}) => {
           showCount
           maxLength={200}
           onChange={onChange}
-          defaultValue={userComment.attributes.text}
+          defaultValue={userComment?.attributes.text}
          
         />
-        <Button onClick={()=> {addComment(commentText, deviceID, user.id ); window.location.reload()}} className={styles.button}>Отправить</Button>
+        <Button onClick={()=> {addComment(commentText, deviceID, user.id, router );setEdit(false)}} className={styles.button}>Отправить</Button>
       </div>)
   
 

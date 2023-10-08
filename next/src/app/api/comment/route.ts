@@ -17,7 +17,19 @@ export async function POST(request: Request) {
                 }
             }
          })
+
+
+         if(!text) {
+            $apiServer_CMS.delete( `/comments/${comment.data.data[0].id}`, {
+                
+            })
+            console.log('work')
+         }
      
+    
+
+
+
           
          if(comment.data.data.length < 1) {
             $apiServer_CMS.post('/comments', {
@@ -48,9 +60,3 @@ export async function POST(request: Request) {
 }
 
 
-export async function DELETE(request: Request) {
-    const {device, user} = await request.json();
-
-    
-
-}

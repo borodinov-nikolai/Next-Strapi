@@ -1,16 +1,17 @@
 'use client'
 import React, { useState } from 'react';
 import { Modal, Popconfirm } from 'antd';
-import {LoginOutlined, LogoutOutlined,UserOutlined} from '@ant-design/icons'
+import {LoginOutlined, LogoutOutlined} from '@ant-design/icons'
 import AuthForm from './form';
 import { logout } from '@/services/clientApi';
+import {useRouter} from 'next/navigation'
 
 
 
 const Auth = ({user}:any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [registration, setRegistration] = React.useState<boolean>(false)
-
+  const router = useRouter();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -25,7 +26,8 @@ const Auth = ({user}:any) => {
   
 
   const confirm :(e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (e)=> {
-      logout()
+      logout(router);
+    
   };
 
   const cancel: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (e)=> {
@@ -64,7 +66,7 @@ const Auth = ({user}:any) => {
       
    
       <Modal footer={null} title={!registration? "Авторизация" : 'Регистрация'} open={isModalOpen} onCancel={(e)=>handleCancel(e)}>
-       <div style={{margin: '50px 90px 0 0'}}><AuthForm registration={registration} setRegistration={setRegistration}  /></div>
+       <div style={{margin: '50px 90px 0 0'}}><AuthForm registration={registration} setRegistration={setRegistration} setIsModalOpen={setIsModalOpen} /></div>
       </Modal>
     </>
   );

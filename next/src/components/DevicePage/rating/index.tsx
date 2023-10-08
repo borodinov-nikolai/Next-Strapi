@@ -3,28 +3,32 @@ import { useAppSelector } from '@/redux/hooks';
 import { addRaiting, getUserRatings } from '@/services/clientApi';
 import { Rate} from 'antd'
 import React from 'react'
+import {useRouter} from 'next/navigation'
 
 
+interface Props {
+  deviceID: number,
+  user: any
+}
 
-
-
-const Rating = ({deviceID}: {deviceID: number}) => {
+const Rating : React.FC<Props> = ({deviceID, user}) => {
      const [rating, setRating] = React.useState<number>(0)
      const [serverRating, setServerRating] = React.useState<number>(0)
      const [ratingID, setRatingID] = React.useState<number>()
      const [loaded, setLoaded] = React.useState<boolean>(false)
-     const {id} = useAppSelector((state)=> state.user)
-    
+     const router = useRouter();
+
+
      React.useEffect(()=> {
       const getRating = async ()=> {
-        const res = await getUserRatings(deviceID, id)
+        const res = await getUserRatings(deviceID, user?.id)
         setServerRating(res?.data?.data[0]?.attributes.value)
         setRatingID(res?.data?.data[0]?.id)
-        setLoaded(true)
+        // setLoaded(true)
    
       }
       getRating()
-     },[id, rating])
+     },[user?.id, rating])
 
      
 
@@ -32,18 +36,18 @@ const Rating = ({deviceID}: {deviceID: number}) => {
      
      
 
-      if (!loaded) {
-       return <div></div>
-      }
+      // if (!loaded) {
+      //  return <div></div>
+      // }
 
-      if (!id && loaded) {
+      if (!user) {
         return <div style={{marginTop: '40px', fontSize: '18px '}} >Авторизуйтесь чтобы ставить оценку</div>
        }
 
   return (
     <div style={{fontSize: '18px', marginTop: '20px'}}>
       Оцените товар: 
-    <Rate allowClear={false}  style={{fontSize: '50px'}} onChange={(e:number)=>{ setRating(e), addRaiting(e, deviceID, id, ratingID, rating, loaded)}}  value={rating? rating: serverRating} defaultValue={0} />
+    <Rate allowClear={false}  style={{fontSize: '50px'}} onChange={(e:number)=>{ setRating(e), addRaiting(e, deviceID, user?.id, ratingID, rating, loaded, router)}}  value={rating? rating: serverRating} defaultValue={0} />
     </div>
   )
 }
