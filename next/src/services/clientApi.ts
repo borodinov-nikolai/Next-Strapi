@@ -74,7 +74,7 @@ export const register = async (login:string, email:string, password:string, setS
 
   export const addRaiting = async (e:number, deviceID:number, userID:number|null, ratingID:number|undefined, rating: number, loaded: boolean, router: AppRouterInstance)=> {
     if (userID && !ratingID && !rating ) {
-      $apiClient_NEXT.post('/rating', {
+      await $apiClient_NEXT.post('/rating', {
         value: e,
         device: deviceID,
         users_permissions_user: userID
@@ -83,7 +83,7 @@ export const register = async (login:string, email:string, password:string, setS
    )
    router.refresh()
     } else if(ratingID) {
-      $apiClient_NEXT.put('/rating', {
+     await $apiClient_NEXT.put('/rating', {
         value: e,
         id: ratingID,
         device: deviceID
@@ -130,7 +130,7 @@ export const getUserRatings = async (deviceID : number, userID: number| null) =>
 export const addComment = async (commentText:string, deviceID:number, userID:number|null, router:AppRouterInstance)=> {
   try {
     if(userID) {
-      $apiClient_NEXT.post('/comment', {
+      await $apiClient_NEXT.post('/comment', {
         text: commentText,
         device: deviceID,
         user: userID
@@ -147,7 +147,7 @@ export const addComment = async (commentText:string, deviceID:number, userID:num
 
 export const removeComment = async (deviceID:number, userID:number|null, router: AppRouterInstance)=> {
   try {
-    $apiClient_NEXT.post('/comment', {
+    await $apiClient_NEXT.post('/comment', {
       device: deviceID,
       user: userID
     })

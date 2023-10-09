@@ -26,10 +26,14 @@ const Header = ({ user }: { user: any }) => {
                 <div>Главная</div>
               </Link>
             </li>
-            <li>
+            <li className={styles.catalog} >
               <Link href="/catalog/smartphones">
                 <div>Каталог</div>
               </Link>
+             <ul className={styles.catalog_submenu} >
+              <li>Смартфоны</li>
+              <li>Планшеты</li>
+             </ul>
             </li>
             <li>
               <Link href="/contacts">
