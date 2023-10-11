@@ -26,14 +26,16 @@ const Header = ({ user }: { user: any }) => {
                 </Link>
               </li>
               <li className={styles.catalog} >
-                <Link href="/catalog/smartphones">
+                <Link href="/catalog">
                   <div>Каталог</div>
                 </Link>
               
          
                    <div className={styles.submenu}>
                      <ul className={styles.submenu_list} >
-                      <li>Смартфоны</li>
+                      <Link href='/catalog/smartphones' >
+                        <li>Смартфоны</li>
+                      </Link>
                       <li>Планшеты</li>
                       <li>Ноутбуки</li>
                       <li>Телевизоры</li>
@@ -42,7 +44,6 @@ const Header = ({ user }: { user: any }) => {
                      </ul>
                    </div>
                
-                     {/* <div className={styles.fade}></div> */}
 
               </li>
               <li>
