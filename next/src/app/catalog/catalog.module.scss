@@ -17,11 +17,35 @@
         row-gap: 101px;
     }
 
-    .menu_item {
+
+    
+
+    .item {
+        cursor: pointer;
+        text-align: center;
         width: 235px;
         height: 223px;
         border-radius: 20px;
-        background-color: #BBBBBB;
-        box-shadow: 3px 3px 4px black;
+        background-color: #f5f5f5;
+        box-shadow: 1px 1px 4px rgb(175, 175, 175);
+        border: 1px solid rgb(194, 194, 194);
+        transition: background-color 0.5s;
+
+        .item_title {
+            margin-top: 21px;
+            font-size: 24px;
+        }
+
+        .item_image {
+            margin-top: 21px;
+            height: 131px;
+            width: auto;
+        }
     }
+
+    .item:hover {
+        background-color: #cfcfcf;
+
+    }
+
 }

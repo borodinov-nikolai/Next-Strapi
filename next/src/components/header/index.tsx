@@ -36,7 +36,9 @@ const Header = ({ user }: { user: any }) => {
                       <Link href='/catalog/smartphones' >
                         <li>Смартфоны</li>
                       </Link>
-                      <li>Планшеты</li>
+                      <Link href='/catalog/pads'>
+                        <li>Планшеты</li>
+                      </Link>
                       <li>Ноутбуки</li>
                       <li>Телевизоры</li>
                       <li>Игровые Консоли</li>
