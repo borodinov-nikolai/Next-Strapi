@@ -1,0 +1,27 @@
+
+
+
+
+.root {
+      
+    padding-top: 200px;
+
+
+    .menu {
+        display: grid;
+        width: 968px;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 131px;
+        row-gap: 101px;
+    }
+
+    .menu_item {
+        width: 235px;
+        height: 223px;
+        border-radius: 20px;
+        background-color: #BBBBBB;
+        box-shadow: 3px 3px 4px black;
+    }
+}
