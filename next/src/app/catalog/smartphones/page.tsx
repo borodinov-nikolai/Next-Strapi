@@ -9,6 +9,7 @@ import { Metadata } from 'next'
 
 
 
+
 export const metadata : Metadata = {
   title: 'Каталог'
 }
@@ -53,7 +54,9 @@ const Smartphones = async ({searchParams}:any) => {
   return (
       <div className='container '>
     <div className={styles.root}>
-      
+    
+
+
           <div className={styles.filters} >
           <Filters pagination={devices?.meta.pagination} sortValue={sort} brandValue={brand}/>
           </div>
