@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { Modal, Popconfirm } from 'antd';
-import {LoginOutlined, LogoutOutlined} from '@ant-design/icons'
+import {LoginOutlined, LogoutOutlined, UserOutlined} from '@ant-design/icons'
 import AuthForm from './form';
 import { logout } from '@/services/clientApi';
 import {useRouter} from 'next/navigation'
@@ -36,7 +36,6 @@ const Auth = ({user}:any) => {
 
   
 
-<LogoutOutlined />
 
 
   return (
@@ -47,17 +46,10 @@ const Auth = ({user}:any) => {
        :
        <div style={{display: 'flex', gap: '5px'}} >
         <div style={{alignSelf:'center'}} >{user.username}</div>
-         <Popconfirm
-         title="Выйти"
-         description="Вы уверены что хотите выйти?"
-         onConfirm={(e)=> confirm(e)}
-         onCancel={(e)=> cancel(e)}
-         okText="Да"
-         cancelText="Нет"
-              >
-              <LogoutOutlined style={{fontSize: '24px', cursor: 'pointer'}}/>
+        
+              <UserOutlined  style={{fontSize: '24px', cursor: 'pointer'}}/>
          
-              </Popconfirm>
+              
        </div>
 
       }
