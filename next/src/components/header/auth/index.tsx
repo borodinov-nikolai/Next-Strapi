@@ -43,12 +43,12 @@ const Auth = ({user}:any) => {
         <div style={{alignSelf:'center'}} >{user.username}</div>
         
              
-                <div onMouseOver={()=>setShowSubmenu(true)} onMouseOut={()=>setShowSubmenu(false)} className={styles.account}>
-                  <div><UserOutlined style={{fontSize: '24px', cursor: 'pointer'}}/></div>
-                  <div className={styles.account_submenu}> 
+                <div onMouseEnter={()=>setShowSubmenu(true)} onMouseLeave={()=>setShowSubmenu(false)} className={styles.account}>
+                  <div ><UserOutlined style={{fontSize: '24px', cursor: 'pointer'}}/></div>
+                  {<div className={!showSubmenu ? styles.account_submenu : styles.account_submenu + ' ' + styles.hover }> 
                   <div>Личный кабинет</div>
                   <div>Выйти</div>
-                   </div>
+                   </div>}
                   </div>
               
          
@@ -63,7 +63,7 @@ const Auth = ({user}:any) => {
       <Modal footer={null} title={!registration? "Авторизация" : 'Регистрация'} open={isModalOpen} onCancel={(e)=>handleCancel(e)}>
        <div style={{margin: '50px 90px 0 0'}}><AuthForm registration={registration} setRegistration={setRegistration} setIsModalOpen={setIsModalOpen} /></div>
       </Modal>
-      { showSubmenu && <div className={styles.fade}></div>}
+      {showSubmenu && <div className={styles.fade}></div>}
     </div>
   );
 };

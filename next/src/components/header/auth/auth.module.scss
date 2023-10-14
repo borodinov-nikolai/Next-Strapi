@@ -13,7 +13,7 @@
 
         .fade {
         position:fixed;
-        top: 0px;
+        top: 51px;
         left: 0px;
         width: 100vw;
         height: 100vh;
@@ -27,14 +27,20 @@
         .account_submenu {
     
             position: absolute;
-            top: 51px;
+            border-top: 1px solid rgba(34, 60, 80, 0.2);
+            top: 50px;
+            height: 0px;
             right: 0px;
-            height: 200px;
             width: 150px;
             z-index: 1000;
             background-color: rgb(255, 255, 255);
+            overflow: hidden;
+            transition: height 0.2s;
           }
-      
+       
+          .hover {
+             height: 200px;
+          }
 
    
 }
