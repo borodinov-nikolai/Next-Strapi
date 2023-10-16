@@ -48,8 +48,10 @@ const Auth = ({user}:any) => {
                   {<div onClick={(e)=> e.stopPropagation()} className={!showSubmenu ? styles.submenu : styles.submenu + ' ' + styles.submenu_hover }> 
 
                   <ul className={!showSubmenu ? styles.submenu_list : styles.submenu_list + ' ' + styles.submenu_list_hover }>
-                    <li>Личный кабинет</li>
-                    <li>Выйти</li>
+                    <Link onClick={()=> setShowSubmenu(false)} href='/account'>
+                      <li className={styles.submenu_item}>Личный кабинет</li>
+                    </Link>
+                    <li onClick={()=>logout(router, setShowSubmenu)} className={styles.submenu_item}>Выйти</li>
                   </ul>
                    </div>}
                   </div>

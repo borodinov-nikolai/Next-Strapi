@@ -82,6 +82,23 @@
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "users_permissions_user"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
     }
   }
 }

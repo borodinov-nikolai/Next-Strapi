@@ -48,10 +48,11 @@ export const register = async (login:string, email:string, password:string, setS
 
 
 
-   export const logout = async (router: AppRouterInstance)=> {
+   export const logout = async (router: AppRouterInstance, setShowSubmenu: React.Dispatch<React.SetStateAction<boolean>>)=> {
     try {
       await $apiClient_NEXT.post('/auth/logout');
       router.refresh();
+      setShowSubmenu(false);
     } catch(e: any) {
       console.error(e)
     }
