@@ -32,7 +32,7 @@ const MobileNavbar: React.FC<any> = ({cart, user}) => {
           </Link>
       </li>
 <li className={styles.item}>
-        <Link href={'/catalog/smartphones'}> 
+        <Link href={'/catalog'}> 
           <div>
           <AppstoreOutlined />
             <div>Каталог</div>
