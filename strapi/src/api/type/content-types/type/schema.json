@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "t_ies",
+  "collectionName": "types",
   "info": {
-    "singularName": "t-y",
-    "pluralName": "t-ies",
-    "displayName": "Type",
-    "description": ""
+    "singularName": "type",
+    "pluralName": "types",
+    "displayName": "Type"
   },
   "options": {
     "draftAndPublish": true
@@ -21,6 +20,12 @@
       "relation": "oneToMany",
       "target": "api::device.device",
       "mappedBy": "type"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::brand.brand",
+      "inversedBy": "types"
     }
   }
 }

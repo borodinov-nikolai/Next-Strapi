@@ -47,17 +47,17 @@
     "deviceRating": {
       "type": "decimal"
     },
-    "type": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::t-y.t-y",
-      "inversedBy": "devices"
-    },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "device"
+    },
+    "type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::type.type",
+      "inversedBy": "devices"
     }
   }
 }

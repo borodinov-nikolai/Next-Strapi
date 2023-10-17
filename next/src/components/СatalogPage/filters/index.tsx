@@ -14,10 +14,21 @@ import { setPage} from '@/redux/slices/filtersSlice'
 interface Props {
   brandValue: string,
   sortValue: string,
-  pagination: any
+  pagination: any,
+  brands: {
+    id: number,
+    attributes: {
+      name: string
+      createdAt: string
+      updatedAt: string
+      publishedAt: string
+    }
+  }[]
+   
+  
 }
 
-const Filters = ({brandValue, sortValue, pagination}: Props) => {
+const Filters : React.FC<Props> = ({brandValue, sortValue, pagination, brands}) => {
    const [brand, setBrand] = React.useState<string>('');
    const [sort, setSort] = React.useState<string>('');
    const [search, setSearch] = React.useState<string>('');
@@ -92,7 +103,7 @@ const Filters = ({brandValue, sortValue, pagination}: Props) => {
     
       <div className={styles.root}>
         <div className={styles.brands} >
-          <Brands brand={brand} value={brandValue} setBrand={setBrand} />
+          <Brands brands={brands} brand={brand} value={brandValue} setBrand={setBrand} />
             </div>
             <div className={styles.search} >
               <Search search={search} setSearch={setSearch} />

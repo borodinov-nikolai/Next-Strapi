@@ -12,7 +12,7 @@ const Account = async () => {
   return (
     <div className={styles.root}>
       <div className='container'>
-        <div className={styles.username} >{user.username}</div>
+        <div className={styles.username} > <span style={{fontSize: '28px'}}>Аккаунт пользователя:</span> {user.username}</div>
         <div className={styles.userinfo} >Личные данные:</div>
        <EditInfo user={user} />
       </div>

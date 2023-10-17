@@ -16,13 +16,34 @@ export const getUser = async()=> {
 
 }
 
-
-
-export const getDevices = async (props:any) => {
+export const getBrands = async (typeName:string)=> {
   try {
-    const query = qs.stringify(props);
-    const res = await $apiServer_CMS.get(`/devices?${query ? query : 'sort=price:asc'}&populate=*`);
+    if(typeName === 'all') {
+      const res = await $apiServer_CMS.get(`/brands`)
+      return res.data.data
+    } else {
+      const res = await $apiServer_CMS.get(`/brands?filters[types][name][$eq]=${typeName}`)
+      return res.data.data
+    }
+   
+  } catch(e) {
+    console.error(e)
+  }
+}
+
+
+export const getDevices = async (searchParams:Record<string,string>, typeParam:string)=> {
+  try {
+    const type = typeParam;
+    const query = qs.stringify(searchParams);
+    if(type === 'all') {
+      const res = await $apiServer_CMS.get(`/devices?${query ? query : 'sort=price:asc'}&populate=*`);
     return res.data
+    } else {
+      const res = await $apiServer_CMS.get(`/devices?filters[type][name][$eq]=${type}&${query ? query : 'sort=price:asc'}&populate=*`);
+      return res.data
+    }
+  
   } catch(e) {
     console.error(e)
   }
@@ -48,3 +69,4 @@ export const getDevices = async (props:any) => {
       console.error(e)
     }
   }
+

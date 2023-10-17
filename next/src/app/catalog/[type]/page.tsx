@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './Smartpones.module.scss'
 import PaginationDevices from '@/components/СatalogPage/pagination'
 import Filters from '@/components/СatalogPage/filters'
-import { getDevices } from '@/services/serverApi'
+import { getBrands, getDevices } from '@/services/serverApi'
 import ClientCardWrapper from '@/components/СatalogPage/ProductCard/clientCardWrapper'
 import { Metadata } from 'next'
 
@@ -14,13 +14,14 @@ export const metadata : Metadata = {
   title: 'Каталог'
 }
 
-const Smartphones = async ({searchParams}:any) => {
+const Smartphones = async ({searchParams, params}:{searchParams: Record<string,string>, params: {type: string}}) => {
     let brand = searchParams['filters[brand][name]']
     const sort = searchParams['sort[0]']
+    const type = params.type
+ console.log(searchParams)
 
-
-  const devices = await getDevices(searchParams);
-  
+  const devices = await getDevices(searchParams, type);
+  const brands = await getBrands(type);
 
 
   type Device = {
@@ -58,7 +59,7 @@ const Smartphones = async ({searchParams}:any) => {
 
 
           <div className={styles.filters} >
-          <Filters pagination={devices?.meta.pagination} sortValue={sort} brandValue={brand}/>
+          <Filters brands={brands}  pagination={devices?.meta.pagination} sortValue={sort} brandValue={brand}/>
           </div>
 
 

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
-import { Modal, Popconfirm } from 'antd';
-import {LoginOutlined, LogoutOutlined, UserOutlined} from '@ant-design/icons'
+import { Modal } from 'antd';
+import {LoginOutlined, UserOutlined} from '@ant-design/icons'
 import AuthForm from './form';
 import { logout } from '@/services/clientApi';
 import {useRouter} from 'next/navigation'

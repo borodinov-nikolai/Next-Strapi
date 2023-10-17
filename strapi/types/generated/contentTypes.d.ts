@@ -713,6 +713,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::device.device'
     >;
+    types: Attribute.Relation<
+      'api::brand.brand',
+      'manyToMany',
+      'api::type.type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -826,11 +831,15 @@ export interface ApiDeviceDevice extends Schema.CollectionType {
       'api::rating.rating'
     >;
     deviceRating: Attribute.Decimal;
-    type: Attribute.Relation<'api::device.device', 'manyToOne', 'api::t-y.t-y'>;
     comments: Attribute.Relation<
       'api::device.device',
       'oneToMany',
       'api::comment.comment'
+    >;
+    type: Attribute.Relation<
+      'api::device.device',
+      'manyToOne',
+      'api::type.type'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -926,13 +935,12 @@ export interface ApiRatingRating extends Schema.CollectionType {
   };
 }
 
-export interface ApiTYTY extends Schema.CollectionType {
-  collectionName: 't_ies';
+export interface ApiTypeType extends Schema.CollectionType {
+  collectionName: 'types';
   info: {
-    singularName: 't-y';
-    pluralName: 't-ies';
+    singularName: 'type';
+    pluralName: 'types';
     displayName: 'Type';
-    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -940,16 +948,21 @@ export interface ApiTYTY extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     devices: Attribute.Relation<
-      'api::t-y.t-y',
+      'api::type.type',
       'oneToMany',
       'api::device.device'
+    >;
+    brands: Attribute.Relation<
+      'api::type.type',
+      'manyToMany',
+      'api::brand.brand'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::t-y.t-y', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::t-y.t-y', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -976,7 +989,7 @@ declare module '@strapi/types' {
       'api::device.device': ApiDeviceDevice;
       'api::order.order': ApiOrderOrder;
       'api::rating.rating': ApiRatingRating;
-      'api::t-y.t-y': ApiTYTY;
+      'api::type.type': ApiTypeType;
     }
   }
 }

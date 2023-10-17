@@ -19,14 +19,20 @@ type Items =
   href: string
 }[]
 
+  
 
 const items: Items = [{ title: 'Смартфоны', img: smartphone, href: '/catalog/smartphones'}, { title: 'Планшеты', img: pad, href: '/catalog/pads' }, 
-{ title: 'Ноутбуки', img: laptop, href: '/catalog/smartphones' }, { title: 'Телевизоры', img: tv, href: '/catalog/smartphones' },
- { title: 'Игровые консоли', img: gamepad, href: '/catalog/smartphones' }, { title:'Все', img: all, href: '/catalog/smartphones'}]
+{ title: 'Ноутбуки', img: laptop, href: '/catalog/laptops' }, { title: 'Телевизоры', img: tv, href: '/catalog/tvs' },
+ { title: 'Игровые консоли', img: gamepad, href: '/catalog/consoles' }, { title:'Все', img: all, href: '/catalog/all'}]
 
 
 
 const Catalog = () => {
+
+
+
+  
+
   return (
     <div className={styles.root} >
       <div className='container'>

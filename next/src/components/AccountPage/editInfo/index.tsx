@@ -28,8 +28,8 @@ const [value, setValue] = React.useState<string>('')
 const router = useRouter();
 
 
-const items = [{name: 'Имя', typeName: 'name', defaultValue: user.name}, {name: 'Фамилия',typeName: 'surname', defaultValue: user.surname},
-{name: 'Адрес',typeName: 'address', defaultValue: user.address},{name: 'Телефон',typeName: 'phone', defaultValue: user.phone}]
+const items = [{name: 'Имя:', typeName: 'name', defaultValue: user.name}, {name: 'Фамилия:',typeName: 'surname', defaultValue: user.surname},
+{name: 'Адрес:',typeName: 'address', defaultValue: user.address},{name: 'Телефон: +7',typeName: 'phone', defaultValue: user.phone}]
 
   return (
     <div className={styles.root}>
@@ -40,7 +40,7 @@ const items = [{name: 'Имя', typeName: 'name', defaultValue: user.name}, {nam
                return (
                 <li key={typeName} className={styles.name} >
           
-                <div>{name}: { !(type === typeName)? defaultValue: <input onChange={(e)=>setValue(e.target.value)} defaultValue={defaultValue} type='text'></input>}</div>
+                <div>{name} { !(type === typeName)? defaultValue: <input onChange={(e)=>setValue(e.target.value)} defaultValue={defaultValue} type='text' onKeyDown={(e)=>{if(e.code == 'Enter'){editAccount(user.id, typeName, value, router, setType, setValue)}}}></input>}</div>
               { !(type===typeName)? <div onClick={()=>{setValue(defaultValue); setType(typeName)}} className={styles.edit}>изменить</div>:
               <div onClick={()=> editAccount(user.id, typeName, value, router, setType, setValue)} className={styles.edit}>сохранить</div>}
               </li>
