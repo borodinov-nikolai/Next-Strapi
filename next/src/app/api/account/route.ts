@@ -8,7 +8,7 @@ export async function PUT(request: Request) {
          try {
 
 
-            await $apiServer_CMS.put('/users', {
+            await $apiServer_CMS.put(`/users/${id}`, {
                 
             })
    

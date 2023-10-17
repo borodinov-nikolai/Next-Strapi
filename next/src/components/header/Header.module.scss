@@ -49,68 +49,6 @@
 
 
 
-
-
-.catalog::after {
-    content:'';
-    visibility: hidden;
-    position: fixed;
-    top: 51px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0.5;
-    background-color: rgb(0, 0, 0);
-    z-index: 1;
-}
-
-.submenu{  
-left: 0;
-border-top: 1px solid rgba(34, 60, 80, 0.2);
-top: 50px;
-position: absolute;
-background-color: rgb(255, 255, 255);
-width: 100%;
-z-index: 2;
-height: 0;
-visibility: hidden;
-overflow: hidden;
-transition: height 0.2s;
-border-radius: 0 0 20px 20px;
-}
-
-.submenu_list {
-    margin-top: -55px;
-    transition: margin-top 0.3s;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-
-    li {
-        font-size: large;
-        cursor: pointer;
-    }
-}
-
-
-.catalog:hover .submenu{
-    height: 80px;
-    visibility: visible;
-     } 
-
-.catalog:hover .submenu_list{
-    margin-top: 0;
-     } 
-
-.catalog:hover::after {
- visibility: visible;
- pointer-events: none;
-}
-    
-   
-
-
     .mobileNavbar {
      display: none;
     }

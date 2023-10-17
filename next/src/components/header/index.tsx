@@ -29,23 +29,6 @@ const Header = ({ user }: { user: any }) => {
                 <Link href="/catalog">
                   <div>Каталог</div>
                 </Link>
-              
-         
-                   <div className={styles.submenu}>
-                     <ul className={styles.submenu_list} >
-                      <Link href='/catalog/smartphones' >
-                        <li>Смартфоны</li>
-                      </Link>
-                      <Link href='/catalog/pads'>
-                        <li>Планшеты</li>
-                      </Link>
-                      <li>Ноутбуки</li>
-                      <li>Телевизоры</li>
-                      <li>Игровые Консоли</li>
-                     
-                     </ul>
-                   </div>
-               
 
               </li>
               <li>

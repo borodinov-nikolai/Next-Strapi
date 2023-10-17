@@ -16,7 +16,14 @@
         margin-top: 40px;
     }
 
-    .name {
+
+    .userinfo_list {
         margin-top: 20px;
+
+        li {
+            display: flex;
+        }
     }
+
+    
 }
