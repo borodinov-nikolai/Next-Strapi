@@ -11,6 +11,15 @@
 
         li {
             display: flex;
+            align-items: end;
+        }
+
+        .edit {
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: small;
+            text-decoration:underline;
+            color: blue;
         }
     }
 }

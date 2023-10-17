@@ -5,14 +5,20 @@ import { $apiServer_CMS } from "@/axios/serverConfig";
 
 export async function POST(request: Request) {
     
-    const {value, device, users_permissions_user} = await request.json()
  
     try {
+      type Res = {
+        value: string,
+        device: string,
+        users_permissions_user: string
+      }
+    const {value, device, users_permissions_user}: Res = await request.json()
+
          const res = await $apiServer_CMS.post('/ratings', {
             data : {
               value,
-              device : String(device),
-              users_permissions_user: String(users_permissions_user)
+              device : device,
+              users_permissions_user:users_permissions_user
             }
           })
           
@@ -20,7 +26,7 @@ export async function POST(request: Request) {
             const ratings = await $apiServer_CMS.get('/ratings', {
               params: {
                 filters: {
-                  device: String(device)
+                  device: device
                 }
               }
             })
@@ -68,7 +74,7 @@ export async function PUT(request: Request) {
       const ratings = await $apiServer_CMS.get('/ratings', {
         params: {
           filters: {
-            device: String(device)
+            device: device
           }
         }
       })

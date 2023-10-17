@@ -3,15 +3,24 @@ import { $apiServer_CMS } from "@/axios/serverConfig"
 
 
 export async function PUT(request: Request) {
-         const req = await request.json()
-
+ 
+       
          try {
 
-
-            await $apiServer_CMS.put(`/users/${id}`, {
+          type Req = {
+            userID: number,
+            dataType: string,
+            dataValue: string
+          }
+         const {userID, dataType, dataValue} : Req = await request.json()
+   console.log(userID)
+            const res = await $apiServer_CMS.put(`/users/${userID}`, {
+                  [dataType] : dataValue
                 
             })
    
+
+            // console.log(res)
           return new Response('ok', {
             status: 200,
 

@@ -157,3 +157,26 @@ export const removeComment = async (deviceID:number, userID:number|null, router:
     console.error(e)
   }
 }
+
+
+
+
+  export const editAccount = async (userID: number, dataType: string, dataValue: string, router: AppRouterInstance, setType: React.Dispatch<React.SetStateAction<string>>,
+    setValue: React.Dispatch<React.SetStateAction<string>> )=> {
+   try {
+    await $apiClient_NEXT.put('/account', {
+      userID,
+      dataType,
+      dataValue
+     } 
+    )
+    router.refresh()
+    setType('')
+    setValue('')
+   } catch(e) {
+    console.error(e)
+   }
+
+  }
+  
+

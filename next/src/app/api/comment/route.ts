@@ -6,14 +6,21 @@ import { $apiServer_CMS } from "@/axios/serverConfig";
 export async function POST(request: Request) {
    
     try {
-        const {text, device, user} = await request.json();
+
+        type Res = {
+            text: string,
+            device: string,
+            user: string
+        }
+
+        const {text, device, user} : Res = await request.json();
       
 
          const comment = await $apiServer_CMS.get('/comments', {
             params: {
                 filters: {
-                    device: String(device),
-                    users_permissions_user: String(user)
+                    device: device,
+                    users_permissions_user:user
                 }
             }
          })
@@ -34,15 +41,15 @@ export async function POST(request: Request) {
          if(comment.data.data.length < 1) {
             $apiServer_CMS.post('/comments', {
                 data: {
-                    text: String(text),
-                    device: String(device),
-                    users_permissions_user: String(user)
+                    text: text,
+                    device: device,
+                    users_permissions_user: user
                 }
             })
          } else {
             $apiServer_CMS.put(`/comments/${comment.data.data[0].id}`, {
                 data: {
-                    text: String(text)
+                    text: text
                 }
             })
          }

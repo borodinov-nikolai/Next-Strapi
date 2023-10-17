@@ -1,33 +1,54 @@
 'use client'
-import {EditOutlined} from '@ant-design/icons'
 import styles from './editInfo.module.scss'
-
+import {useRouter} from 'next/navigation'
 import React from 'react'
+import { editAccount } from '@/services/clientApi'
 
-const EditInfo : React.FC<any> = ({user}) => {
+interface Props {
+  user: {
+    id: number
+    username: string
+    email: string
+    provider: string
+    confirmed: boolean
+    blocked: boolean
+    createdAt: string
+    updatedAt: string
+    name: string
+    phone: string
+    surname: string
+    address: string
+  }
+ 
+}
+
+const EditInfo : React.FC<Props> = ({user}) => {
+const [type, setType] = React.useState<string>('')
+const [value, setValue] = React.useState<string>('')
+const router = useRouter();
 
 
-    console.log(user)
+const items = [{name: 'Имя', typeName: 'name', defaultValue: user.name}, {name: 'Фамилия',typeName: 'surname', defaultValue: user.surname},
+{name: 'Адрес',typeName: 'address', defaultValue: user.address},{name: 'Телефон',typeName: 'phone', defaultValue: user.phone}]
 
   return (
-    <div>
+    <div className={styles.root}>
       <ul className={styles.userinfo_list} >
-          <li className={styles.name} >
-            <div>Имя: {user.name}</div>
-            <EditOutlined />
-            </li>
-          <li>
-            <div>Фамилия: {user.surname} </div>
-            <EditOutlined />
-            </li>
-          <li>
-            <div>Адрес: {user.address}</div>
-            <EditOutlined />
-            </li>
-          <li>
-            <div>Телефон: {user.phone}</div>
-            <EditOutlined />
-            </li>
+
+        {
+          items.map(({name, typeName, defaultValue}: { name: string, typeName:string, defaultValue: string})=> {
+               return (
+                <li key={typeName} className={styles.name} >
+          
+                <div>{name}: { !(type === typeName)? defaultValue: <input onChange={(e)=>setValue(e.target.value)} defaultValue={defaultValue} type='text'></input>}</div>
+              { !(type===typeName)? <div onClick={()=>{setValue(defaultValue); setType(typeName)}} className={styles.edit}>изменить</div>:
+              <div onClick={()=> editAccount(user.id, typeName, value, router, setType, setValue)} className={styles.edit}>сохранить</div>}
+              </li>
+               )
+          })
+        }
+         
+        
         </ul>
     </div>
   )
