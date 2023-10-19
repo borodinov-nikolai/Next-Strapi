@@ -23,7 +23,7 @@ interface Props {
 }
 
 
-const ProductCard = ({name, price, image, id, rating}: Props) => (
+const ProductCard: React.FC<Props> = ({name, price, image, id, rating}) => (
 
 
   
