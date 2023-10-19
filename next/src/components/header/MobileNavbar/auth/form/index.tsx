@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input, Result} from 'antd';
 import styles from './AuthForm.module.scss'
-import { auth, register } from '@/services/clientApi';
+import { auth, authMobile, mobileRegister, register } from '@/services/clientApi';
 
 
 
@@ -64,7 +64,7 @@ const AuthForm: React.FC<Props> = ({registration, setRegistration}) =>{
        </Form.Item>
         <div className={styles.text}> Нет аккаунта? <span onClick={()=> setRegistration(true)}>Зарегистрируйся!</span></div>
           <div style={{display:'flex', justifyContent: 'end'}}>
-            <Button type='primary' style={{marginRight: '-70px', marginTop: '20px'}} onClick={()=>auth(login, password)} >Авторизоваться</Button>
+            <Button type='primary' style={{marginRight: '-70px', marginTop: '20px'}} onClick={()=>authMobile(login, password)} >Авторизоваться</Button>
             </div>
     </Form>
  ) 
@@ -108,7 +108,7 @@ className={styles.root}
   
 
       <div style={{display:'flex', justifyContent: 'end'}}>
-        <Button type='primary' style={{marginRight: '-70px'}} onClick={()=>{register(login, email, password, setSuccess)}} >Зарегистрироваться</Button>
+        <Button type='primary' style={{marginRight: '-70px'}} onClick={()=>{mobileRegister(login, email, password, setSuccess)}} >Зарегистрироваться</Button>
         
         </div>
 </Form>
