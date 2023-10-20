@@ -1,9 +1,0 @@
-{
-  "version": 1,
-  "functions": {
-    "/about": {},
-    "/catalog/[type]/[id]": {},
-    "/catalog/[type]": {},
-    "/contacts": {}
-  }
-}
