@@ -11,7 +11,7 @@ import SaveUser from '@/components/SaveUser';
 import { getUser } from '@/services/serverApi';
 
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata: Metadata = {
   title: 'Магазин на Next-js',
@@ -35,7 +35,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body >
        <ReduxProvider>
       <StyledComponentsRegistry>
         <ConfigProvider theme={theme}>
