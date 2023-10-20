@@ -24,14 +24,6 @@ const Auth: React.FC<any> = ({user}) => {
 
   
 
-  const confirm = (e: React.MouseEvent<HTMLElement>) => {
-      //  logout()
-  };
-  
-  const cancel = (e: React.MouseEvent<HTMLElement>) => {
-   
-  };
-
 
 
 
@@ -39,7 +31,7 @@ const Auth: React.FC<any> = ({user}) => {
     <>
   
 
-  {!user?
+
   
 
   <div  onClick={showModal}  >
@@ -50,24 +42,11 @@ const Auth: React.FC<any> = ({user}) => {
        <div>Войти</div>
      </div> 
 
-    :
-
     
-    <Popconfirm
-    title="Выйти"
-    description="Вы уверены что хотите выйти?"
-    onConfirm={confirm}
-    onCancel={cancel}
-    okText="Да"
-    cancelText="Нет"
-  >
-     <div>
-         <LogoutOutlined style={{fontSize: '24px', cursor: 'pointer'}}/>
-       </div>
-       <div>{user.username}</div>
-  </Popconfirm>
 
-}
+ 
+
+
       
     
 

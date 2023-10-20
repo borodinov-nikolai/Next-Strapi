@@ -28,8 +28,8 @@ const [value, setValue] = React.useState<string>('')
 const router = useRouter();
 
 
-const items = [{name: 'Имя:', typeName: 'name', defaultValue: user.name}, {name: 'Фамилия:',typeName: 'surname', defaultValue: user.surname},
-{name: 'Адрес:',typeName: 'address', defaultValue: user.address},{name: 'Телефон: +7',typeName: 'phone', defaultValue: user.phone}]
+const items = [{name: 'Имя:', typeName: 'name', defaultValue: user?.name}, {name: 'Фамилия:',typeName: 'surname', defaultValue: user?.surname},
+{name: 'Адрес:',typeName: 'address', defaultValue: user?.address},{name: 'Телефон: +7',typeName: 'phone', defaultValue: user?.phone}]
 
   return (
     <div className={styles.root}>
