@@ -25,7 +25,7 @@ const Auth: React.FC<any> = ({user}) => {
   
 
   const confirm = (e: React.MouseEvent<HTMLElement>) => {
-       logout()
+      //  logout()
   };
   
   const cancel = (e: React.MouseEvent<HTMLElement>) => {

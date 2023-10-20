@@ -26,7 +26,25 @@ export const register = async (login:string, email:string, password:string, setS
     }
    }
 
-
+   export const mobileRegister = async (login:string, email:string, password:string, setSuccess: React.Dispatch<React.SetStateAction<boolean>>)=> {
+  
+    try {
+      await $apiClient_NEXT.post('/auth/register', {
+        username: login,
+        email,
+        password
+      })
+      
+      setSuccess(true)
+     
+      setTimeout(()=> setSuccess(false), 3500)
+      
+      
+      
+      } catch(error) {
+        console.error(error)
+      }
+     }
 
    export const auth = async (login:string, password:string, router: AppRouterInstance, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>)=> {
     try {
@@ -45,6 +63,22 @@ export const register = async (login:string, email:string, password:string, setS
    
    }
 
+
+   export const authMobile = async (login:string, password:string)=> {
+    try {
+      const {data} = await $apiClient_NEXT.post('/auth/login', {
+        identifier: login,
+        password
+      })
+       
+   
+      return data;
+
+    } catch(error: any) {
+      console.error(error.message)
+    }
+   
+   }
 
 
 
