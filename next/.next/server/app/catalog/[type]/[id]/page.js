@@ -424,14 +424,14 @@ const routeModule = new AppPageRouteModule({
 
 /***/ }),
 
-/***/ 85641:
+/***/ 44899:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 35155));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 34226));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 27923));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 45539));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 44141))
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 44141));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 34226));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 27923))
 
 /***/ }),
 
@@ -466,7 +466,7 @@ const ImageViewer = ({ device })=>{
                         className: i === viewedImage ? (_ImageViewer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().selectedPreviewImage) : (_ImageViewer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().previewImage),
                         onClick: ()=>setViewedImage(i),
                         width: 100,
-                        src: `http://localhost:1337${image.attributes.url}`,
+                        src: "http://31.129.103.119:1337" + image.attributes.url,
                         alt: ""
                     }, image.id);
                 })
@@ -475,7 +475,7 @@ const ImageViewer = ({ device })=>{
                 className: (_ImageViewer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().image),
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(antd_lib_image__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
                     height: 400,
-                    src: `http://localhost:1337${device.image.data[viewedImage].attributes.url}`
+                    src: "http://31.129.103.119:1337" + device.image.data[viewedImage].attributes.url
                 })
             })
         ]
@@ -965,7 +965,7 @@ const Device = async ({ params })=>{
 var __webpack_require__ = require("../../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [326,527,705,352,250,834,593], () => (__webpack_exec__(31397)));
+var __webpack_exports__ = __webpack_require__.X(0, [326,527,705,352,250,937,593], () => (__webpack_exec__(31397)));
 module.exports = __webpack_exports__;
 
 })();

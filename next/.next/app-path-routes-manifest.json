@@ -1,17 +1,17 @@
 {
-  "/page": "/",
   "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
   "/account/page": "/account",
   "/catalog/page": "/catalog",
   "/about/page": "/about",
   "/contacts/page": "/contacts",
-  "/api/cart/route": "/api/cart",
   "/api/account/route": "/api/account",
+  "/api/cart/route": "/api/cart",
   "/api/comment/route": "/api/comment",
   "/api/rating/route": "/api/rating",
   "/catalog/[type]/page": "/catalog/[type]",
-  "/api/auth/logout/route": "/api/auth/logout",
-  "/api/auth/login/route": "/api/auth/login",
   "/api/auth/register/route": "/api/auth/register",
-  "/catalog/[type]/[id]/page": "/catalog/[type]/[id]"
+  "/catalog/[type]/[id]/page": "/catalog/[type]/[id]",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/logout/route": "/api/auth/logout"
 }

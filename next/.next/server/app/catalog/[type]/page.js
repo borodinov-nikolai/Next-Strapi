@@ -415,17 +415,17 @@ const routeModule = new AppPageRouteModule({
 
 /***/ }),
 
-/***/ 69516:
+/***/ 16255:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 50954, 23));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 43829));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 50844));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 10487));
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 73380, 23));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 34226));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 94771));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 30785));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 43829));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 50844));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 10487))
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 30785))
 
 /***/ }),
 
@@ -829,7 +829,7 @@ const ProductCard = ({ name, price, image, id, rating })=>/*#__PURE__*/ (0,jsx_r
             priority: true,
             height: 820,
             width: 640,
-            src: `http://localhost:1337${image}`,
+            src: "http://31.129.103.119:1337" + image,
             alt: "card"
         }),
         children: [
@@ -1017,7 +1017,7 @@ const Smartphones = async ({ searchParams, params })=>{
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [326,527,705,178,352,111,834,593], () => (__webpack_exec__(21120)));
+var __webpack_exports__ = __webpack_require__.X(0, [326,527,705,178,352,111,937,593], () => (__webpack_exec__(21120)));
 module.exports = __webpack_exports__;
 
 })();

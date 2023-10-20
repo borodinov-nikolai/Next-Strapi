@@ -120,7 +120,7 @@ const Cart: React.FC<{user:any}> = ({user}) => {
                    <div key={item.id}>
                    <div  className={styles.root}>
                     
-                  <Image width={100} height={100}  alt='' src={`http://localhost:1337${item.image}`}/>
+                  <Image width={100} height={100}  alt='' src={process.env.NEXT_PUBLIC_IMG_URL+item.image}/>
                   <h3 className={styles.title}>{item.name}</h3>
                   <p className={styles.price}>цена: {item.price}p</p>
                   <p className={styles.count}>кол-во:</p>

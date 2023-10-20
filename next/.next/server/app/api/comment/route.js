@@ -200,7 +200,7 @@ const originalPathname = "/api/comment/route";
 
 
 const $apiServer_CMS = axios__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.create({
-    baseURL: "http://127.0.0.1:1337/api",
+    baseURL: "http://31.129.103.119:1337/api",
     withCredentials: true
 });
 $apiServer_CMS.interceptors.request.use(function(config) {

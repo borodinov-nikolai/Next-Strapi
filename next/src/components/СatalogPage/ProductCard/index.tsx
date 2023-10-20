@@ -36,7 +36,7 @@ const ProductCard: React.FC<Props> = ({name, price, image, id, rating}) => (
     priority
       height={820}
       width={640}
-      src={`http://localhost:1337${image}`}
+      src={process.env.NEXT_PUBLIC_IMG_URL+image}
       alt ='card'
     ></Image>  }
   >
